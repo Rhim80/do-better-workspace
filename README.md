@@ -294,6 +294,37 @@ Claude: "지속적인 업무이므로 20-operations/23-customer-service/
 폴더를 만들어서 저장하는 것이 좋습니다."
 ```
 
+## Sample Data for Practice
+
+`50-resources/sample-data/`에 **교육용 샘플 데이터**가 포함되어 있습니다.
+
+### 오피스원 주식회사 시나리오
+
+가상의 B2B 사무용품 회사 **오피스원 주식회사**의 데이터로 실습합니다:
+
+| 데이터 | 설명 | 레코드 수 |
+|--------|------|-----------|
+| `sample_sales_data.csv` | 2분기 판매 실적 | 117건 |
+| `customer_data.csv` | 고객사 정보 | 50개사 |
+| `employee_survey_data.csv` | 직원 만족도 설문 | 50명 |
+| `inventory_data.csv` | 재고 현황 | 40품목 |
+| `marketing_campaign_data.csv` | 마케팅 캠페인 | 24건 |
+
+### 실습 가이드
+
+`00-system/claude-code-practice-guide.md`에서 6가지 미션을 통해 데이터 분석을 배울 수 있습니다:
+
+1. **판매 실적 분석** - 월별/지역별/담당자별 매출 분석
+2. **고객 현황 점검** - VIP 고객 식별, 이탈 패턴 분석
+3. **마케팅 ROI 검토** - 채널별 효율성 비교
+4. **재고 관리 이슈** - 긴급 발주 품목 식별
+5. **직원 만족도 분석** - 부서별 비교, 개선점 도출
+6. **종합 보고서** - CEO 보고용 1페이지 요약
+
+> **스토리**: 당신은 경영기획팀 신입 사원입니다. 2분기 말 경영 회의를 앞두고 박 팀장이 데이터 분석을 요청합니다.
+
+---
+
 ## Tips
 
 1. **setup-workspace 먼저**: `/setup-workspace`로 CLAUDE.md를 자동 생성하세요
