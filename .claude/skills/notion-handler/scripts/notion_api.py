@@ -266,6 +266,12 @@ def parse_blocks(blocks: List[Dict]) -> List[Dict]:
     - {"type": "numbered_list_item", "text": "Item"}
     - {"type": "to_do", "text": "Task", "checked": false}
     - {"type": "divider"}
+    - {"type": "image", "url": "https://..."} (external image)
+    - {"type": "bookmark", "url": "https://..."}
+    - {"type": "quote", "text": "Quote text"}
+    - {"type": "callout", "text": "Callout text", "emoji": "💡"}
+    - {"type": "code", "text": "code here", "language": "python"}
+    - {"type": "toggle", "text": "Toggle title"}
     """
     result = []
     for block in blocks:
@@ -273,6 +279,74 @@ def parse_blocks(blocks: List[Dict]) -> List[Dict]:
 
         if block_type == "divider":
             result.append({"object": "block", "type": "divider", "divider": {}})
+
+        elif block_type == "image":
+            # External image
+            result.append({
+                "object": "block",
+                "type": "image",
+                "image": {
+                    "type": "external",
+                    "external": {
+                        "url": block.get("url", "")
+                    }
+                }
+            })
+
+        elif block_type == "bookmark":
+            # Bookmark (link preview)
+            result.append({
+                "object": "block",
+                "type": "bookmark",
+                "bookmark": {
+                    "url": block.get("url", "")
+                }
+            })
+
+        elif block_type == "quote":
+            # Quote block
+            result.append({
+                "object": "block",
+                "type": "quote",
+                "quote": {
+                    "rich_text": [{"type": "text", "text": {"content": block.get("text", "")}}]
+                }
+            })
+
+        elif block_type == "callout":
+            # Callout with emoji icon
+            callout_content = {
+                "rich_text": [{"type": "text", "text": {"content": block.get("text", "")}}]
+            }
+            if block.get("emoji"):
+                callout_content["icon"] = {"type": "emoji", "emoji": block.get("emoji")}
+            result.append({
+                "object": "block",
+                "type": "callout",
+                "callout": callout_content
+            })
+
+        elif block_type == "code":
+            # Code block with language
+            result.append({
+                "object": "block",
+                "type": "code",
+                "code": {
+                    "rich_text": [{"type": "text", "text": {"content": block.get("text", "")}}],
+                    "language": block.get("language", "plain text")
+                }
+            })
+
+        elif block_type == "toggle":
+            # Toggle block (can have children)
+            result.append({
+                "object": "block",
+                "type": "toggle",
+                "toggle": {
+                    "rich_text": [{"type": "text", "text": {"content": block.get("text", "")}}]
+                }
+            })
+
         elif block_type in ["heading_1", "heading_2", "heading_3", "paragraph",
                            "bulleted_list_item", "numbered_list_item"]:
             result.append({
@@ -282,6 +356,7 @@ def parse_blocks(blocks: List[Dict]) -> List[Dict]:
                     "rich_text": [{"type": "text", "text": {"content": block.get("text", "")}}]
                 }
             })
+
         elif block_type == "to_do":
             result.append({
                 "object": "block",
@@ -325,6 +400,57 @@ def delete_block(block_id: str) -> Dict:
     url = f"{NOTION_API_BASE}/blocks/{format_id(block_id)}"
     response = requests.delete(url, headers=get_headers())
     return response.json()
+
+
+def delete_blocks(block_ids: List[str]) -> List[Dict]:
+    """Delete multiple blocks."""
+    results = []
+    for block_id in block_ids:
+        result = delete_block(block_id)
+        results.append({"id": block_id, "result": result})
+    return results
+
+
+def get_all_blocks(block_id: str, recursive: bool = False) -> List[Dict]:
+    """
+    Get all child blocks with pagination support.
+    If recursive=True, also fetches children of children.
+    """
+    all_blocks = []
+    start_cursor = None
+
+    while True:
+        url = f"{NOTION_API_BASE}/blocks/{format_id(block_id)}/children"
+        params = {}
+        if start_cursor:
+            params["start_cursor"] = start_cursor
+
+        response = requests.get(url, headers=get_headers(), params=params)
+        data = response.json()
+
+        if "results" in data:
+            for block in data["results"]:
+                all_blocks.append(block)
+                # Recursively fetch children if needed
+                if recursive and block.get("has_children"):
+                    child_blocks = get_all_blocks(block["id"], recursive=True)
+                    block["children"] = child_blocks
+
+        if not data.get("has_more"):
+            break
+        start_cursor = data.get("next_cursor")
+
+    return all_blocks
+
+
+def clear_page(page_id: str) -> Dict:
+    """Delete all blocks from a page."""
+    blocks = get_all_blocks(page_id)
+    block_ids = [b["id"] for b in blocks]
+    if block_ids:
+        results = delete_blocks(block_ids)
+        return {"deleted_count": len(block_ids), "results": results}
+    return {"deleted_count": 0, "message": "No blocks to delete"}
 
 
 # =============================================================================
@@ -398,6 +524,23 @@ def main():
     get_blocks_parser = subparsers.add_parser("get-blocks", help="Get blocks")
     get_blocks_parser.add_argument("--id", required=True, help="Page/block ID")
 
+    get_all_blocks_parser = subparsers.add_parser("get-all-blocks", help="Get all blocks with pagination")
+    get_all_blocks_parser.add_argument("--id", required=True, help="Page/block ID")
+    get_all_blocks_parser.add_argument("--recursive", action="store_true", help="Include nested children")
+
+    update_block_parser = subparsers.add_parser("update-block", help="Update a block")
+    update_block_parser.add_argument("--id", required=True, help="Block ID")
+    update_block_parser.add_argument("--content", required=True, help="Block content JSON")
+
+    delete_block_parser = subparsers.add_parser("delete-block", help="Delete a block")
+    delete_block_parser.add_argument("--id", required=True, help="Block ID")
+
+    delete_blocks_parser = subparsers.add_parser("delete-blocks", help="Delete multiple blocks")
+    delete_blocks_parser.add_argument("--ids", required=True, help="Block IDs JSON array")
+
+    clear_page_parser = subparsers.add_parser("clear-page", help="Delete all blocks from a page")
+    clear_page_parser.add_argument("--id", required=True, help="Page ID")
+
     # Search command
     search_parser = subparsers.add_parser("search", help="Search workspace")
     search_parser.add_argument("--query", required=True, help="Search query")
@@ -449,6 +592,24 @@ def main():
 
     elif args.command == "get-blocks":
         result = get_blocks(args.id)
+
+    elif args.command == "get-all-blocks":
+        blocks = get_all_blocks(args.id, args.recursive)
+        result = {"blocks": blocks, "count": len(blocks)}
+
+    elif args.command == "update-block":
+        content = json.loads(args.content)
+        result = update_block(args.id, content)
+
+    elif args.command == "delete-block":
+        result = delete_block(args.id)
+
+    elif args.command == "delete-blocks":
+        block_ids = json.loads(args.ids)
+        result = delete_blocks(block_ids)
+
+    elif args.command == "clear-page":
+        result = clear_page(args.id)
 
     elif args.command == "search":
         result = search(args.query, args.type)
