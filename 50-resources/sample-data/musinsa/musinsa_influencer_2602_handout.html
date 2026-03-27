@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2월 인플루언서 협업 효과 분석</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-dark: #111111;
+  --color-bg-muted: #F5F5F5;
+  --color-text: #111111;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #666666;
+  --color-border: #E0E0E0;
+  --color-accent: #111111;
+  --font-sans: 'Helvetica Neue', 'Pretendard', -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Menlo', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: #888;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm; height: 297mm;
+  padding: 18mm 20mm 20mm 20mm;
+  margin: 10px auto;
+  background: var(--color-bg);
+  position: relative; overflow: hidden;
+  page-break-after: always; page-break-inside: avoid;
+}
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+}
+@media screen { .page { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+.cover {
+  width: 210mm; height: 297mm;
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24mm; margin: 10px auto;
+  position: relative; overflow: hidden;
+  page-break-after: always;
+}
+@media screen { .cover { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .cover { margin: 0; box-shadow: none; } }
+.cover-label {
+  font-family: var(--font-mono); font-size: 8pt;
+  letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.4; margin-bottom: 12mm;
+}
+.cover-title {
+  font-family: var(--font-sans); font-size: 28pt; font-weight: 700;
+  line-height: 1.15; margin-bottom: 5mm; letter-spacing: -0.02em;
+}
+.cover-title em { font-style: normal; font-weight: 300; }
+.cover-subtitle {
+  font-family: var(--font-sans); font-size: 12pt; font-weight: 300;
+  opacity: 0.7; margin-bottom: 18mm; line-height: 1.5;
+}
+.cover-meta {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 2mm 6mm; font-size: 8.5pt; opacity: 0.5;
+}
+.cover-meta dt { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.05em; text-transform: uppercase; }
+.cover-meta dd { margin: 0; }
+.cover-brand { position: absolute; bottom: 18mm; left: 24mm; font-size: 10pt; font-weight: 600; letter-spacing: 0.05em; }
+.page-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10mm; padding-bottom: 3mm;
+  border-bottom: 1pt solid var(--color-border);
+}
+.page-brand { font-size: 8pt; font-weight: 600; opacity: 0.3; letter-spacing: 0.1em; }
+.page-number { font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.1em; opacity: 0.3; }
+.page-footer {
+  position: absolute; bottom: 12mm; left: 20mm; right: 20mm;
+  display: flex; justify-content: space-between;
+  font-size: 6.5pt; opacity: 0.25; font-family: var(--font-mono);
+}
+.section-number { font-family: var(--font-mono); font-size: 6.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.section-title { font-family: var(--font-sans); font-size: 16pt; font-weight: 700; line-height: 1.25; margin-bottom: 6mm; color: var(--color-text); letter-spacing: -0.01em; }
+.section-title em { font-weight: 300; font-style: normal; }
+h3 { font-family: var(--font-sans); font-size: 8.5pt; font-weight: 700; margin-bottom: 2.5mm; margin-top: 5mm; color: var(--color-text); }
+h3:first-of-type { margin-top: 0; }
+p { font-size: 8pt; line-height: 1.65; margin-bottom: 2.5mm; color: var(--color-text-muted); }
+.quote {
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  padding: 4.5mm 5.5mm 4.5mm 5.5mm; border-radius: 1pt; margin: 4mm 0;
+}
+.quote p { color: var(--color-text-light); margin: 0; font-size: 8pt; line-height: 1.6; }
+.quote-light { background: var(--color-bg-muted); color: var(--color-text); border-left: 2pt solid var(--color-text); padding: 3mm 4mm; margin: 3mm 0; font-size: 8pt; line-height: 1.6; }
+.quote-light p { color: var(--color-text-muted); margin: 0; }
+ul, ol { padding-left: 5mm; margin-bottom: 3mm; }
+li { font-size: 8pt; line-height: 1.65; margin-bottom: 1mm; color: var(--color-text-muted); }
+li strong { color: var(--color-text); font-weight: 600; }
+.flow { counter-reset: flow-counter; list-style: none; padding: 0; }
+.flow li { counter-increment: flow-counter; padding-left: 9mm; position: relative; margin-bottom: 2mm; }
+.flow li::before { content: counter(flow-counter); position: absolute; left: 0; top: 0.5mm; width: 5mm; height: 5mm; background: var(--color-bg-dark); color: var(--color-text-light); font-family: var(--font-mono); font-size: 6pt; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.principles { list-style: none; padding: 0; counter-reset: principle; }
+.principles li { counter-increment: principle; padding: 2.5mm 0; border-bottom: 0.5pt solid var(--color-border); display: flex; align-items: baseline; gap: 3mm; font-size: 8pt; }
+.principles li:last-child { border-bottom: none; }
+.principles li::before { content: '0' counter(principle); font-family: var(--font-mono); font-size: 7pt; color: var(--color-text-muted); flex-shrink: 0; width: 6mm; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card { background: var(--color-bg-muted); border: 0.5pt solid var(--color-border); padding: 4mm; border-radius: 1pt; }
+.card-number { font-family: var(--font-mono); font-size: 6pt; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.card h4 { font-size: 8pt; font-weight: 600; margin-bottom: 1.5mm; }
+.card p { font-size: 7.5pt; line-height: 1.55; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 3mm 0; }
+.dark-inline { background: var(--color-bg-dark); color: var(--color-text-light); margin: 4mm 0; padding: 5mm; border-radius: 1pt; }
+.dark-inline h3, .dark-inline h4 { color: var(--color-text-light); }
+.dark-inline p { color: rgba(255,255,255,0.75); }
+.dark-inline li { color: rgba(255,255,255,0.75); }
+.dark-inline li strong { color: var(--color-text-light); }
+.highlight-box { border: 1.5pt solid var(--color-text); padding: 4mm 5mm; margin: 4mm 0; border-radius: 1pt; }
+.highlight-box h4 { font-size: 9pt; font-weight: 700; margin-bottom: 2.5mm; }
+.steps { background: var(--color-bg-dark); color: var(--color-text-light); padding: 5mm 6mm; border-radius: 1pt; margin: 3mm 0; }
+.steps h4 { font-size: 9pt; font-weight: 600; margin-bottom: 3mm; color: var(--color-text-light); }
+.steps ol { counter-reset: step; list-style: none; padding: 0; }
+.steps ol li { counter-increment: step; padding: 1.5mm 0 1.5mm 8mm; position: relative; color: rgba(255,255,255,0.8); border-bottom: 0.5pt solid rgba(255,255,255,0.06); font-size: 7.5pt; }
+.steps ol li:last-child { border-bottom: none; }
+.steps ol li::before { content: counter(step); position: absolute; left: 0; font-family: var(--font-mono); font-size: 7pt; color: rgba(255,255,255,0.5); }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 7.5pt; }
+th { background: var(--color-bg-dark); color: var(--color-text-light); padding: 2.5mm 3mm; text-align: left; font-weight: 600; font-size: 7pt; letter-spacing: 0.05em; }
+td { padding: 2.5mm 3mm; border-bottom: 0.5pt solid var(--color-border); color: var(--color-text-muted); }
+tr:last-child td { border-bottom: none; }
+.divider { height: 0.5pt; background: var(--color-border); margin: 5mm 0; }
+code { font-family: var(--font-mono); font-size: 7.5pt; color: var(--color-text); background: var(--color-bg-muted); padding: 0.5mm 1.5mm; border-radius: 1pt; }
+.closing {
+  width: 210mm; height: 297mm;
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  padding: 24mm; margin: 10px auto; page-break-after: avoid;
+}
+@media screen { .closing { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .closing { margin: 0; box-shadow: none; } }
+.closing-title { font-size: 26pt; font-weight: 700; line-height: 1.2; margin-bottom: 6mm; letter-spacing: -0.02em; }
+.closing-title em { font-weight: 300; font-style: normal; }
+.closing-sub { font-size: 10pt; opacity: 0.4; margin-bottom: 16mm; }
+.closing-info { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.1em; opacity: 0.3; line-height: 2.2; }
+td.num, th.num { text-align: right; font-family: var(--font-mono); font-size: 7pt; }
+td.accent { color: var(--color-text); font-weight: 600; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 6pt; padding: 0.5mm 2mm; border-radius: 1pt; letter-spacing: 0.05em; }
+.tag-up { background: var(--color-bg-dark); color: var(--color-text-light); }
+.tag-down { background: var(--color-bg-muted); color: var(--color-text-muted); border: 0.5pt solid var(--color-border); }
+.tag-ok { background: var(--color-bg-muted); color: var(--color-text); }
+.kpi-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.kpi-card { background: var(--color-bg-muted); border: 0.5pt solid var(--color-border); padding: 3.5mm 4mm; border-radius: 1pt; }
+.kpi-card .kpi-label { font-family: var(--font-mono); font-size: 6pt; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 1mm; text-transform: uppercase; }
+.kpi-card .kpi-value { font-size: 14pt; font-weight: 700; color: var(--color-text); line-height: 1.2; }
+.kpi-card .kpi-sub { font-size: 6.5pt; color: var(--color-text-muted); margin-top: 0.5mm; }
+.kpi-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.vs-table { width: 100%; border-collapse: collapse; margin: 3mm 0; }
+.vs-table th { background: var(--color-bg-dark); color: var(--color-text-light); padding: 2.5mm 3mm; text-align: center; font-weight: 600; font-size: 7pt; }
+.vs-table th:first-child { text-align: left; }
+.vs-table td { padding: 2.5mm 3mm; border-bottom: 0.5pt solid var(--color-border); text-align: center; font-family: var(--font-mono); font-size: 7.5pt; }
+.vs-table td:first-child { text-align: left; font-family: var(--font-sans); }
+.vs-table td.highlight { color: var(--color-text); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-label">influencer effectiveness analysis</div>
+  <h1 class="cover-title">2월 인플루언서 협업<br><em>Effect</em> Analysis</h1>
+  <p class="cover-subtitle">무신사 / 29CM 인플루언서 마케팅 407건 협업 성과 분석<br>프레임워크 기반 KPI, 벤치마크 대비, 포트폴리오 진단</p>
+  <dl class="cover-meta">
+    <dt>Period</dt><dd>2026년 2월</dd>
+    <dt>Source</dt><dd>musinsa_influencer_2602.csv (407건, 273명)</dd>
+    <dt>Framework</dt><dd>Influencer Effectiveness Framework (EMV, ER, ROI)</dd>
+    <dt>Date</dt><dd>2026-03-26</dd>
+  </dl>
+  <div class="cover-brand">INFLUENCER REPORT</div>
+</div>
+
+<!-- PAGE 1 / 4 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">INFLUENCER REPORT</div>
+    <div class="page-number">01 / 04</div>
+  </div>
+
+  <div class="section-number">Section 01</div>
+  <h2 class="section-title"><em>KPI</em> Overview</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Total ROI</div>
+      <div class="kpi-value">4.6x</div>
+      <div class="kpi-sub">비용 13.2억 / 매출 60.2억</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Engagement Rate</div>
+      <div class="kpi-value">2.86%</div>
+      <div class="kpi-sub">총 반응 380.7만건</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">CPA</div>
+      <div class="kpi-value">23,075</div>
+      <div class="kpi-sub">전환 57,007건</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Link CTR</div>
+      <div class="kpi-value">1.32%</div>
+      <div class="kpi-sub">클릭 175만 / 노출 1.3억</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">CPE</div>
+      <div class="kpi-value">345</div>
+      <div class="kpi-sub">반응 1건당 비용</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Save Rate</div>
+      <div class="kpi-value">0.54%</div>
+      <div class="kpi-sub">구매 고려 지표</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Rev / Conv</div>
+      <div class="kpi-value">105,668</div>
+      <div class="kpi-sub">전환당 매출 (객단가)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">EMV</div>
+      <div class="kpi-value">66.6억</div>
+      <div class="kpi-sub">비용 대비 0.51x</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 02</div>
+  <h2 class="section-title">등급별 <em>Tier</em> Performance</h2>
+
+  <table>
+    <tr>
+      <th>등급</th><th class="num">건수</th><th class="num">ER</th><th>벤치마크</th><th>판정</th><th class="num">ROI</th><th class="num">CPA</th><th class="num">전환당매출</th>
+    </tr>
+    <tr>
+      <td><strong>메가</strong></td><td class="num">34</td><td class="num">1.75%</td><td>1~3%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">1.1x</td><td class="num">60,768</td><td class="num">67,439</td>
+    </tr>
+    <tr>
+      <td><strong>매크로</strong></td><td class="num">40</td><td class="num">4.54%</td><td>3~6%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">5.3x</td><td class="num">19,705</td><td class="num">103,675</td>
+    </tr>
+    <tr>
+      <td><strong>마이크로</strong></td><td class="num">233</td><td class="num">8.07%</td><td>5~12%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">16.3x</td><td class="num">7,519</td><td class="num">122,922</td>
+    </tr>
+    <tr>
+      <td><strong>나노</strong></td><td class="num">100</td><td class="num">11.65%</td><td>8~18%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">13.2x</td><td class="num">10,356</td><td class="num">136,412</td>
+    </tr>
+  </table>
+
+  <div class="quote-light">
+    <p>모든 등급이 ER 벤치마크 범위 내 적정. 마이크로가 ROI 16.3x로 압도적이며, 나노는 전환당 매출 136,412원으로 구매 품질(객단가)이 가장 높음.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Influencer Effectiveness Framework</span>
+    <span>2026-02</span>
+  </div>
+</div>
+
+<!-- PAGE 2 / 4 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">INFLUENCER REPORT</div>
+    <div class="page-number">02 / 04</div>
+  </div>
+
+  <div class="section-number">Section 03</div>
+  <h2 class="section-title">플랫폼별 <em>Platform</em> Performance</h2>
+
+  <table>
+    <tr>
+      <th>플랫폼</th><th class="num">건수</th><th class="num">ER</th><th>벤치마크</th><th>판정</th><th class="num">ROI</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Save%</th>
+    </tr>
+    <tr>
+      <td><strong>인스타그램</strong></td><td class="num">119</td><td class="num">4.10%</td><td>3~6%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">5.9x</td><td class="num">19,661</td><td class="num">1.73%</td><td class="num">0.79%</td>
+    </tr>
+    <tr>
+      <td><strong>틱톡</strong></td><td class="num">141</td><td class="num">3.54%</td><td>5~10%</td><td><span class="tag tag-down">하회</span></td><td class="num accent">4.9x</td><td class="num">21,542</td><td class="num">1.32%</td><td class="num">0.67%</td>
+    </tr>
+    <tr>
+      <td><strong>유튜브</strong></td><td class="num">147</td><td class="num">2.14%</td><td>2~5%</td><td><span class="tag tag-ok">적정</span></td><td class="num accent">3.8x</td><td class="num">26,303</td><td class="num">1.24%</td><td class="num">0.40%</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <h4>틱톡 ER 벤치마크 하회</h4>
+    <p>틱톡은 ER 3.54%로 업계 기대치(5~10%)에 미달. 도달 볼륨은 크나 반응 품질이 낮음. 크리에이티브 가이드라인 또는 인플루언서 선정 기준 재검토 필요.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 04</div>
+  <h2 class="section-title">콘텐츠유형별 <em>Content</em> Efficiency</h2>
+
+  <table>
+    <tr>
+      <th>유형</th><th class="num">건수</th><th class="num">ER</th><th class="num">ROI</th><th class="num">CPA</th><th class="num">CTR</th><th class="num">Save%</th><th class="num">전환당매출</th>
+    </tr>
+    <tr>
+      <td><strong>릴스</strong></td><td class="num">31</td><td class="num accent">5.16%</td><td class="num accent">8.9x</td><td class="num accent">12,275</td><td class="num">1.98%</td><td class="num">1.09%</td><td class="num">108,848</td>
+    </tr>
+    <tr>
+      <td><strong>스토리</strong></td><td class="num">18</td><td class="num">4.04%</td><td class="num">5.9x</td><td class="num">20,150</td><td class="num">1.49%</td><td class="num">0.68%</td><td class="num">119,390</td>
+    </tr>
+    <tr>
+      <td><strong>쇼츠</strong></td><td class="num">136</td><td class="num">2.88%</td><td class="num">5.1x</td><td class="num">20,528</td><td class="num">1.42%</td><td class="num">0.58%</td><td class="num">104,687</td>
+    </tr>
+    <tr>
+      <td><strong>라이브</strong></td><td class="num">152</td><td class="num">2.99%</td><td class="num">4.7x</td><td class="num">22,288</td><td class="num">1.26%</td><td class="num">0.54%</td><td class="num">103,818</td>
+    </tr>
+    <tr>
+      <td><strong>피드</strong></td><td class="num">70</td><td class="num">2.36%</td><td class="num">3.3x</td><td class="num">33,027</td><td class="num">1.20%</td><td class="num">0.43%</td><td class="num">107,673</td>
+    </tr>
+  </table>
+
+  <div class="quote-light">
+    <p>릴스가 ROI 8.9x, CPA 12,275원으로 전 유형 중 최고 효율. 현재 31건(7.6%)으로 활용도가 낮아 확대 여지가 큼. 스토리는 건수 최소(18건)이나 ROI 5.9x로 선전.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Influencer Effectiveness Framework</span>
+    <span>2026-02</span>
+  </div>
+</div>
+
+<!-- PAGE 3 / 4 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">INFLUENCER REPORT</div>
+    <div class="page-number">03 / 04</div>
+  </div>
+
+  <div class="section-number">Section 05</div>
+  <h2 class="section-title">메가 1명 vs 마이크로 10명 <em>Comparison</em></h2>
+
+  <table class="vs-table">
+    <tr>
+      <th style="width:28%"></th><th style="width:36%">메가 1명 (스타일킹 지호)</th><th style="width:36%">마이크로 상위 10명</th>
+    </tr>
+    <tr><td>비용</td><td>138,306,015원</td><td>26,393,868원</td></tr>
+    <tr><td>노출수</td><td>4,887,261</td><td>1,208,145</td></tr>
+    <tr><td>전환수</td><td>440</td><td class="highlight">3,066</td></tr>
+    <tr><td>매출기여</td><td>26,675,615원</td><td class="highlight">382,701,440원</td></tr>
+    <tr><td>ROI</td><td>0.2x</td><td class="highlight">14.5x</td></tr>
+    <tr><td>ER</td><td>1.88%</td><td class="highlight">8.52%</td></tr>
+    <tr><td>CPA</td><td>314,332원</td><td class="highlight">8,609원</td></tr>
+  </table>
+
+  <div class="quote">
+    <p>마이크로 10명이 비용 1/5로 매출 14배, 전환 7배 달성. 프레임워크 예측("1명의 메가 vs 10명의 마이크로 &rarr; 대부분 마이크로가 총전환 우세") 완벽 확인.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 06</div>
+  <h2 class="section-title"><em>Portfolio</em> Allocation Gap</h2>
+
+  <table>
+    <tr>
+      <th>등급</th><th class="num">현재 비중</th><th class="num">권장 비중</th><th class="num">GAP</th><th>방향</th>
+    </tr>
+    <tr>
+      <td><strong>메가</strong></td><td class="num accent">62.2%</td><td class="num">10~15%</td><td class="num" style="color:#c00; font-weight:700">+49.7%</td><td><span class="tag tag-down">대폭 축소</span></td>
+    </tr>
+    <tr>
+      <td><strong>매크로</strong></td><td class="num">20.2%</td><td class="num">20~30%</td><td class="num">-4.8%</td><td><span class="tag tag-ok">적정</span></td>
+    </tr>
+    <tr>
+      <td><strong>마이크로</strong></td><td class="num accent">16.2%</td><td class="num">40~50%</td><td class="num" style="color:#c00; font-weight:700">-28.8%</td><td><span class="tag tag-up">대폭 확대</span></td>
+    </tr>
+    <tr>
+      <td><strong>나노</strong></td><td class="num accent">1.4%</td><td class="num">10~20%</td><td class="num" style="color:#c00; font-weight:700">-13.6%</td><td><span class="tag tag-up">확대 필요</span></td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <h4>핵심 문제: 메가 과잉 투자</h4>
+    <p>전체 비용의 62%가 메가(ROI 1.1x)에 집중. 프레임워크 권장(10~15%) 대비 4~5배 과다 배분. 전환 효율이 가장 높은 마이크로(ROI 16.3x)는 비용 비중 16%에 불과.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Influencer Effectiveness Framework</span>
+    <span>2026-02</span>
+  </div>
+</div>
+
+<!-- PAGE 4 / 4 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">INFLUENCER REPORT</div>
+    <div class="page-number">04 / 04</div>
+  </div>
+
+  <div class="section-number">Section 07</div>
+  <h2 class="section-title">카테고리 x 콘텐츠 <em>Matrix</em></h2>
+
+  <div class="two-col">
+    <div>
+      <h3>ROI 상위 조합</h3>
+      <table>
+        <tr><th>카테고리</th><th>유형</th><th class="num">ROI</th><th class="num">ER</th></tr>
+        <tr><td>아우터</td><td>스토리</td><td class="num accent">19.4x</td><td class="num">9.41%</td></tr>
+        <tr><td>가방</td><td>스토리</td><td class="num accent">17.2x</td><td class="num">7.08%</td></tr>
+        <tr><td>라이프스타일</td><td>쇼츠</td><td class="num accent">15.6x</td><td class="num">6.66%</td></tr>
+        <tr><td>스니커즈</td><td>피드</td><td class="num accent">14.0x</td><td class="num">5.80%</td></tr>
+        <tr><td>아우터</td><td>릴스</td><td class="num accent">14.0x</td><td class="num">6.37%</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>개선/중단 검토 조합</h3>
+      <table>
+        <tr><th>카테고리</th><th>유형</th><th class="num">ROI</th><th class="num">ER</th></tr>
+        <tr><td>셔츠</td><td>라이브</td><td class="num">2.4x</td><td class="num">3.23%</td></tr>
+        <tr><td>부츠</td><td>피드</td><td class="num">2.4x</td><td class="num">1.36%</td></tr>
+        <tr><td>셔츠</td><td>쇼츠</td><td class="num">2.1x</td><td class="num">2.38%</td></tr>
+        <tr><td>아우터</td><td>라이브</td><td class="num">2.0x</td><td class="num">3.17%</td></tr>
+        <tr><td>뷰티</td><td>피드</td><td class="num">1.2x</td><td class="num">2.04%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 08</div>
+  <h2 class="section-title">So What &amp; <em>Now</em> What</h2>
+
+  <div class="two-col">
+    <div>
+      <div class="dark-inline">
+        <h4>So What</h4>
+        <ul style="padding-left:4mm; margin:0;">
+          <li><strong>메가 과잉 투자</strong> : 비용 62% 점유, ROI 1.1x</li>
+          <li><strong>마이크로/나노 과소 투자</strong> : ROI 13~16x인데 비용 비중 17.6%</li>
+          <li><strong>틱톡 ER 부진</strong> : 벤치마크(5~10%) 하회, 크리에이티브 점검 필요</li>
+          <li><strong>릴스 기회</strong> : 최고 효율(ROI 8.9x)이나 활용도 7.6%에 불과</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="steps">
+        <h4>Now What</h4>
+        <ol>
+          <li>메가 비중 62% &rarr; 15%로 단계 축소 (시즌 캠페인 한정)</li>
+          <li>마이크로 비중 16% &rarr; 45%로 확대 (전환 엔진)</li>
+          <li>나노 비중 1.4% &rarr; 15%로 확대 (커뮤니티 + UGC)</li>
+          <li>릴스 콘텐츠 비중 확대 (7.6% &rarr; 20% 목표)</li>
+          <li>틱톡 크리에이티브 가이드라인 재정비 (ER 5%+ 목표)</li>
+          <li>뷰티+피드, 아우터+라이브 조합 중단 or 리셋</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Influencer Effectiveness Framework</span>
+    <span>2026-02</span>
+  </div>
+</div>
+
+<!-- CLOSING PAGE -->
+<div class="closing">
+  <h1 class="closing-title">Influencer <em>Effect</em><br>Analysis</h1>
+  <p class="closing-sub">2026년 2월 무신사 / 29CM 인플루언서 협업 성과 분석</p>
+  <div class="closing-info">
+    407 COLLABORATIONS / 273 INFLUENCERS<br>
+    TOTAL SPEND 13.2B KRW / REVENUE 60.2B KRW / ROI 4.6X<br>
+    FRAMEWORK-BASED ANALYSIS
+  </div>
+</div>
+
+</body>
+</html>
