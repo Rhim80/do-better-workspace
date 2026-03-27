@@ -66,26 +66,24 @@ do-better-workspace/
 │   └── skills/        # 프로젝트 스킬 5개
 ├── 00-inbox/          # 빠른 캡처 공간
 ├── 00-system/         # 시스템 설정 및 템플릿
-│   ├── 01-templates/  # 템플릿 10개 (노트 + 분석 프레임워크)
+│   ├── 01-templates/  # 기본 노트 템플릿 3개
 │   ├── 02-scripts/    # 자동화 스크립트
 │   ├── 03-guides/     # 가이드 3개
-│   ├── 04-docs/       # 문서 2개 (Johnny Decimal, 세션 노트)
+│   ├── 04-docs/       # 문서 (Johnny Decimal 가이드, 세션 노트)
 │   ├── claude-code-practice-guide.md
 │   ├── git-setup-guide.md
 │   └── notion-setup-guide.md
 ├── 10-projects/       # 활성 프로젝트 (시한부)
-│   └── 11-consulting/ # 컨설팅 프레임워크
 ├── 20-operations/     # 비즈니스 운영 (지속적)
-│   └── 21-hr/         # HR 템플릿 (입사/퇴사)
 ├── 30-knowledge/      # 지식 아카이브
-│   └── 31-claude-code/ # Claude Code 스킬 가이드
+│   └── 37-claude-code/ # Claude Code 관련 지식
 ├── 40-personal/       # 개인 노트
 │   ├── 41-daily/      # Daily Notes (월별 하위 폴더)
 │   ├── 42-weekly/     # Weekly Reviews
 │   ├── 45-ideas/      # 아이디어
 │   └── 46-todos/      # 할 일 관리
 ├── 50-resources/      # 참고 자료
-│   └── sample-data/   # 교육용 샘플 데이터 7개
+│   └── sample-data/   # 교육용 샘플 데이터 (브랜치별 제공)
 └── 90-archive/        # 완료/중단 항목
 ```
 
@@ -122,15 +120,17 @@ do-better-workspace/
 
 #### 00-system (시스템 설정)
 **용도**: 워크스페이스 설정 및 템플릿
-- `01-templates/` - 재사용 가능한 템플릿 (노트 + 분석 프레임워크)
+- `01-templates/` - 기본 노트 템플릿 (Daily Note, Weekly Review, Project)
 - `02-scripts/` - 자동화 스크립트
 - `03-guides/` - 가이드 문서 3개
-- `04-docs/` - 참고 문서 2개 (Johnny Decimal 가이드, 세션 노트)
+- `04-docs/` - 참고 문서 (Johnny Decimal 가이드, 세션 노트)
 - `claude-code-practice-guide.md` - Claude Code 실습 가이드
 - `git-setup-guide.md` - Git 설정 가이드
 - `notion-setup-guide.md` - Notion 연동 가이드
 
 **수정 가능**: 필요에 따라 템플릿 커스터마이징
+
+> 데이터 분석용 프레임워크 템플릿은 클라이언트별 브랜치에 포함되어 있습니다.
 
 ---
 
@@ -164,8 +164,6 @@ do-better-workspace/
 ```
 20-operations/
 ├── 21-hr/
-│   ├── 입사신고-template.md
-│   └── 퇴사신고-template.md
 ├── 22-team-management/
 └── 23-customer-service/
 ```
@@ -181,17 +179,15 @@ do-better-workspace/
 **용도**: 검증된 지식과 학습 자료
 **특징**: 재사용 가능한 인사이트
 
-**현재 포함된 폴더**:
-- `31-claude-code/` - Claude Code 활용 스킬 가이드
-
 **하위 폴더 생성 예시**:
 ```
 30-knowledge/
-├── 31-claude-code/        # Claude Code 스킬 가이드 (기본 제공)
+├── 31-business/
 ├── 32-business-frameworks/
 │   ├── lean-canvas.md
 │   └── okr-system.md
-└── 33-industry-insights/
+├── 37-claude-code/
+└── 38-industry-insights/
 ```
 
 **네이밍 팁**:
@@ -249,23 +245,13 @@ do-better-workspace/
 
 ## Templates
 
-`00-system/01-templates/`에서 사용 가능한 템플릿:
+`00-system/01-templates/`에서 사용 가능한 기본 템플릿:
 
-### 기본 노트 템플릿
 - **daily-note-template.md** - 매일 작성하는 노트
 - **weekly-review-template.md** - 주간 회고
 - **Project Template.md** - 새 프로젝트 시작
 
-### 데이터 분석 프레임워크 (6개)
-
-F&B 비즈니스 실습용으로 설계된 분석 템플릿:
-
-- **sales-growth-framework.md** - 매출 성장 분석 (MoM, YoY 비교)
-- **tourism-segmentation-framework.md** - 고객 국적별 세분화 분석
-- **inventory-analysis-framework.md** - 재고 관리 및 발주 분석
-- **store-comparison-framework.md** - 매장 간 비교 분석
-- **channel-mix-framework.md** - 온/오프라인 채널 믹스 분석
-- **executive-report-framework.md** - 경영진 보고용 1페이지 요약
+> 데이터 분석용 프레임워크 템플릿(매출 분석, 재고 관리, 마케팅 ROI 등)은 클라이언트별 브랜치에 포함되어 있습니다.
 
 ## Slash Commands
 
@@ -335,36 +321,25 @@ Claude: "지속적인 업무이므로 20-operations/23-customer-service/
 
 ## Sample Data for Practice
 
-`50-resources/sample-data/`에 **교육용 샘플 데이터**가 포함되어 있습니다.
+교육용 샘플 데이터는 **클라이언트별 브랜치**에서 제공됩니다.
 
-### 뉴믹스커피 시나리오
+| 브랜치 | 업종 | 데이터 |
+|--------|------|--------|
+| `ax/newmix` | F&B (카페) | 매장 매출, 온라인 매출, 재고 현황 |
+| `ax/musinsa` | 패션 플랫폼 | 캠페인 성과, 인플루언서, 미디어, SNS |
+| `ax/royal` | 제조업 (욕실) | B2B 주문, 온라인 매출, 재고 |
+| `ax/gardeningclub` | 커뮤니티 | 인스타그램, 프로젝트, 식물 DB |
 
-**뉴믹스커피 (Newmix Coffee)** 전채널(성수/북촌/온라인) 실제 데이터 구조 기반 교육용 데이터로 실습합니다:
+```bash
+# 특정 클라이언트 데이터로 실습하려면
+git checkout ax/newmix
+```
 
-| 데이터 | 설명 | 행 수 |
-|--------|------|-------|
-| `newmix/newmix_sales_seongsu_2602.csv` | 2월 성수 매장 매출 | 4,231 |
-| `newmix/newmix_sales_seongsu_2601.csv` | 1월 성수 매장 매출 | 3,085 |
-| `newmix/newmix_sales_bukchon_2602.csv` | 2월 북촌 매장 매출 | 3,139 |
-| `newmix/newmix_online_sales_2602.csv` | 2월 온라인 매출 | 1,399 |
-| `newmix/newmix_inventory_data.csv` | 전체 재고 현황 | 40 |
-| `newmix/newmix_seongsu_2602_report.html` | 2월 성수 분석 리포트 (HTML) | - |
-| `newmix/newmix_seongsu_2602_summary.md` | 2월 성수 분석 요약 (Markdown) | - |
-
-> `report.html`과 `summary.md`는 미션 6 완료 후 결과물 예시로 참고할 수 있습니다.
+각 브랜치에는 해당 업종에 맞는 분석 프레임워크 템플릿과 실습 시나리오가 포함되어 있습니다.
 
 ### 실습 가이드
 
-`00-system/claude-code-practice-guide.md`에서 6가지 미션을 통해 데이터 분석을 배울 수 있습니다:
-
-1. **성수 매출 + MoM 비교** - 1월 대비 성장률, 주차별 추이, 베스트셀러
-2. **고객 국적별 분석** - 인바운드 관광객 데이터, 국적별 인기 상품
-3. **재고 관리** - 긴급 발주 품목, 벚꽃 시즌 대비
-4. **성수 vs 북촌 비교** - 매장간 고객층, 인기 상품, 객단가 차이
-5. **온라인 채널 분석** - 네이버/쿠팡/컬리 비교, 지역별 수요
-6. **전채널 종합 보고서** - 봉진 의장 보고용 1페이지 요약
-
-> **스토리**: 당신은 뉴믹스커피 기획팀입니다. 3월 벚꽃 시즌을 앞두고 김봉진 의장의 전략 미팅 자료를 전채널(성수/북촌/온라인) 데이터로 준비합니다.
+`00-system/claude-code-practice-guide.md`에서 기본 실습(환경 설정, 폴더 정리)을 진행한 후, 브랜치별 시나리오로 데이터 분석을 실습할 수 있습니다.
 
 ### 추가 가이드
 
