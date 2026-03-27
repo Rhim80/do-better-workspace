@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>옥상정원 적합 식물 추천</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-dark: #111111;
+  --color-bg-muted: #F5F5F5;
+  --color-text: #111111;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #666666;
+  --color-border: #E0E0E0;
+  --color-accent: #111111;
+  --font-sans: 'Helvetica Neue', 'Pretendard', -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Menlo', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: #888;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm; height: 297mm;
+  padding: 18mm 20mm 20mm 20mm;
+  margin: 10px auto;
+  background: var(--color-bg);
+  position: relative; overflow: hidden;
+  page-break-after: always; page-break-inside: avoid;
+}
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+}
+@media screen { .page { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+.cover {
+  width: 210mm; height: 297mm;
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24mm; margin: 10px auto;
+  position: relative; overflow: hidden;
+  page-break-after: always;
+}
+@media screen { .cover { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .cover { margin: 0; box-shadow: none; } }
+.cover-label {
+  font-family: var(--font-mono); font-size: 8pt;
+  letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.4; margin-bottom: 12mm;
+}
+.cover-title {
+  font-family: var(--font-sans); font-size: 28pt; font-weight: 700;
+  line-height: 1.15; margin-bottom: 5mm; letter-spacing: -0.02em;
+}
+.cover-title em { font-style: normal; font-weight: 300; }
+.cover-subtitle {
+  font-family: var(--font-sans); font-size: 12pt; font-weight: 300;
+  opacity: 0.7; margin-bottom: 18mm; line-height: 1.5;
+}
+.cover-meta {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 2mm 6mm; font-size: 8.5pt; opacity: 0.5;
+}
+.cover-meta dt { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.05em; text-transform: uppercase; }
+.cover-meta dd { margin: 0; }
+.cover-brand { position: absolute; bottom: 18mm; left: 24mm; font-size: 10pt; font-weight: 600; letter-spacing: 0.05em; }
+.page-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10mm; padding-bottom: 3mm;
+  border-bottom: 1pt solid var(--color-border);
+}
+.page-brand { font-size: 8pt; font-weight: 600; opacity: 0.3; letter-spacing: 0.1em; }
+.page-number { font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.1em; opacity: 0.3; }
+.page-footer {
+  position: absolute; bottom: 12mm; left: 20mm; right: 20mm;
+  display: flex; justify-content: space-between;
+  font-size: 6.5pt; opacity: 0.25; font-family: var(--font-mono);
+}
+.section-number { font-family: var(--font-mono); font-size: 6.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.section-title { font-family: var(--font-sans); font-size: 16pt; font-weight: 700; line-height: 1.25; margin-bottom: 6mm; color: var(--color-text); letter-spacing: -0.01em; }
+.section-title em { font-weight: 300; font-style: normal; }
+h3 { font-family: var(--font-sans); font-size: 8.5pt; font-weight: 700; margin-bottom: 2.5mm; margin-top: 5mm; color: var(--color-text); }
+h3:first-of-type { margin-top: 0; }
+p { font-size: 8pt; line-height: 1.65; margin-bottom: 2.5mm; color: var(--color-text-muted); }
+.quote {
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  padding: 4.5mm 5.5mm 4.5mm 5.5mm; border-radius: 1pt; margin: 4mm 0;
+}
+.quote p { color: var(--color-text-light); margin: 0; font-size: 8pt; line-height: 1.6; }
+.quote-light { background: var(--color-bg-muted); color: var(--color-text); border-left: 2pt solid var(--color-text); padding: 3mm 4mm; margin: 3mm 0; font-size: 8pt; line-height: 1.6; }
+.quote-light p { color: var(--color-text-muted); margin: 0; }
+ul, ol { padding-left: 5mm; margin-bottom: 3mm; }
+li { font-size: 8pt; line-height: 1.65; margin-bottom: 1mm; color: var(--color-text-muted); }
+li strong { color: var(--color-text); font-weight: 600; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card { background: var(--color-bg-muted); border: 0.5pt solid var(--color-border); padding: 4mm; border-radius: 1pt; }
+.card-number { font-family: var(--font-mono); font-size: 6pt; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.card h4 { font-size: 8pt; font-weight: 600; margin-bottom: 1.5mm; }
+.card p { font-size: 7.5pt; line-height: 1.55; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 3mm 0; }
+.dark-inline { background: var(--color-bg-dark); color: var(--color-text-light); margin: 4mm 0; padding: 5mm; border-radius: 1pt; }
+.dark-inline h3, .dark-inline h4 { color: var(--color-text-light); }
+.dark-inline p { color: rgba(255,255,255,0.75); }
+.dark-inline li { color: rgba(255,255,255,0.75); }
+.dark-inline li strong { color: var(--color-text-light); }
+.highlight-box { border: 1.5pt solid var(--color-text); padding: 4mm 5mm; margin: 4mm 0; border-radius: 1pt; }
+.highlight-box h4 { font-size: 9pt; font-weight: 700; margin-bottom: 2.5mm; }
+.highlight-box p { font-size: 7.5pt; }
+.steps { background: var(--color-bg-dark); color: var(--color-text-light); padding: 5mm 6mm; border-radius: 1pt; margin: 3mm 0; }
+.steps h4 { font-size: 9pt; font-weight: 600; margin-bottom: 3mm; color: var(--color-text-light); }
+.steps ol { counter-reset: step; list-style: none; padding: 0; }
+.steps ol li { counter-increment: step; padding: 1.5mm 0 1.5mm 8mm; position: relative; color: rgba(255,255,255,0.8); border-bottom: 0.5pt solid rgba(255,255,255,0.06); font-size: 7.5pt; }
+.steps ol li:last-child { border-bottom: none; }
+.steps ol li::before { content: counter(step); position: absolute; left: 0; font-family: var(--font-mono); font-size: 7pt; color: rgba(255,255,255,0.5); }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 7.5pt; }
+th { background: var(--color-bg-dark); color: var(--color-text-light); padding: 2.5mm 3mm; text-align: left; font-weight: 600; font-size: 7pt; letter-spacing: 0.05em; }
+td { padding: 2.5mm 3mm; border-bottom: 0.5pt solid var(--color-border); color: var(--color-text-muted); }
+tr:last-child td { border-bottom: none; }
+td.highlight { color: var(--color-text); font-weight: 600; }
+.divider { height: 0.5pt; background: var(--color-border); margin: 5mm 0; }
+code { font-family: var(--font-mono); font-size: 7.5pt; color: var(--color-text); background: var(--color-bg-muted); padding: 0.5mm 1.5mm; border-radius: 1pt; }
+.closing {
+  width: 210mm; height: 297mm;
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  padding: 24mm; margin: 10px auto; page-break-after: avoid;
+}
+@media screen { .closing { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .closing { margin: 0; box-shadow: none; } }
+.closing-title { font-size: 26pt; font-weight: 700; line-height: 1.2; margin-bottom: 6mm; letter-spacing: -0.02em; }
+.closing-title em { font-weight: 300; font-style: normal; }
+.closing-sub { font-size: 10pt; opacity: 0.4; margin-bottom: 16mm; }
+.closing-info { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.1em; opacity: 0.3; line-height: 2.2; }
+.badge { display: inline-block; font-family: var(--font-mono); font-size: 6.5pt; padding: 1mm 2.5mm; border-radius: 1pt; margin-right: 1mm; }
+.badge-pass { background: var(--color-bg-dark); color: var(--color-text-light); }
+.season-label { font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 2mm; margin-top: 6mm; display: block; }
+.season-label:first-of-type { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">rooftop garden proposal</div>
+  <h1 class="cover-title">기업 옥상정원<br/><em>Rooftop</em> 식물 추천</h1>
+  <p class="cover-subtitle">옥상 적합성, 서울 기후, 관리 용이성, 실패율 기반<br/>사계절 개화 조합 제안</p>
+  <dl class="cover-meta">
+    <dt>Date</dt><dd>2026. 03. 27</dd>
+    <dt>Source</dt><dd>SGC Plant Database (200종 분석)</dd>
+    <dt>Criteria</dt><dd>옥상적합 상 / 서울적합 4.0+ / 관리난이도 3 이하 / 실패율 15% 미만</dd>
+  </dl>
+  <div class="cover-brand">Seoul Gardening Club</div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ROOFTOP GARDEN</div>
+    <div class="page-number">01 / 03</div>
+  </div>
+
+  <div class="section-number">Section 01</div>
+  <h2 class="section-title"><em>Filtered</em> 적합 식물 목록</h2>
+
+  <div class="highlight-box">
+    <h4>필터링 조건</h4>
+    <p>옥상적합도: <strong>상</strong> &nbsp;|&nbsp; 서울적합도: <strong>4.0점 이상</strong> &nbsp;|&nbsp; 관리난이도: <strong>3 이하</strong> (전담 관리자 부재) &nbsp;|&nbsp; 실패율: <strong>15% 미만</strong></p>
+    <p>전체 200종 중 <strong>33종</strong>이 모든 조건을 충족합니다.</p>
+  </div>
+
+  <h3>관목 7종</h3>
+  <table>
+    <tr><th>식물</th><th>서울적합</th><th>관리</th><th>실패율</th><th>개화시기</th><th>특성</th></tr>
+    <tr><td class="highlight">눈향나무</td><td>5.0</td><td>1</td><td>2%</td><td>상록</td><td>사계절 녹색 골격</td></tr>
+    <tr><td class="highlight">회양목</td><td>5.0</td><td>1</td><td>3%</td><td>상록</td><td>사계절 녹색 골격</td></tr>
+    <tr><td class="highlight">사철나무</td><td>5.0</td><td>1</td><td>2%</td><td>상록</td><td>사계절 녹색 골격</td></tr>
+    <tr><td class="highlight">위성류</td><td>4.5</td><td>1</td><td>6%</td><td>4~9월</td><td>초장기 개화</td></tr>
+    <tr><td class="highlight">쥐똥나무</td><td>5.0</td><td>1</td><td>2%</td><td>5~6월</td><td>울타리 조성</td></tr>
+    <tr><td class="highlight">찔레꽃</td><td>5.0</td><td>1</td><td>2%</td><td>5~6월</td><td>향기 식물</td></tr>
+    <tr><td class="highlight">해당화</td><td>5.0</td><td>1</td><td>2%</td><td>5~7월</td><td>장기 개화</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>초화류 13종</h3>
+  <table>
+    <tr><th>식물</th><th>서울적합</th><th>관리</th><th>실패율</th><th>개화시기</th></tr>
+    <tr><td class="highlight">패랭이꽃</td><td>4.5</td><td>2</td><td>11%</td><td>5~10월</td></tr>
+    <tr><td class="highlight">금계국</td><td>4.5</td><td>1</td><td>6%</td><td>5~8월</td></tr>
+    <tr><td class="highlight">원추리</td><td>5.0</td><td>1</td><td>2%</td><td>6~8월</td></tr>
+    <tr><td class="highlight">야생화군락</td><td>4.8</td><td>1</td><td>2%</td><td>6~8월</td></tr>
+    <tr><td class="highlight">살비아</td><td>4.5</td><td>1</td><td>5%</td><td>6~9월</td></tr>
+    <tr><td class="highlight">갈리아르디아</td><td>4.5</td><td>1</td><td>7%</td><td>6~9월</td></tr>
+    <tr><td class="highlight">루드베키아</td><td>4.8</td><td>1</td><td>3%</td><td>7~9월</td></tr>
+    <tr><td class="highlight">맥문동</td><td>5.0</td><td>1</td><td>2%</td><td>7~8월</td></tr>
+    <tr><td class="highlight">벌개미취</td><td>5.0</td><td>1</td><td>2%</td><td>7~10월</td></tr>
+    <tr><td class="highlight">쑥부쟁이</td><td>5.0</td><td>1</td><td>2%</td><td>8~10월</td></tr>
+    <tr><td class="highlight">꿩의비름</td><td>5.0</td><td>1</td><td>2%</td><td>8~10월</td></tr>
+    <tr><td class="highlight">코스모스</td><td>4.5</td><td>1</td><td>5%</td><td>8~10월</td></tr>
+    <tr><td class="highlight">층꽃나무</td><td>4.5</td><td>2</td><td>6%</td><td>8~10월</td></tr>
+  </table>
+
+  <div class="page-footer">
+    <span>SGC Plant Database</span>
+    <span>2026-03-27</span>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ROOFTOP GARDEN</div>
+    <div class="page-number">02 / 03</div>
+  </div>
+
+  <h3>그라스 8종</h3>
+  <table>
+    <tr><th>식물</th><th>서울적합</th><th>관리</th><th>실패율</th><th>수형/개화</th></tr>
+    <tr><td class="highlight">블루페스큐</td><td>4.5</td><td>1</td><td>2%</td><td>5~6월</td></tr>
+    <tr><td class="highlight">개밀</td><td>5.0</td><td>1</td><td>2%</td><td>5~6월</td></tr>
+    <tr><td class="highlight">오리새</td><td>4.5</td><td>1</td><td>3%</td><td>5~7월</td></tr>
+    <tr><td class="highlight">방울새풀</td><td>4.3</td><td>1</td><td>4%</td><td>5~7월</td></tr>
+    <tr><td class="highlight">나래새</td><td>4.8</td><td>1</td><td>2%</td><td>6~7월</td></tr>
+    <tr><td class="highlight">실새풀</td><td>5.0</td><td>1</td><td>2%</td><td>6~8월</td></tr>
+    <tr><td class="highlight">새</td><td>5.0</td><td>1</td><td>2%</td><td>8~9월</td></tr>
+    <tr><td class="highlight">수크령</td><td>5.0</td><td>1</td><td>2%</td><td>8~9월</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>허브 5종</h3>
+  <table>
+    <tr><th>식물</th><th>서울적합</th><th>관리</th><th>실패율</th><th>개화시기</th></tr>
+    <tr><td class="highlight">타임</td><td>4.0</td><td>1</td><td>5%</td><td>5~7월</td></tr>
+    <tr><td class="highlight">차이브</td><td>4.5</td><td>1</td><td>7%</td><td>5~6월</td></tr>
+    <tr><td class="highlight">오레가노</td><td>4.0</td><td>1</td><td>6%</td><td>6~8월</td></tr>
+    <tr><td class="highlight">에키나시아허브</td><td>4.5</td><td>1</td><td>5%</td><td>6~8월</td></tr>
+    <tr><td class="highlight">탄지</td><td>4.5</td><td>1</td><td>2%</td><td>7~9월</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="quote">
+    <p><strong>33종 전체 평균 실패율: 3.2%</strong> &mdash; 관리난이도 1인 식물이 대부분으로, 전담 관리자 없이도 안정적 운영이 가능합니다. 관목 7종 중 상록수 3종(눈향나무, 회양목, 사철나무)이 겨울 녹색 골격을 유지합니다.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 02</div>
+  <h2 class="section-title">사계절 <em>Seasonal</em> 개화 조합</h2>
+
+  <p>33종 중 20종을 선별하여 4~10월 연속 개화 + 겨울 상록 구조를 구성합니다.</p>
+
+  <div class="page-footer">
+    <span>SGC Plant Database</span>
+    <span>2026-03-27</span>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ROOFTOP GARDEN</div>
+    <div class="page-number">03 / 03</div>
+  </div>
+
+  <span class="season-label">Winter &mdash; 12~3월</span>
+  <h3>겨울: 상록 골격 유지</h3>
+  <table>
+    <tr><th>역할</th><th>추천 식물</th><th>비고</th></tr>
+    <tr><td>상록 관목</td><td class="highlight">눈향나무 + 사철나무 + 회양목</td><td>실패율 2~3%, 관리 최소</td></tr>
+  </table>
+  <p>꽃이 없는 시기를 상록수 3종이 녹색 구조로 유지합니다.</p>
+
+  <span class="season-label">Spring &mdash; 4~5월</span>
+  <h3>봄: 개화 시작</h3>
+  <table>
+    <tr><th>분류</th><th>추천 식물</th><th>개화</th></tr>
+    <tr><td>관목</td><td class="highlight">위성류</td><td>4~9월 (장기)</td></tr>
+    <tr><td>관목</td><td class="highlight">해당화</td><td>5~7월</td></tr>
+    <tr><td>초화류</td><td class="highlight">패랭이꽃</td><td>5~10월 (장기)</td></tr>
+    <tr><td>그라스</td><td class="highlight">블루페스큐</td><td>5~6월</td></tr>
+    <tr><td>허브</td><td class="highlight">타임 + 차이브</td><td>5~7월 / 5~6월</td></tr>
+  </table>
+
+  <span class="season-label">Summer &mdash; 6~8월</span>
+  <h3>여름: 최대 개화기</h3>
+  <table>
+    <tr><th>분류</th><th>추천 식물</th><th>개화</th></tr>
+    <tr><td>초화류</td><td class="highlight">원추리 + 살비아</td><td>6~8월 / 6~9월</td></tr>
+    <tr><td>초화류</td><td class="highlight">루드베키아</td><td>7~9월</td></tr>
+    <tr><td>그라스</td><td class="highlight">실새풀 + 나래새</td><td>6~8월 / 6~7월</td></tr>
+    <tr><td>허브</td><td class="highlight">에키나시아허브 + 오레가노</td><td>6~8월</td></tr>
+  </table>
+
+  <span class="season-label">Autumn &mdash; 9~11월</span>
+  <h3>가을: 마무리 개화</h3>
+  <table>
+    <tr><th>분류</th><th>추천 식물</th><th>개화</th></tr>
+    <tr><td>초화류</td><td class="highlight">벌개미취 + 쑥부쟁이</td><td>7~10월 / 8~10월</td></tr>
+    <tr><td>초화류</td><td class="highlight">꿩의비름 + 코스모스</td><td>8~10월</td></tr>
+    <tr><td>그라스</td><td class="highlight">수크령</td><td>8~9월 (수형 유지)</td></tr>
+    <tr><td>허브</td><td class="highlight">탄지</td><td>7~9월</td></tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="dark-inline">
+    <h4>핵심 조합 요약 (20종)</h4>
+    <table style="margin: 3mm 0;">
+      <tr><th style="background: rgba(255,255,255,0.1);">계절</th><th style="background: rgba(255,255,255,0.1);">개화 식물</th><th style="background: rgba(255,255,255,0.1);">볼거리</th></tr>
+      <tr><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);">겨울</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">상록 3종</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">눈향나무 / 사철나무 / 회양목</td></tr>
+      <tr><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);">봄</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">6종 개화</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">위성류, 해당화, 패랭이꽃, 블루페스큐, 타임, 차이브</td></tr>
+      <tr><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);">여름</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">7종 개화</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">원추리, 살비아, 루드베키아, 실새풀, 나래새, 에키나시아허브, 오레가노</td></tr>
+      <tr><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);">가을</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">5종 개화</td><td style="border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">벌개미취, 쑥부쟁이, 꿩의비름, 코스모스, 수크령</td></tr>
+    </table>
+    <p><strong>패랭이꽃</strong>(5~10월)과 <strong>위성류</strong>(4~9월)가 봄~가을을 관통하는 핵심 식물입니다.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>SGC Plant Database</span>
+    <span>2026-03-27</span>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h1 class="closing-title">Rooftop <em>Garden</em></h1>
+  <p class="closing-sub">기업 옥상정원 식물 추천 리포트</p>
+  <div class="closing-info">
+    200종 분석 &rarr; 33종 적격 &rarr; 20종 조합<br/>
+    평균 실패율 3.2% / 관리난이도 평균 1.1<br/><br/>
+    Seoul Gardening Club &middot; 2026
+  </div>
+</div>
+
+</body>
+</html>
