@@ -291,7 +291,7 @@ Claude:
 **Version**: 1.2.0
 **Created**: 2025-11-01
 **Updated**: 2026-03-13
-**Author**: Claude Code
+**Author**: Claude Code + 이림
 
 **Changelog**:
 - v1.2.0: Phase 4 자동 적용 전환 (사용자 확인 제거), Phase 5 스키마 기반 구조화 추가

@@ -60,21 +60,32 @@ Johnny Decimal 시스템 기반 - **AI가 이해하기 쉬운 구조**
 
 ```
 do-better-workspace/
+├── .claude/
+│   ├── agents/        # AI 에이전트 (zettelkasten-linker)
+│   ├── commands/      # 슬래시 커맨드 8개
+│   └── skills/        # 프로젝트 스킬 5개
 ├── 00-inbox/          # 빠른 캡처 공간
 ├── 00-system/         # 시스템 설정 및 템플릿
-│   ├── 01-templates/
-│   ├── 02-scripts/
-│   └── 03-guides/
+│   ├── 01-templates/  # 템플릿 10개 (노트 + 분석 프레임워크)
+│   ├── 02-scripts/    # 자동화 스크립트
+│   ├── 03-guides/     # 가이드 3개
+│   ├── 04-docs/       # 문서 2개 (Johnny Decimal, 세션 노트)
+│   ├── claude-code-practice-guide.md
+│   ├── git-setup-guide.md
+│   └── notion-setup-guide.md
 ├── 10-projects/       # 활성 프로젝트 (시한부)
 │   └── 11-consulting/ # 컨설팅 프레임워크
 ├── 20-operations/     # 비즈니스 운영 (지속적)
-│   └── 21-hr/         # HR/노무 관련
+│   └── 21-hr/         # HR 템플릿 (입사/퇴사)
 ├── 30-knowledge/      # 지식 아카이브
+│   └── 31-claude-code/ # Claude Code 스킬 가이드
 ├── 40-personal/       # 개인 노트
-│   ├── 41-daily/      # Daily Notes
+│   ├── 41-daily/      # Daily Notes (월별 하위 폴더)
 │   ├── 42-weekly/     # Weekly Reviews
+│   ├── 45-ideas/      # 아이디어
 │   └── 46-todos/      # 할 일 관리
 ├── 50-resources/      # 참고 자료
+│   └── sample-data/   # 교육용 샘플 데이터 7개
 └── 90-archive/        # 완료/중단 항목
 ```
 
@@ -111,9 +122,13 @@ do-better-workspace/
 
 #### 00-system (시스템 설정)
 **용도**: 워크스페이스 설정 및 템플릿
-- `01-templates/` - 재사용 가능한 템플릿
+- `01-templates/` - 재사용 가능한 템플릿 (노트 + 분석 프레임워크)
 - `02-scripts/` - 자동화 스크립트
-- `03-guides/` - 가이드 문서
+- `03-guides/` - 가이드 문서 3개
+- `04-docs/` - 참고 문서 2개 (Johnny Decimal 가이드, 세션 노트)
+- `claude-code-practice-guide.md` - Claude Code 실습 가이드
+- `git-setup-guide.md` - Git 설정 가이드
+- `notion-setup-guide.md` - Notion 연동 가이드
 
 **수정 가능**: 필요에 따라 템플릿 커스터마이징
 
@@ -166,13 +181,16 @@ do-better-workspace/
 **용도**: 검증된 지식과 학습 자료
 **특징**: 재사용 가능한 인사이트
 
+**현재 포함된 폴더**:
+- `31-claude-code/` - Claude Code 활용 스킬 가이드
+
 **하위 폴더 생성 예시**:
 ```
 30-knowledge/
-├── 31-business-frameworks/
+├── 31-claude-code/        # Claude Code 스킬 가이드 (기본 제공)
+├── 32-business-frameworks/
 │   ├── lean-canvas.md
 │   └── okr-system.md
-├── 32-technical-guides/
 └── 33-industry-insights/
 ```
 
@@ -191,12 +209,13 @@ do-better-workspace/
 ```
 40-personal/
 ├── 41-daily/
-│   └── 2025-12/
-│       ├── 2025-12-28.md
-│       └── 2025-12-29.md
+│   └── 2026-03/
+│       ├── 2026-03-01.md
+│       └── 2026-03-17.md
 ├── 42-weekly/
-│   ├── 2025-W52.md
-│   └── 2025-W53.md
+│   └── 2026-W11.md
+├── 45-ideas/
+│   └── (아이디어 저장)
 └── 46-todos/
     └── active-todos.md
 ```
@@ -222,23 +241,35 @@ do-better-workspace/
 **구조 예시**:
 ```
 90-archive/
-├── 2024-Q4/
+├── 2025-Q4/
 │   ├── 11-website-redesign/
 │   └── 12-product-launch/
-└── 2025-Q1/
+└── 2026-Q1/
 ```
 
 ## Templates
 
 `00-system/01-templates/`에서 사용 가능한 템플릿:
 
+### 기본 노트 템플릿
 - **daily-note-template.md** - 매일 작성하는 노트
 - **weekly-review-template.md** - 주간 회고
 - **Project Template.md** - 새 프로젝트 시작
 
+### 데이터 분석 프레임워크 (6개)
+
+F&B 비즈니스 실습용으로 설계된 분석 템플릿:
+
+- **sales-growth-framework.md** - 매출 성장 분석 (MoM, YoY 비교)
+- **tourism-segmentation-framework.md** - 고객 국적별 세분화 분석
+- **inventory-analysis-framework.md** - 재고 관리 및 발주 분석
+- **store-comparison-framework.md** - 매장 간 비교 분석
+- **channel-mix-framework.md** - 온/오프라인 채널 믹스 분석
+- **executive-report-framework.md** - 경영진 보고용 1페이지 요약
+
 ## Slash Commands
 
-`.claude/commands/`에서 사용 가능한 커맨드:
+`.claude/commands/`에서 사용 가능한 커맨드 (8개):
 
 ### 초기 설정
 - `/setup-workspace` - **대화형 CLAUDE.md 자동 생성** + 초기 설정
@@ -246,7 +277,8 @@ do-better-workspace/
 ### Daily Workflow
 - `/daily-note` - 오늘 날짜의 Daily Note 생성/열기
 - `/daily-review` - 어제와 오늘 변경사항 분석
-- `/todo` / `/todos` - 할 일 관리
+- `/todo` - 빠른 할 일 추가
+- `/todos` - 할 일 목록 조회 및 관리
 
 ### Thinking & Ideas
 - `/thinking-partner` - 생각 정리 파트너 (소크라테스식 질문)
@@ -255,7 +287,23 @@ do-better-workspace/
 ### 시스템
 - `/create-command` - 커스텀 명령어 생성
 
-> **프로젝트 스킬 (`.claude/skills/`)**: 이 워크스페이스에만 적용되는 skills로, 전역 스킬(`~/.claude/skills/`)과 독립적으로 작동합니다.
+### 프로젝트 스킬 및 에이전트
+
+`.claude/skills/`에 이 워크스페이스 전용 스킬 6개가 포함되어 있습니다:
+
+- **csv-clean** - CSV 데이터 품질 정리 (소계 제거, 날짜 정규화 등)
+- **dashboard-prd** - 대시보드 PRD 대화형 생성
+- **excel-to-csv** - Excel 파일을 CSV로 변환하여 분석 가능하게 만듦
+- **notion-handler** - Notion 데이터베이스/페이지 관리
+- **transcript-organizer** - 강의/미팅 녹음 텍스트 구조화
+- **web-crawler-ocr** - 웹페이지 크롤링 + 이미지 OCR 분석
+
+`.claude/agents/`에 에이전트 2개가 포함되어 있습니다:
+
+- **research-worker** - 웹 리서치 및 정보 수집 (다국어 검색, 교차 검증)
+- **zettelkasten-linker** - 노트 간 연결 자동 생성 (Zettelkasten 방식)
+
+> 프로젝트 스킬은 이 워크스페이스에서만 적용되며, 전역 스킬(`~/.claude/skills/`)과 독립적으로 작동합니다.
 
 ## 대화형으로 Claude와 작업하기
 
@@ -295,11 +343,15 @@ Claude: "지속적인 업무이므로 20-operations/23-customer-service/
 
 | 데이터 | 설명 | 행 수 |
 |--------|------|-------|
-| `newmix_sales_seongsu_2602.csv` | 2월 성수 매장 매출 | 4,231 |
-| `newmix_sales_seongsu_2601.csv` | 1월 성수 매장 매출 | 3,085 |
-| `newmix_sales_bukchon_2602.csv` | 2월 북촌 매장 매출 | 3,139 |
-| `newmix_online_sales_2602.csv` | 2월 온라인 매출 | 1,399 |
-| `newmix_inventory_data.csv` | 전체 재고 현황 | 40 |
+| `newmix/newmix_sales_seongsu_2602.csv` | 2월 성수 매장 매출 | 4,231 |
+| `newmix/newmix_sales_seongsu_2601.csv` | 1월 성수 매장 매출 | 3,085 |
+| `newmix/newmix_sales_bukchon_2602.csv` | 2월 북촌 매장 매출 | 3,139 |
+| `newmix/newmix_online_sales_2602.csv` | 2월 온라인 매출 | 1,399 |
+| `newmix/newmix_inventory_data.csv` | 전체 재고 현황 | 40 |
+| `newmix/newmix_seongsu_2602_report.html` | 2월 성수 분석 리포트 (HTML) | - |
+| `newmix/newmix_seongsu_2602_summary.md` | 2월 성수 분석 요약 (Markdown) | - |
+
+> `report.html`과 `summary.md`는 미션 6 완료 후 결과물 예시로 참고할 수 있습니다.
 
 ### 실습 가이드
 
@@ -313,6 +365,14 @@ Claude: "지속적인 업무이므로 20-operations/23-customer-service/
 6. **전채널 종합 보고서** - 봉진 의장 보고용 1페이지 요약
 
 > **스토리**: 당신은 뉴믹스커피 기획팀입니다. 3월 벚꽃 시즌을 앞두고 김봉진 의장의 전략 미팅 자료를 전채널(성수/북촌/온라인) 데이터로 준비합니다.
+
+### 추가 가이드
+
+`00-system/03-guides/`에서 Claude Code 활용법을 더 깊이 배울 수 있습니다:
+
+- **CLAUDE-MD-BEST-PRACTICES.md** - CLAUDE.md 작성 모범 사례
+- **PROMPT-ENGINEERING-GUIDE.md** - 프롬프트 엔지니어링 가이드
+- **TODO-SYSTEM-GUIDE.md** - Todo 시스템 활용법
 
 ---
 

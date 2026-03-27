@@ -4,21 +4,33 @@
 
 ## 폴더 구조
 
-- `51-xxx/` - 첫 번째 리소스 카테고리
-- `52-xxx/` - 두 번째 리소스 카테고리
-- `53-xxx/` - 세 번째 리소스 카테고리
+```
+50-resources/
+├── README.md          (이 문서)
+└── sample-data/       실습용 샘플 데이터셋
+    ├── README.md
+    ├── newmix_sales_seongsu_2602.csv
+    ├── newmix_sales_seongsu_2601.csv
+    ├── newmix_sales_bukchon_2602.csv
+    ├── newmix_online_sales_2602.csv
+    ├── newmix_inventory_data.csv
+    ├── newmix_seongsu_2602_report.html
+    └── newmix_seongsu_2602_summary.md
+```
 
-## 예시
+## 통계
 
-- 북마크 모음
-- 다운로드한 PDF/문서
-- 이미지와 에셋
-- 템플릿 모음
-- 도구와 스크립트
-- 레퍼런스 자료
+| 항목 | 개수 |
+|------|------|
+| 하위 폴더 | 1개 |
+| 파일 (sample-data) | 7개 |
 
 ## 특징
 
 - **외부 자료**: 본인이 작성하지 않은 외부 자료
 - **참고용**: 필요할 때 참고하는 자료
 - **정리된 형태**: 쉽게 찾을 수 있도록 카테고리별 정리
+
+---
+
+**Last Updated**: 2026-03-17

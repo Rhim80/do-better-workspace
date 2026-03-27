@@ -1,5 +1,11 @@
 requests>=2.31.0
 beautifulsoup4>=4.12.0
-firecrawl-py>=4.13.0
+scrapling>=0.2.0
+curl_cffi>=0.14.0
+browserforge>=1.2.0
+playwright>=1.40.0
+trafilatura>=2.0.0
+aiohttp>=3.9.0
+certifi>=2024.0.0
 python-dotenv>=1.0.0
 Pillow>=10.0.0

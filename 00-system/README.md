@@ -1,138 +1,87 @@
-# ⚙️ Metadata
+# 00-system
 
-Vault configuration, documentation, and organizational tools.
+System settings folder for the do-better-workspace PKM. Contains templates, scripts, guides, and reference docs for operating the workspace.
 
-## Purpose
-
-The metadata folder contains:
-- Documentation about the vault
-- Templates for consistent note creation
-- Reference guides and how-tos
-- Agent configurations
-- Workflow documentation
+---
 
 ## Structure
 
 ```
-06_Metadata/
-├── Reference/         # Guides and documentation
-├── Templates/        # Note templates
-├── Agents/          # Claude Code agent configs
-├── Workflows/       # Documented processes
-└── Archive/        # Old configurations
+00-system/
+├── README.md                        (this file)
+├── claude-code-practice-guide.md    6-mission data analysis practice guide
+├── git-setup-guide.md               Git configuration and workflow guide
+├── notion-setup-guide.md            Notion integration setup guide
+├── 01-templates/                    Note and report templates (10 files)
+├── 02-scripts/                      Automation scripts
+├── 03-guides/                       Usage and best practices guides (3 files)
+└── 04-docs/                         System documentation and session notes (2 files)
 ```
 
-## What Lives Here
+---
 
-### Reference
-- This vault's documentation
-- Claude Code prompt library
-- Style guides
-- Workflow documentation
-- Learning resources
+## 01-templates/ (10 templates)
 
-### Templates
-- Project templates
-- Daily note templates
-- Meeting templates
-- Research templates
-- Review templates
+| File | Purpose |
+|------|---------|
+| `Daily Note Template.md` | Daily note structure |
+| `daily-note-template.md` | Daily note (alternate) |
+| `weekly-review-template.md` | Weekly review format |
+| `Project Template.md` | Project note structure |
+| `channel-mix-framework.md` | Marketing channel analysis |
+| `executive-report-framework.md` | Executive summary report |
+| `inventory-analysis-framework.md` | Inventory review template |
+| `sales-growth-framework.md` | Sales growth analysis |
+| `store-comparison-framework.md` | Multi-store comparison |
+| `tourism-segmentation-framework.md` | Tourism segment analysis |
 
-### Agents
-- Thinking partner instructions
-- Research assistant config
-- Editor agent setup
-- Custom agent definitions
+---
 
-### Workflows
-- Weekly review process
-- Project completion checklist
-- Inbox processing guide
-- Archive procedures
+## 02-scripts/
 
-## Using Templates
+Automation scripts for workspace operations.
 
-### Manual
-1. Copy template content
-2. Create new note
-3. Paste and fill in
+---
 
-### With Claude Code
-```
-Create a new project using the project template.
-Name it [Project Name] and put it in 01_Projects.
-```
+## 03-guides/ (3 guides)
 
-## Creating Custom Agents
+| File | Purpose |
+|------|---------|
+| `CLAUDE-MD-BEST-PRACTICES.md` | Claude Code CLAUDE.md authoring guide |
+| `PROMPT-ENGINEERING-GUIDE.md` | Prompt writing best practices |
+| `TODO-SYSTEM-GUIDE.md` | Task and TODO management guide |
 
-Save agent instructions as markdown files:
+---
 
-```markdown
-# Agent: [Name]
+## 04-docs/ (2 docs)
 
-You are a [role description].
+| File | Purpose |
+|------|---------|
+| `johnny-decimal-guide.md` | Johnny Decimal folder system explanation |
+| `session-01-notes.md` | Session 01 workspace setup notes |
 
-## Core Behaviors
-- Behavior 1
-- Behavior 2
+---
 
-## Workflow
-1. Step 1
-2. Step 2
+## Root-level Files
 
-## Constraints
-- Don't do X
-- Always do Y
-```
+| File | Purpose |
+|------|---------|
+| `claude-code-practice-guide.md` | 6-mission hands-on data analysis practice guide |
+| `git-setup-guide.md` | Git setup and workflow for this workspace |
+| `notion-setup-guide.md` | Notion connection and sync setup |
 
-Then reference in Claude Code:
-```
-Use the instructions in 06_Metadata/Agents/[agent].md
-and help me with [task].
-```
+---
 
-## Claude Code Prompts
+## Statistics
 
-### Template Usage
-```
-Show me available templates in 06_Metadata/Templates.
-Create a new [type] note using the appropriate template.
-```
+| Item | Count |
+|------|-------|
+| Templates | 10 |
+| Guides | 3 |
+| Docs | 2 |
+| Root guides | 3 |
+| Total files | 19+ |
 
-### Documentation
-```
-Check 06_Metadata/Reference for documentation on [topic].
-Update the guide based on what we just learned.
-```
+---
 
-### Workflow Execution
-```
-Run the weekly review workflow from 06_Metadata/Workflows.
-Guide me through each step.
-```
-
-## Maintenance
-
-### Regular Updates
-- Update templates based on usage
-- Document new workflows as they emerge
-- Archive outdated configurations
-- Keep reference docs current
-
-### Version Control
-- Track changes to workflows
-- Document why changes were made
-- Keep archive of old versions
-- Date major updates
-
-## Best Practices
-
-- **Document as you go** - Capture workflows while fresh
-- **Iterate templates** - Improve based on usage
-- **Share configurations** - What works for you might help others
-- **Keep it simple** - Complex systems break
-- **Date everything** - Context matters
-
-## Remember
-
-Metadata is the operating system of your vault. Good metadata means consistent structure, repeatable workflows, and scalable growth. This is where you document not just what you know, but how you work.
+**Last Updated**: 2026-03-17

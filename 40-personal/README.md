@@ -4,10 +4,14 @@
 
 ## 폴더 구조
 
-- `41-daily/` - 일일 노트
-- `42-weekly/` - 주간 리뷰
-- `45-ideas/` - 아이디어 메모
-- `46-todos/` - 할 일 관리
+```
+40-personal/
+├── README.md       (이 문서)
+├── 41-daily/       일일 노트 (YYYY-MM-DD.md)
+├── 42-weekly/      주간 리뷰
+├── 45-ideas/       아이디어 메모
+└── 46-todos/       할 일 관리
+```
 
 ## 특징
 
@@ -22,3 +26,7 @@
 ## Weekly Review
 
 주간 회고로, 템플릿은 `00-system/01-templates/weekly-review.md`를 사용하세요.
+
+---
+
+**Last Updated**: 2026-03-17
