@@ -244,7 +244,7 @@ claude
 
 **분석 요청**:
 ```
-"@newmix_sales_seongsu_2602.csv 랑 @newmix_sales_seongsu_2601.csv 두 파일 분석해줘.
+"@newmix/newmix_sales_seongsu_2602.csv 랑 @newmix/newmix_sales_seongsu_2601.csv 두 파일 분석해줘.
 @sales-growth-framework.md 관점으로
 2월 매출 현황 전체 정리하고, 1월 대비 성장률도 비교해줘.
 주차별 추이, 카테고리별 매출, 베스트셀러 TOP 5까지 한 번에 봐줘"
@@ -273,7 +273,7 @@ claude
 
 **분석 요청**:
 ```
-"@newmix_sales_seongsu_2602.csv 에서 고객 국적별 분석해줘.
+"@newmix/newmix_sales_seongsu_2602.csv 에서 고객 국적별 분석해줘.
 @tourism-segmentation-framework.md 관점으로
 국적별 매출 비중, 인기 상품 차이, 평균 객단가 비교하고,
 외국인이 주로 오는 시간대가 한국 고객이랑 다른지도 봐줘.
@@ -304,7 +304,7 @@ claude
 
 **분석 요청**:
 ```
-"@newmix_inventory_data.csv 재고 현황 전체 분석해줘.
+"@newmix/newmix_inventory_data.csv 재고 현황 전체 분석해줘.
 @inventory-analysis-framework.md 관점으로
 재고일수 7일 미만 긴급 품목 우선으로 정리하고,
 카테고리별 상태 요약도 해줘.
@@ -344,7 +344,7 @@ claude
 
 **분석 요청**:
 ```
-"@newmix_sales_seongsu_2602.csv 랑 @newmix_sales_bukchon_2602.csv 비교 분석해줘.
+"@newmix/newmix_sales_seongsu_2602.csv 랑 @newmix/newmix_sales_bukchon_2602.csv 비교 분석해줘.
 @store-comparison-framework.md 관점으로
 매출, 주문 수, 객단가 차이 보고, 국적 구성이 어떻게 다른지,
 매장별 베스트셀러도 비교해줘.
@@ -371,7 +371,7 @@ claude
 
 **분석 요청**:
 ```
-"@newmix_online_sales_2602.csv 분석해줘.
+"@newmix/newmix_online_sales_2602.csv 분석해줘.
 @channel-mix-framework.md 관점으로
 네이버, 쿠팡, 컬리 채널별 매출 비교하고, 채널마다 인기 상품이 다른지 봐줘.
 배송지역 기준으로 어느 지역에서 주문이 많은지도 정리하고,

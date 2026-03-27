@@ -238,12 +238,12 @@ do-better-workspace/
 
 - `@` + 파일명으로 특정 파일 참조
 - Tab 키로 자동완성
-- 예: `@newmix_sales_seongsu_2602.csv 분석해서 2월 매출 현황 알려줘`
+- 예: `@newmix/newmix_sales_seongsu_2602.csv 분석해서 2월 매출 현황 알려줘`
 
 ### 미션 1: 성수 매출 현황 + 1월 대비 성장
 
 ```
-"@newmix_sales_seongsu_2602.csv 랑 @newmix_sales_seongsu_2601.csv 두 파일 분석해줘.
+"@newmix/newmix_sales_seongsu_2602.csv 랑 @newmix/newmix_sales_seongsu_2601.csv 두 파일 분석해줘.
 2월 매출 현황 전체 정리하고, 1월 대비 성장률도 비교해줘.
 주차별 추이, 카테고리별 매출, 베스트셀러 TOP 5까지 한 번에 봐줘"
 ```
@@ -251,7 +251,7 @@ do-better-workspace/
 ### 미션 2: 고객 국적별 분석
 
 ```
-"@newmix_sales_seongsu_2602.csv 에서 고객 국적별 분석해줘.
+"@newmix/newmix_sales_seongsu_2602.csv 에서 고객 국적별 분석해줘.
 국적별 매출 비중, 인기 상품 차이, 평균 객단가 비교하고,
 외국인이 주로 오는 시간대가 한국 고객이랑 다른지도 봐줘"
 ```
@@ -259,7 +259,7 @@ do-better-workspace/
 ### 미션 3: 재고 관리 & 벚꽃 시즌 준비
 
 ```
-"@newmix_inventory_data.csv 재고 현황 전체 분석해줘.
+"@newmix/newmix_inventory_data.csv 재고 현황 전체 분석해줘.
 재고일수 7일 미만 긴급 품목 우선으로 정리하고,
 3월 벚꽃 시즌에 관광객 30% 증가 가정하면 지금 재고로 며칠 버틸 수 있는지도"
 ```

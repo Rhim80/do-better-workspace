@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>newmix seongsu - Monthly Sales Report</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --mid-gray: #888888;
+    --light-gray: #E5E5E5;
+    --signal-red: #E63228;
+    --warm-brown: #8B6914;
+    --deep-green: #2D5A27;
+    --roast-amber: #A0522D;
+    --gold-yellow: #C8963E;
+    --sand-beige: #C2A878;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Pretendard', 'Helvetica Neue', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: -0.3px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 28mm 24mm 20mm 24mm;
+    background: var(--black);
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  /* Spray texture overlay - subtle */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 15% 10%, rgba(255,255,255,0.02) 0%, transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(255,255,255,0.015) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header bar */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+
+  .header-brand {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    color: var(--mid-gray);
+  }
+
+  .header-meta {
+    font-size: 10px;
+    color: var(--mid-gray);
+    letter-spacing: 0.5px;
+  }
+
+  /* Page 1: Cover */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 260mm;
+    padding: 40mm 24mm;
+  }
+
+  .cover-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 16px;
+  }
+
+  .cover-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 40px;
+  }
+
+  .cover-period {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid-gray);
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--signal-red);
+    margin: 32px 0;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 28mm;
+    left: 24mm;
+    right: 24mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 12px;
+  }
+
+  .cover-footer-left {
+    font-size: 10px;
+    color: var(--mid-gray);
+    letter-spacing: 0.5px;
+  }
+
+  .cover-footer-right {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: var(--mid-gray);
+    letter-spacing: 1px;
+    text-transform: lowercase;
+  }
+
+  /* Section titles */
+  .section-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    margin-bottom: 4px;
+  }
+
+  h1 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+    margin-top: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .kpi-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px;
+    border-radius: 0;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--mid-gray);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .kpi-value {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .kpi-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .kpi-sub.positive { color: var(--white); }
+  .kpi-sub.negative { color: var(--signal-red); }
+
+  .kpi-prev {
+    font-size: 9px;
+    color: var(--mid-gray);
+    margin-top: 2px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 10.5px;
+  }
+
+  thead th {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 9.5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  thead th.right { text-align: right; }
+  thead th.center { text-align: center; }
+
+  tbody td {
+    padding: 7px 10px;
+    color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: middle;
+  }
+
+  tbody td.right { text-align: right; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  tbody td.center { text-align: center; }
+  tbody td.mono { font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  .highlight-row td { color: var(--white); font-weight: 600; }
+
+  /* Variance bars */
+  .variance-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--white);
+  }
+
+  .variance-row.dominant {
+    border-left-color: var(--signal-red);
+    background: rgba(230,50,40,0.06);
+  }
+
+  .variance-label {
+    width: 80px;
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--white);
+  }
+
+  .variance-bar-container {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    margin: 0 16px;
+    position: relative;
+  }
+
+  .variance-bar {
+    height: 100%;
+    background: var(--white);
+    transition: width 0.3s;
+  }
+
+  .variance-bar.negative {
+    background: var(--signal-red);
+  }
+
+  .variance-value {
+    width: 140px;
+    text-align: right;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .variance-pct {
+    width: 60px;
+    text-align: right;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Horizontal bar chart */
+  .bar-chart {
+    margin-bottom: 16px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    height: 24px;
+  }
+
+  .bar-label {
+    width: 28px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mid-gray);
+    text-align: center;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 14px;
+    background: rgba(255,255,255,0.04);
+    margin: 0 10px;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: var(--white);
+    min-width: 1px;
+  }
+
+  .bar-fill.jan { background: var(--mid-gray); }
+  .bar-fill.feb { background: var(--white); }
+  .bar-fill.weekend { background: var(--signal-red); opacity: 0.85; }
+
+  .bar-value {
+    width: 85px;
+    text-align: right;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Rank badge */
+  .rank {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--black);
+    background: var(--white);
+  }
+
+  .rank-change {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .rank-change.up { color: var(--white); }
+  .rank-change.down { color: var(--signal-red); }
+  .rank-change.same { color: var(--mid-gray); }
+
+  /* Insight box */
+  .insight-box {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--signal-red);
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+
+  .insight-box p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 4px;
+  }
+
+  .insight-box p:last-child { margin-bottom: 0; }
+
+  .insight-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--signal-red);
+    margin-bottom: 6px;
+  }
+
+  /* Category matrix */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 16px;
+  }
+
+  .matrix-cell {
+    background: var(--black);
+    padding: 14px;
+    min-height: 70px;
+  }
+
+  .matrix-cell-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 6px;
+  }
+
+  .matrix-cell-content {
+    font-size: 11px;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .matrix-cell-meta {
+    font-size: 9.5px;
+    color: var(--mid-gray);
+    margin-top: 4px;
+  }
+
+  .matrix-axis-x {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    color: var(--mid-gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    padding: 0 4px;
+  }
+
+  .matrix-axis-y {
+    position: relative;
+  }
+
+  /* Contribution bar */
+  .contrib-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .contrib-label {
+    width: 50px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--mid-gray);
+  }
+
+  .contrib-bar-wrap {
+    flex: 1;
+    display: flex;
+    height: 20px;
+    margin: 0 10px;
+  }
+
+  .contrib-segment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .contrib-value {
+    width: 70px;
+    text-align: right;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    color: var(--mid-gray);
+  }
+
+  /* Action items */
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .action-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--signal-red);
+    margin-right: 14px;
+    min-width: 20px;
+  }
+
+  .action-title {
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* Two column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 20px 0;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 16mm;
+    left: 24mm;
+    right: 24mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: var(--mid-gray);
+  }
+
+  .page-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* Pattern judgment tag */
+  .pattern-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    margin-top: 8px;
+  }
+
+  .pattern-tag.warning {
+    border-color: var(--signal-red);
+    color: var(--signal-red);
+  }
+
+  /* Concentration meter */
+  .concentration-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .concentration-label {
+    width: 70px;
+    font-size: 10px;
+    color: var(--mid-gray);
+  }
+
+  .concentration-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    margin: 0 10px;
+    position: relative;
+  }
+
+  .concentration-fill {
+    height: 100%;
+    background: var(--white);
+  }
+
+  .concentration-val {
+    width: 50px;
+    text-align: right;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* Weekly chart stacked */
+  .week-bar-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 60px;
+  }
+
+  .week-bar {
+    flex: 1;
+    background: var(--white);
+    min-width: 1px;
+  }
+
+  .week-bar.prev { background: var(--mid-gray); }
+
+  /* Print adjustments */
+  @media print {
+    body { background: var(--black); }
+    .page {
+      margin: 0;
+      padding: 28mm 24mm 20mm 24mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page cover">
+  <div class="cover-label">Monthly Sales Report</div>
+  <div class="cover-title">Seongsu Store<br>Sales Analysis</div>
+  <div class="cover-divider"></div>
+  <div class="cover-subtitle">1-2월 매출 성장 분석</div>
+  <div class="cover-period">2026. 01 — 02</div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-left">
+      Variance Analysis + MoM Growth + Time Series Decomposition<br>
+      2026.03.22
+    </div>
+    <div class="cover-footer-right">newmix coffee</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: EXECUTIVE SUMMARY ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="header-brand">newmix coffee</div>
+    <div class="header-meta">Monthly Sales Report 2026.01-02</div>
+  </div>
+
+  <div class="section-num">01</div>
+  <h1>Executive Summary</h1>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">2월 매출</div>
+      <div class="kpi-value">9,900만</div>
+      <div class="kpi-sub positive">+47.3%</div>
+      <div class="kpi-prev">1월 6,721만</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">주문 수</div>
+      <div class="kpi-value">1,957건</div>
+      <div class="kpi-sub positive">+27.6%</div>
+      <div class="kpi-prev">1월 1,534건</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">객단가</div>
+      <div class="kpi-value">50,586원</div>
+      <div class="kpi-sub positive">+15.5%</div>
+      <div class="kpi-prev">1월 43,816원</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">수량</div>
+      <div class="kpi-value">7,149개</div>
+      <div class="kpi-sub positive">+47.5%</div>
+      <div class="kpi-prev">1월 4,847개</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-label">Key Insight</div>
+    <p>2월 매출 +47.3% 성장은 <strong>순수 물량 증가</strong>에 의한 것. 평균 단가는 사실상 동결(-0.1%). 성장의 핵심 동력은 <strong>일본 관광객 급증</strong>(MoM +102.2%)이며, 내국인 매출은 오히려 -22.9% 감소.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-num">02</div>
+  <h1>Variance Analysis</h1>
+  <p>매출 성장의 원인을 수량/단가/믹스 3요인으로 분해합니다.</p>
+
+  <div style="margin-top: 16px;">
+    <div class="variance-row dominant">
+      <div class="variance-label">수량 효과</div>
+      <div class="variance-bar-container">
+        <div class="variance-bar" style="width: 100%;"></div>
+      </div>
+      <div class="variance-value">+31,922,476원</div>
+      <div class="variance-pct" style="color: var(--white);">100.4%</div>
+    </div>
+    <div class="variance-row">
+      <div class="variance-label">단가 효과</div>
+      <div class="variance-bar-container">
+        <div class="variance-bar negative" style="width: 0.5%;"></div>
+      </div>
+      <div class="variance-value">-139,076원</div>
+      <div class="variance-pct" style="color: var(--signal-red);">-0.4%</div>
+    </div>
+    <div class="variance-row">
+      <div class="variance-label">믹스 효과</div>
+      <div class="variance-bar-container">
+        <div class="variance-bar" style="width: 0%;"></div>
+      </div>
+      <div class="variance-value">0원</div>
+      <div class="variance-pct" style="color: var(--mid-gray);">0.0%</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 12px;">
+    <span class="pattern-tag warning">PATTERN: 수량+ 단가-</span>
+  </div>
+
+  <div class="insight-box" style="margin-top: 16px;">
+    <div class="insight-label">Interpretation</div>
+    <p>성장의 100%가 수량 증가에서 발생. 더 비싸게 팔거나 고가 상품 비중이 올라간 것이 아니라, 더 많은 고객이 방문해서 더 많이 구매한 결과.</p>
+    <p>평균 단가: 13,867원 → 13,848원 (-0.1%) | 수량: 4,847개 → 7,149개 (+47.5%)</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential</span>
+    <span class="page-num">02</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: TIME SERIES ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="header-brand">newmix coffee</div>
+    <div class="header-meta">Monthly Sales Report 2026.01-02</div>
+  </div>
+
+  <div class="section-num">03</div>
+  <h1>Time Series Decomposition</h1>
+
+  <div class="two-col">
+    <div>
+      <h3>1월 주차별 매출</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>주차</th>
+            <th>기간</th>
+            <th class="right">매출</th>
+            <th class="right">주문</th>
+            <th class="right">일평균</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1주차</td>
+            <td class="mono">01.02-07</td>
+            <td class="right mono">12,996,000</td>
+            <td class="right mono">295</td>
+            <td class="right mono">2,599,200</td>
+          </tr>
+          <tr>
+            <td>2주차</td>
+            <td class="mono">01.08-14</td>
+            <td class="right mono">16,065,300</td>
+            <td class="right mono">350</td>
+            <td class="right mono">2,677,550</td>
+          </tr>
+          <tr>
+            <td>3주차</td>
+            <td class="mono">01.15-21</td>
+            <td class="right mono">15,195,800</td>
+            <td class="right mono">350</td>
+            <td class="right mono">2,532,633</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>4주차</td>
+            <td class="mono">01.22-31</td>
+            <td class="right mono">22,957,600</td>
+            <td class="right mono">539</td>
+            <td class="right mono">2,550,844</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>2월 주차별 매출</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>주차</th>
+            <th>기간</th>
+            <th class="right">매출</th>
+            <th class="right">주문</th>
+            <th class="right">일평균</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1주차</td>
+            <td class="mono">02.01-07</td>
+            <td class="right mono">24,329,000</td>
+            <td class="right mono">460</td>
+            <td class="right mono">4,054,833</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>2주차</td>
+            <td class="mono">02.08-14</td>
+            <td class="right mono">26,457,400</td>
+            <td class="right mono">524</td>
+            <td class="right mono">4,409,566</td>
+          </tr>
+          <tr>
+            <td>3주차</td>
+            <td class="mono">02.15-21</td>
+            <td class="right mono">23,804,500</td>
+            <td class="right mono">482</td>
+            <td class="right mono">3,967,416</td>
+          </tr>
+          <tr>
+            <td>4주차</td>
+            <td class="mono">02.22-28</td>
+            <td class="right mono">24,407,200</td>
+            <td class="right mono">491</td>
+            <td class="right mono">4,067,866</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-label">Trend</div>
+    <p>2월 주차 간 편차 ±10% 이내 → 안정적 수요. 2주차(설 연휴 관광 피크 추정)가 최고, 3주차(연휴 후 반동)가 최저.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Seasonality: Day-of-Week Pattern</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>1월 요일별 일평균 매출</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">화</div>
+          <div class="bar-track"><div class="bar-fill jan" style="width: 59.7%;"></div></div>
+          <div class="bar-value">2,094,750</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">수</div>
+          <div class="bar-track"><div class="bar-fill jan" style="width: 61.5%;"></div></div>
+          <div class="bar-value">2,155,150</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">목</div>
+          <div class="bar-track"><div class="bar-fill jan" style="width: 65.1%;"></div></div>
+          <div class="bar-value">2,283,875</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">금</div>
+          <div class="bar-track"><div class="bar-fill jan" style="width: 63.2%;"></div></div>
+          <div class="bar-value">2,216,740</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">토</div>
+          <div class="bar-track"><div class="bar-fill weekend" style="width: 100%;"></div></div>
+          <div class="bar-value">3,506,340</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">일</div>
+          <div class="bar-track"><div class="bar-fill weekend" style="width: 88.9%;"></div></div>
+          <div class="bar-value">3,116,050</div>
+        </div>
+      </div>
+      <p style="font-size: 10px; color: var(--mid-gray);">주말/평일 비율: 1.51배</p>
+    </div>
+    <div>
+      <h3>2월 요일별 일평균 매출</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">화</div>
+          <div class="bar-track"><div class="bar-fill feb" style="width: 56.7%;"></div></div>
+          <div class="bar-value">3,349,625</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">수</div>
+          <div class="bar-track"><div class="bar-fill feb" style="width: 58.3%;"></div></div>
+          <div class="bar-value">3,447,125</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">목</div>
+          <div class="bar-track"><div class="bar-fill feb" style="width: 58.3%;"></div></div>
+          <div class="bar-value">3,446,750</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">금</div>
+          <div class="bar-track"><div class="bar-fill feb" style="width: 56.3%;"></div></div>
+          <div class="bar-value">3,326,100</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">토</div>
+          <div class="bar-track"><div class="bar-fill weekend" style="width: 89.2%;"></div></div>
+          <div class="bar-value">5,270,600</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">일</div>
+          <div class="bar-track"><div class="bar-fill weekend" style="width: 100%;"></div></div>
+          <div class="bar-value">5,909,325</div>
+        </div>
+      </div>
+      <p style="font-size: 10px; color: var(--mid-gray);">주말/평일 비율: 1.65배</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential</span>
+    <span class="page-num">03</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: CATEGORY & NATIONALITY ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="header-brand">newmix coffee</div>
+    <div class="header-meta">Monthly Sales Report 2026.01-02</div>
+  </div>
+
+  <div class="section-num">04</div>
+  <h1>Category Contribution</h1>
+
+  <p>전체 매출 증가분: <strong style="color: var(--white); font-size: 13px;">+31,783,400원</strong></p>
+
+  <table style="margin-top: 12px;">
+    <thead>
+      <tr>
+        <th>카테고리</th>
+        <th class="right">1월 매출</th>
+        <th class="right">2월 매출</th>
+        <th class="right">증가분</th>
+        <th class="right">기여도</th>
+        <th class="right">MoM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td>커피포</td>
+        <td class="right mono">55,641,200</td>
+        <td class="right mono">81,213,600</td>
+        <td class="right mono">+25,572,400</td>
+        <td class="right mono" style="color: var(--signal-red); font-weight: 700;">80.5%</td>
+        <td class="right mono">+46.0%</td>
+      </tr>
+      <tr>
+        <td>MD상품</td>
+        <td class="right mono">7,442,000</td>
+        <td class="right mono">11,576,000</td>
+        <td class="right mono">+4,134,000</td>
+        <td class="right mono">13.0%</td>
+        <td class="right mono">+55.5%</td>
+      </tr>
+      <tr>
+        <td>스낵</td>
+        <td class="right mono">4,131,500</td>
+        <td class="right mono">6,208,500</td>
+        <td class="right mono">+2,077,000</td>
+        <td class="right mono">6.5%</td>
+        <td class="right mono">+50.3%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Contribution stacked bar -->
+  <div style="margin: 16px 0;">
+    <div style="display: flex; height: 24px;">
+      <div style="width: 80.5%; background: var(--white); display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 9px; font-weight: 700; color: var(--black);">커피포 80.5%</span>
+      </div>
+      <div style="width: 13%; background: var(--mid-gray); display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 9px; font-weight: 700; color: var(--black);">MD 13%</span>
+      </div>
+      <div style="width: 6.5%; background: rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 8px; font-weight: 600; color: var(--white);">6.5</span>
+      </div>
+    </div>
+    <p style="font-size: 9px; color: var(--mid-gray); margin-top: 4px;">성장 기여도 분포</p>
+  </div>
+
+  <h2>Portfolio Matrix</h2>
+
+  <div class="matrix-grid">
+    <div class="matrix-cell" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <div class="matrix-cell-label">Star (성장+고매출)</div>
+      <div class="matrix-cell-content" style="color: var(--mid-gray); font-style: italic; font-weight: 400;">-</div>
+    </div>
+    <div class="matrix-cell" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <div class="matrix-cell-label">Cash Cow (안정+고매출)</div>
+      <div class="matrix-cell-content">커피포</div>
+      <div class="matrix-cell-meta">MoM +46.0% | 비중 82.0%</div>
+    </div>
+    <div class="matrix-cell">
+      <div class="matrix-cell-label">Question Mark (성장+저매출)</div>
+      <div class="matrix-cell-content">MD상품 / 스낵</div>
+      <div class="matrix-cell-meta">MoM +55.5%, +50.3% | 비중 11.7%, 6.3%</div>
+    </div>
+    <div class="matrix-cell">
+      <div class="matrix-cell-label">Dog (정체+저매출)</div>
+      <div class="matrix-cell-content" style="color: var(--mid-gray); font-style: italic; font-weight: 400;">-</div>
+    </div>
+  </div>
+  <div class="matrix-axis-x">
+    <span>High Growth</span>
+    <span>Low Growth</span>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Customer Nationality</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>국적별 성장 기여도 TOP 5</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>국적</th>
+            <th class="right">증가분</th>
+            <th class="right">기여도</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>일본</td>
+            <td class="right mono">+17,737,800</td>
+            <td class="right mono" style="color: var(--signal-red);">55.8%</td>
+          </tr>
+          <tr>
+            <td>대만</td>
+            <td class="right mono">+6,236,700</td>
+            <td class="right mono">19.6%</td>
+          </tr>
+          <tr>
+            <td>미국</td>
+            <td class="right mono">+4,309,100</td>
+            <td class="right mono">13.6%</td>
+          </tr>
+          <tr>
+            <td>홍콩</td>
+            <td class="right mono">+2,957,000</td>
+            <td class="right mono">9.3%</td>
+          </tr>
+          <tr>
+            <td>유럽</td>
+            <td class="right mono">+2,647,400</td>
+            <td class="right mono">8.3%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>내국인 vs 외국인</h3>
+      <div style="margin-top: 8px;">
+        <p style="font-size: 10px; color: var(--mid-gray); margin-bottom: 6px;">1월</p>
+        <div style="display: flex; height: 20px; margin-bottom: 12px;">
+          <div style="width: 24.2%; background: var(--mid-gray); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 9px; font-weight: 700; color: var(--black);">24.2%</span>
+          </div>
+          <div style="width: 75.8%; background: var(--white); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 9px; font-weight: 700; color: var(--black);">75.8%</span>
+          </div>
+        </div>
+        <p style="font-size: 10px; color: var(--mid-gray); margin-bottom: 6px;">2월</p>
+        <div style="display: flex; height: 20px; margin-bottom: 8px;">
+          <div style="width: 12.6%; background: var(--mid-gray); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 8px; font-weight: 700; color: var(--black);">12.6</span>
+          </div>
+          <div style="width: 87.4%; background: var(--white); display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 9px; font-weight: 700; color: var(--black);">87.4%</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 9px; color: var(--mid-gray);">
+          <span>내국인</span>
+          <span>외국인</span>
+        </div>
+      </div>
+
+      <div class="insight-box" style="margin-top: 16px;">
+        <div class="insight-label">Warning</div>
+        <p>내국인 매출 <strong style="color: var(--signal-red);">-22.9%</strong> 감소<br>외국인 의존도 심화</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Confidential</span>
+    <span class="page-num">04</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: BESTSELLER & ACTIONS ==================== -->
+<div class="page">
+  <div class="header">
+    <div class="header-brand">newmix coffee</div>
+    <div class="header-meta">Monthly Sales Report 2026.01-02</div>
+  </div>
+
+  <div class="section-num">05</div>
+  <h1>Bestseller Analysis</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="center">순위</th>
+        <th>상품명</th>
+        <th class="right">1월 매출</th>
+        <th class="right">2월 매출</th>
+        <th class="center">변동</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td class="center"><span class="rank">1</span></td>
+        <td>오리지날 커피포 10T</td>
+        <td class="right mono">11,310,000</td>
+        <td class="right mono">17,298,500</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">2</span></td>
+        <td>볶은쌀 커피포 10T</td>
+        <td class="right mono">7,076,000</td>
+        <td class="right mono">10,063,000</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">3</span></td>
+        <td>바나나우유맛 커피포</td>
+        <td class="right mono">5,517,300</td>
+        <td class="right mono">7,981,800</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">4</span></td>
+        <td>군밤맛 커피포</td>
+        <td class="right mono">5,247,000</td>
+        <td class="right mono">7,473,000</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">5</span></td>
+        <td>말차라떼맛 커피포</td>
+        <td class="right mono">4,022,700</td>
+        <td class="right mono">6,169,200</td>
+        <td class="center"><span class="rank-change up">+1</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">6</span></td>
+        <td>생일파티바닐라 커피포</td>
+        <td class="right mono">3,513,900</td>
+        <td class="right mono">5,819,400</td>
+        <td class="center"><span class="rank-change up">+1</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">7</span></td>
+        <td>밀크카라멜맛 커피포</td>
+        <td class="right mono">5,024,400</td>
+        <td class="right mono">5,676,300</td>
+        <td class="center"><span class="rank-change down">-2</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">8</span></td>
+        <td>얼그레이밀크티 커피포</td>
+        <td class="right mono">3,227,700</td>
+        <td class="right mono">4,706,400</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">9</span></td>
+        <td>오리지널 에어 10T</td>
+        <td class="right mono">3,102,000</td>
+        <td class="right mono">4,339,500</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+      <tr>
+        <td class="center"><span class="rank">10</span></td>
+        <td>민트초코맛 커피포</td>
+        <td class="right mono">2,321,400</td>
+        <td class="right mono">3,800,100</td>
+        <td class="center"><span class="rank-change same">-</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Concentration</h3>
+  <div style="margin-top: 8px;">
+    <div class="concentration-row">
+      <div class="concentration-label">TOP 3</div>
+      <div class="concentration-track"><div class="concentration-fill" style="width: 35.7%;"></div></div>
+      <div class="concentration-val">35.7%</div>
+    </div>
+    <div class="concentration-row">
+      <div class="concentration-label">TOP 5</div>
+      <div class="concentration-track"><div class="concentration-fill" style="width: 49.5%;"></div></div>
+      <div class="concentration-val">49.5%</div>
+    </div>
+    <div class="concentration-row">
+      <div class="concentration-label">TOP 10</div>
+      <div class="concentration-track"><div class="concentration-fill" style="width: 74.1%;"></div></div>
+      <div class="concentration-val">74.1%</div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top: 12px;">
+    <div class="insight-label">Observation</div>
+    <p>TOP 10 순위 변동 거의 없음. 상품 포트폴리오가 고착화된 상태. 신상품 침투력 부족.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-num">06</div>
+  <h1>So What / Now What</h1>
+
+  <div class="insight-box">
+    <div class="insight-label">So What</div>
+    <p>+47.3% 성장은 인상적이나, <strong>외국인 관광 수요 의존</strong> 단일 요인에 의한 것. 가격 경쟁력, 믹스 개선, 신상품 효과는 부재. 내국인 매출 감소(-22.9%)는 관광 의존 심화의 이면.</p>
+  </div>
+
+  <ul class="action-list" style="margin-top: 16px;">
+    <li>
+      <span class="action-num">01</span>
+      <div>
+        <div class="action-title">3월 벚꽃 시즌 재고 선제 확보</div>
+        일본 관광객 추가 유입 예상. 오리지날/볶은쌀 커피포 10T 중심 안전 재고 확대
+      </div>
+    </li>
+    <li>
+      <span class="action-num">02</span>
+      <div>
+        <div class="action-title">내국인 매출 감소 원인 진단</div>
+        -22.9% 감소의 원인 파악 필요. 가격, 접근성, 경쟁 매장 영향 확인
+      </div>
+    </li>
+    <li>
+      <span class="action-num">03</span>
+      <div>
+        <div class="action-title">MD상품/스낵 카테고리 육성</div>
+        MoM 성장률은 커피포보다 높지만(+55%, +50%) 비중이 낮음. 번들 판매, 진열 위치 개선으로 객단가 상승 가능
+      </div>
+    </li>
+    <li>
+      <span class="action-num">04</span>
+      <div>
+        <div class="action-title">주중 매출 강화 전략</div>
+        주말 의존도 1.65배. 평일 프로모션, 현지 고객 타겟팅으로 매출 분산
+      </div>
+    </li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Confidential</span>
+    <span class="page-num">05</span>
+  </div>
+</div>
+
+</body>
+</html>
