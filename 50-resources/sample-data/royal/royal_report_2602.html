@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal 2026년 2월 전 채널 종합 보고서</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 40px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    border-radius: 16px;
+  }
+  .header h1 {
+    font-size: 32px; font-weight: 700; color: #f8fafc;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 16px; color: #94a3b8; font-weight: 300;
+  }
+  .header .date {
+    font-size: 14px; color: #64748b; margin-top: 12px;
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .kpi-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .kpi-card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .kpi-card:nth-child(2)::before { background: linear-gradient(90deg, #10b981, #34d399); }
+  .kpi-card:nth-child(3)::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+  .kpi-label { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .kpi-value { font-size: 36px; font-weight: 700; color: #f8fafc; }
+  .kpi-sub { font-size: 14px; color: #64748b; margin-top: 8px; }
+
+  /* Section */
+  .section {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    font-size: 20px; font-weight: 600; color: #f8fafc;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  .section h3 {
+    font-size: 16px; font-weight: 500; color: #cbd5e1;
+    margin: 20px 0 12px;
+  }
+
+  /* Charts */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .chart-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-box h3 {
+    font-size: 15px; font-weight: 500; color: #cbd5e1;
+    margin-bottom: 16px;
+  }
+  .chart-wrapper {
+    position: relative;
+    height: 280px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: #0f172a;
+    color: #94a3b8;
+    font-weight: 500;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #334155;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1e293b;
+    color: #e2e8f0;
+  }
+  tr:hover td { background: rgba(59, 130, 246, 0.05); }
+  .text-right { text-align: right; }
+
+  /* Status badges */
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .badge-critical { background: #450a0a; color: #fca5a5; border: 1px solid #991b1b; }
+  .badge-warning { background: #451a03; color: #fcd34d; border: 1px solid #92400e; }
+  .badge-ok { background: #052e16; color: #86efac; border: 1px solid #166534; }
+
+  /* Insight cards */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .insight-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .insight-card .number {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 8px;
+  }
+  .insight-card .title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 8px;
+  }
+  .insight-card .desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* Action items */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .action-card {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 24px;
+    border-left: 3px solid;
+  }
+  .action-card:nth-child(1) { border-color: #3b82f6; }
+  .action-card:nth-child(2) { border-color: #10b981; }
+  .action-card:nth-child(3) { border-color: #f59e0b; }
+  .action-card .tag {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .action-card:nth-child(1) .tag { color: #60a5fa; }
+  .action-card:nth-child(2) .tag { color: #34d399; }
+  .action-card:nth-child(3) .tag { color: #fbbf24; }
+  .action-card .title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 8px;
+  }
+  .action-card .desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  .full-width { grid-column: 1 / -1; }
+
+  @media (max-width: 768px) {
+    .kpi-grid, .chart-grid, .insight-grid, .action-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>Royal 2026년 2월 전 채널 종합 보고서</h1>
+  <div class="subtitle">B2B + Online 전 채널 매출 현황 및 재고 분석</div>
+  <div class="date">보고 기간: 2026년 2월 1일 - 2월 28일 | 작성일: 2026-03-23</div>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">전 채널 합산 매출</div>
+    <div class="kpi-value">28.2억</div>
+    <div class="kpi-sub">2,816,735,000원</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">B2B vs 온라인 비중</div>
+    <div class="kpi-value">99% : 1%</div>
+    <div class="kpi-sub">B2B 27.9억원 / 온라인 2865만원</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">거래처 유형 TOP</div>
+    <div class="kpi-value">시공사</div>
+    <div class="kpi-sub">24.2억원 (87%)</div>
+  </div>
+</div>
+
+<!-- Charts Row 1 -->
+<div class="chart-grid">
+  <div class="chart-box">
+    <h3>B2B vs 온라인 매출 비중</h3>
+    <div class="chart-wrapper">
+      <canvas id="channelPie"></canvas>
+    </div>
+  </div>
+  <div class="chart-box">
+    <h3>거래처 유형별 B2B 매출</h3>
+    <div class="chart-wrapper">
+      <canvas id="b2bTypeBar"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Charts Row 2 -->
+<div class="chart-grid">
+  <div class="chart-box">
+    <h3>온라인 채널별 매출</h3>
+    <div class="chart-wrapper">
+      <canvas id="onlineChannelBar"></canvas>
+    </div>
+  </div>
+  <div class="chart-box">
+    <h3>BLOEI 비데 주차별 발주량 추이</h3>
+    <div class="chart-wrapper">
+      <canvas id="bloeiTrend"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- BLOEI Detail -->
+<div class="section">
+  <h2>BLOEI 비데 발주 상세</h2>
+
+  <h3>거래처 유형별 BLOEI 발주</h3>
+  <table>
+    <thead>
+      <tr><th>거래처 유형</th><th class="text-right">수량</th><th class="text-right">금액</th><th class="text-right">비중</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>인테리어업체</td>
+        <td class="text-right">146개</td>
+        <td class="text-right">98,880,000원</td>
+        <td class="text-right">76.0%</td>
+      </tr>
+      <tr>
+        <td>대리점</td>
+        <td class="text-right">53개</td>
+        <td class="text-right">31,200,000원</td>
+        <td class="text-right">24.0%</td>
+      </tr>
+      <tr style="font-weight:600; border-top: 2px solid #334155;">
+        <td>합계</td>
+        <td class="text-right">199개</td>
+        <td class="text-right">130,080,000원</td>
+        <td class="text-right">100%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:28px;">주차별 발주 추이</h3>
+  <table>
+    <thead>
+      <tr><th>주차</th><th class="text-right">수량</th><th class="text-right">금액</th><th>추세</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1주차</td>
+        <td class="text-right">5개</td>
+        <td class="text-right">3,120,000원</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2주차</td>
+        <td class="text-right">46개</td>
+        <td class="text-right">29,520,000원</td>
+        <td><span style="color:#34d399">+820%</span></td>
+      </tr>
+      <tr>
+        <td>3주차</td>
+        <td class="text-right">38개</td>
+        <td class="text-right">24,480,000원</td>
+        <td><span style="color:#fca5a5">-17%</span></td>
+      </tr>
+      <tr>
+        <td>4주차</td>
+        <td class="text-right">110개</td>
+        <td class="text-right">72,960,000원</td>
+        <td><span style="color:#34d399">+189%</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Inventory Risk -->
+<div class="section">
+  <h2>재고 위험 품목 현황</h2>
+
+  <div class="chart-grid" style="margin-bottom:24px;">
+    <div class="chart-box" style="grid-column: 1/-1;">
+      <h3>품목별 재고일수 (위험 순서)</h3>
+      <div style="position:relative; height:350px;">
+        <canvas id="inventoryRisk"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <h3>긴급 발주 필요 (재고일수 7일 미만)</h3>
+  <table>
+    <thead>
+      <tr><th>분류</th><th>상품명</th><th>코드</th><th class="text-right">총재고</th><th class="text-right">일출하량</th><th class="text-right">재고일수</th><th>출하추이</th><th>상태</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>수전금구</td>
+        <td>세면수전 CITY</td>
+        <td><code style="color:#94a3b8">RWF-CTY110</code></td>
+        <td class="text-right">28</td>
+        <td class="text-right">18.6</td>
+        <td class="text-right"><span class="badge badge-critical">1.5일</span></td>
+        <td><span style="color:#fca5a5">W1:100 -> W4:160 (+60%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>비데</td>
+        <td>BLOEI 비데 일체형</td>
+        <td><code style="color:#94a3b8">RWB-BL500</code></td>
+        <td class="text-right">7</td>
+        <td class="text-right">4.5</td>
+        <td class="text-right"><span class="badge badge-critical">1.6일</span></td>
+        <td><span style="color:#fca5a5">W1:15 -> W4:50 (+233%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>수전금구</td>
+        <td>NeoTemp 수전 HOME</td>
+        <td><code style="color:#94a3b8">RWF-NT-HOME</code></td>
+        <td class="text-right">17</td>
+        <td class="text-right">7.3</td>
+        <td class="text-right"><span class="badge badge-critical">2.3일</span></td>
+        <td><span style="color:#fca5a5">W1:35 -> W4:70 (+100%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>수전금구</td>
+        <td>NeoTemp 수전 SPA</td>
+        <td><code style="color:#94a3b8">RWF-NT-SPA</code></td>
+        <td class="text-right">11</td>
+        <td class="text-right">4.1</td>
+        <td class="text-right"><span class="badge badge-critical">2.7일</span></td>
+        <td><span style="color:#fca5a5">W1:20 -> W4:40 (+100%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>액세서리</td>
+        <td>액세서리 3종세트</td>
+        <td><code style="color:#94a3b8">RWA-SET1</code></td>
+        <td class="text-right">55</td>
+        <td class="text-right">13.8</td>
+        <td class="text-right"><span class="badge badge-critical">4.0일</span></td>
+        <td><span style="color:#fca5a5">W1:70 -> W4:130 (+86%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>위생도기</td>
+        <td>양변기 분리형 CITY</td>
+        <td><code style="color:#94a3b8">RWC2010</code></td>
+        <td class="text-right">42</td>
+        <td class="text-right">8.9</td>
+        <td class="text-right"><span class="badge badge-critical">4.7일</span></td>
+        <td><span style="color:#fca5a5">W1:50 -> W4:80 (+60%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+      <tr>
+        <td>비데</td>
+        <td>BLOEI 비데 일반형</td>
+        <td><code style="color:#94a3b8">RWB-BL300</code></td>
+        <td class="text-right">20</td>
+        <td class="text-right">3.3</td>
+        <td class="text-right"><span class="badge badge-critical">6.1일</span></td>
+        <td><span style="color:#fca5a5">W1:10 -> W4:40 (+300%)</span></td>
+        <td><span class="badge badge-critical">긴급생산</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:24px;">주의 필요 (재고일수 7-14일)</h3>
+  <table>
+    <thead>
+      <tr><th>분류</th><th>상품명</th><th>코드</th><th class="text-right">총재고</th><th class="text-right">일출하량</th><th class="text-right">재고일수</th><th>출하추이</th><th>상태</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>액세서리</td>
+        <td>거울</td>
+        <td><code style="color:#94a3b8">RWA-M200</code></td>
+        <td class="text-right">80</td>
+        <td class="text-right">10.2</td>
+        <td class="text-right"><span class="badge badge-warning">7.8일</span></td>
+        <td><span style="color:#fcd34d">W1:55 -> W4:90 (+64%)</span></td>
+        <td><span class="badge badge-warning">발주필요</span></td>
+      </tr>
+      <tr>
+        <td>위생도기</td>
+        <td>세면기 벽걸이 MOD</td>
+        <td><code style="color:#94a3b8">RWL024</code></td>
+        <td class="text-right">65</td>
+        <td class="text-right">8.0</td>
+        <td class="text-right"><span class="badge badge-warning">8.1일</span></td>
+        <td><span style="color:#fcd34d">W1:45 -> W4:70 (+56%)</span></td>
+        <td><span class="badge badge-warning">발주필요</span></td>
+      </tr>
+      <tr>
+        <td>수전금구</td>
+        <td>세면수전 CANYON</td>
+        <td><code style="color:#94a3b8">RWF-CAN310</code></td>
+        <td class="text-right">70</td>
+        <td class="text-right">7.3</td>
+        <td class="text-right"><span class="badge badge-warning">9.6일</span></td>
+        <td><span style="color:#fcd34d">W1:40 -> W4:65 (+62%)</span></td>
+        <td><span class="badge badge-warning">발주필요</span></td>
+      </tr>
+      <tr>
+        <td>위생도기</td>
+        <td>양변기 일체형 MOD</td>
+        <td><code style="color:#94a3b8">RWC1004</code></td>
+        <td class="text-right">120</td>
+        <td class="text-right">10.4</td>
+        <td class="text-right"><span class="badge badge-warning">11.5일</span></td>
+        <td><span style="color:#fcd34d">W1:60 -> W4:90 (+50%)</span></td>
+        <td><span class="badge badge-warning">발주필요</span></td>
+      </tr>
+      <tr>
+        <td>위생도기</td>
+        <td>어린이 양변기 ROKI CAT</td>
+        <td><code style="color:#94a3b8">RWK-RC200</code></td>
+        <td class="text-right">35</td>
+        <td class="text-right">2.8</td>
+        <td class="text-right"><span class="badge badge-warning">12.5일</span></td>
+        <td><span style="color:#fcd34d">W1:15 -> W4:25 (+67%)</span></td>
+        <td><span class="badge badge-warning">주의</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- B2B 거래처 상세 -->
+<div class="section">
+  <h2>B2B 거래처별 매출 TOP 10</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>거래처명</th><th class="text-right">매출액</th><th class="text-right">비중</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>대우건설 세종 현장</td>
+        <td class="text-right">587,100,000원</td>
+        <td class="text-right">21.1%</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>GS건설 화성 현장</td>
+        <td class="text-right">353,600,000원</td>
+        <td class="text-right">12.7%</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>현대엔지니어링 김포 현장</td>
+        <td class="text-right">348,000,000원</td>
+        <td class="text-right">12.5%</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>롯데건설 대구 현장</td>
+        <td class="text-right">324,000,000원</td>
+        <td class="text-right">11.6%</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>포스코이앤씨 인천 현장</td>
+        <td class="text-right">306,000,000원</td>
+        <td class="text-right">11.0%</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>금호건설 창원 현장</td>
+        <td class="text-right">273,600,000원</td>
+        <td class="text-right">9.8%</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>호반건설 평택 현장</td>
+        <td class="text-right">228,000,000원</td>
+        <td class="text-right">8.2%</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>국방부 OO부대</td>
+        <td class="text-right">63,800,000원</td>
+        <td class="text-right">2.3%</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>카사인테리어</td>
+        <td class="text-right">42,846,000원</td>
+        <td class="text-right">1.5%</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>리빙플러스</td>
+        <td class="text-right">37,056,000원</td>
+        <td class="text-right">1.3%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Insights -->
+<div class="section">
+  <h2>'그래서 뭐?' - 핵심 인사이트 3가지</h2>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="number">INSIGHT 01</div>
+      <div class="title">BLOEI 비데 = 성장 엔진 확인</div>
+      <div class="desc">
+        BLOEI 비데 발주량이 주차별로 급증 (1주차 대비 4주차 발주량 폭발적 증가).
+        인테리어업체 중심 대량 발주가 이끌고, 대리점도 리오더 패턴 형성 중.
+        <strong>문제: 재고일수 1.6일(일체형), 6.1일(일반형)</strong>으로 수요를 못 따라가고 있음.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="number">INSIGHT 02</div>
+      <div class="title">시공사 대물량이 매출 구조를 지배</div>
+      <div class="desc">
+        시공사 5개사 발주가 B2B 매출의 87%를 차지.
+        대우건설/현대엔지니어링/GS건설/포스코이앤씨/호반건설 등 대형 현장이 한꺼번에 진행 중.
+        봄 이사철 입주 물량 반영. 수전금구(CITY/MOD)와 위생도기 대량 소진 예상.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="number">INSIGHT 03</div>
+      <div class="title">온라인은 NeoTemp HOME이 견인</div>
+      <div class="desc">
+        온라인 채널에서 NeoTemp 수전 HOME(35만원)이 전체 온라인 매출의 상당 부분 차지.
+        공식몰이 고단가 상품(NeoTemp, CANYON) 중심, 쿠팡은 CITY 수전 저단가 다량 판매 구조.
+        온라인은 전체 매출의 1.0%로 소규모이나, 브랜드 노출 채널로서 가치 있음.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Action Items -->
+<div class="section">
+  <h2>봄 이사철 액션 아이템</h2>
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="tag">영업</div>
+      <div class="title">BLOEI 비데 선주문 캠페인</div>
+      <div class="desc">
+        인테리어업체 5곳(카사/모던홈/리빙플러스/아뜰리에/스페이스랩)에 3-4월 물량 사전 확보 제안.
+        현재 리오더 사이클이 2-3주로 짧아지는 추세 &mdash; 월 단위 선주문 계약으로 전환하면
+        생산 계획 안정화 + 거래처 이탈 방지 가능.
+        관공서 파이프라인(국방부/구청)도 조기 확정 필요.
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="tag">온라인</div>
+      <div class="title">NeoTemp HOME 단독 기획전</div>
+      <div class="desc">
+        공식몰 매출 견인 1위 상품. 쿠팡/네이버에도 프리미엄 포지셔닝 확대.
+        BLOEI 비데 온라인 판매는 재고 확보 후 B2C 확장 검토 (현재는 B2B에 우선 배분).
+        액세서리 3종세트가 네이버에서 꾸준한 매출 &mdash; 교차판매 번들 구성 고려.
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="tag">재고/생산</div>
+      <div class="title">긴급 생산 라인 BLOEI + CITY 집중</div>
+      <div class="desc">
+        BLOEI 비데 일체형(1.6일), NeoTemp SPA(2.7일), NeoTemp HOME(2.3일),
+        세면수전 CITY(1.5일) &mdash; 4개 품목 즉시 증산.
+        화성공장 비데 라인 가동률 확대 + 수전공장 NeoTemp/CITY 우선 배정.
+        액세서리 3종세트(4.0일)도 추가 생산 필요 (온라인 판매 호조).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="text-align:center; padding:32px; color:#64748b; font-size:13px;">
+  Royal 2026년 2월 전 채널 종합 보고서 | 데이터 기준: 2026-02-28 | 생성: Claude Code
+</div>
+
+</div>
+
+<script>
+// Chart.js defaults
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#334155';
+Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+
+// 1. B2B vs Online Pie
+new Chart(document.getElementById('channelPie'), {
+  type: 'doughnut',
+  data: {
+    labels: ['B2B (발주)', '온라인'],
+    datasets: [{
+      data: [2788082000, 28653000],
+      backgroundColor: ['#3b82f6', '#10b981'],
+      borderColor: '#1e293b',
+      borderWidth: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 20 } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.label + ': ' + (ctx.raw / 100000000).toFixed(1) + '억원 (' + ((ctx.raw / 2816735000) * 100).toFixed(1) + '%)';
+          }
+        }
+      }
+    },
+    cutout: '60%'
+  }
+});
+
+// 2. B2B Type Bar
+new Chart(document.getElementById('b2bTypeBar'), {
+  type: 'bar',
+  data: {
+    labels: ['시공사', '인테리어업체', '관공서', '대리점'],
+    datasets: [{
+      data: [2420300000, 140280000, 137570000, 89932000],
+      backgroundColor: ['#3b82f6', '#8b5cf6', '#f59e0b', '#10b981'],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        ticks: {
+          callback: function(v) { return (v / 100000000).toFixed(0) + '억'; }
+        },
+        grid: { color: '#1e293b' }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 3. Online Channel Bar
+new Chart(document.getElementById('onlineChannelBar'), {
+  type: 'bar',
+  data: {
+    labels: ['공식몰', '쿠팡', '네이버', 'SSG'],
+    datasets: [{
+      data: [13115000, 6313000, 4745000, 4480000],
+      backgroundColor: ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: {
+        ticks: {
+          callback: function(v) { return (v / 10000).toFixed(0) + '만'; }
+        },
+        grid: { color: '#1e293b' }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 4. BLOEI Trend
+new Chart(document.getElementById('bloeiTrend'), {
+  type: 'line',
+  data: {
+    labels: ['1주차', '2주차', '3주차', '4주차'],
+    datasets: [
+      {
+        label: '발주 수량',
+        data: [5, 46, 38, 110],
+        borderColor: '#f59e0b',
+        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+        fill: true,
+        tension: 0.4,
+        borderWidth: 3,
+        pointBackgroundColor: '#f59e0b',
+        pointRadius: 6,
+        yAxisID: 'y',
+      },
+      {
+        label: '발주 금액',
+        data: [3120000, 29520000, 24480000, 72960000],
+        borderColor: '#ef4444',
+        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+        fill: true,
+        tension: 0.4,
+        borderWidth: 3,
+        pointBackgroundColor: '#ef4444',
+        pointRadius: 6,
+        yAxisID: 'y1',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 16 } }
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        title: { display: true, text: '수량 (개)' },
+        grid: { color: '#1e293b' }
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        title: { display: true, text: '금액' },
+        ticks: {
+          callback: function(v) { return (v / 100000000).toFixed(1) + '억'; }
+        },
+        grid: { drawOnChartArea: false }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 5. Inventory Risk Chart
+const invData = [{'name': '세면수전 CITY', 'days': 1.5, 'color': '#ef4444'}, {'name': 'BLOEI 비데 일체형', 'days': 1.6, 'color': '#ef4444'}, {'name': 'NeoTemp 수전 HOME', 'days': 2.3, 'color': '#ef4444'}, {'name': 'NeoTemp 수전 SPA', 'days': 2.7, 'color': '#ef4444'}, {'name': '액세서리 3종세트', 'days': 4.0, 'color': '#ef4444'}, {'name': '양변기 분리형 CITY', 'days': 4.7, 'color': '#ef4444'}, {'name': 'BLOEI 비데 일반형', 'days': 6.1, 'color': '#ef4444'}, {'name': '거울', 'days': 7.8, 'color': '#f59e0b'}, {'name': '세면기 벽걸이 MOD', 'days': 8.1, 'color': '#f59e0b'}, {'name': '세면수전 CANYON', 'days': 9.6, 'color': '#f59e0b'}, {'name': '양변기 일체형 MOD', 'days': 11.5, 'color': '#f59e0b'}, {'name': '어린이 양변기 ROKI CAT', 'days': 12.5, 'color': '#f59e0b'}, {'name': '휴지걸이', 'days': 14.1, 'color': '#10b981'}, {'name': '세면수전 MOD', 'days': 15.1, 'color': '#10b981'}, {'name': '양변기 직수형', 'days': 17.0, 'color': '#10b981'}, {'name': '수건걸이', 'days': 17.1, 'color': '#10b981'}, {'name': '어린이 세면기 ROKI CAT', 'days': 17.5, 'color': '#10b981'}, {'name': '세면수전 DIVE', 'days': 18.5, 'color': '#10b981'}, {'name': '비누받침', 'days': 19.6, 'color': '#10b981'}, {'name': '주방수전 MOD', 'days': 19.9, 'color': '#10b981'}, {'name': '샤워수전 CITY', 'days': 20.7, 'color': '#10b981'}, {'name': '세면기 평면붙임 CITY', 'days': 21.3, 'color': '#10b981'}, {'name': '세면기 장다리', 'days': 23.3, 'color': '#10b981'}, {'name': '비데 감지식 일반', 'days': 26.2, 'color': '#10b981'}, {'name': '소변기 일반', 'days': 58.6, 'color': '#10b981'}];
+new Chart(document.getElementById('inventoryRisk'), {
+  type: 'bar',
+  data: {
+    labels: invData.map(d => d.name),
+    datasets: [{
+      data: invData.map(d => d.days),
+      backgroundColor: invData.map(d => d.color),
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '재고일수: ' + ctx.raw + '일'; }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: '재고일수 (일)' },
+        grid: { color: '#1e293b' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
