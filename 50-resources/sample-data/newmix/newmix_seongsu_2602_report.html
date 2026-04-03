@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newmix 성수점 2월 매출 리포트</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f8f9fa;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #1a1a2e;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: #666;
+    font-weight: 300;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 32px 40px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .hero .headline {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+  .hero .big-number {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -2px;
+  }
+  .hero .growth {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 12px;
+    vertical-align: middle;
+    color: #4ade80;
+  }
+  .hero .subline {
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+  .hero .subline strong {
+    color: #fbbf24;
+  }
+
+  /* KPI Row */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .kpi-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .kpi-card .label { font-size: 12px; color: #888; font-weight: 400; margin-bottom: 4px; }
+  .kpi-card .value { font-size: 24px; font-weight: 700; color: #1a1a2e; }
+  .kpi-card .change { font-size: 13px; font-weight: 500; margin-top: 4px; }
+  .kpi-card .change.up { color: #16a34a; }
+  .kpi-card .change.down { color: #dc2626; }
+
+  /* Section */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 4px solid #1a1a2e;
+  }
+
+  /* Chart containers */
+  .chart-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .chart-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .chart-box {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .chart-box h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 16px;
+  }
+  .chart-box canvas {
+    max-height: 280px;
+  }
+
+  /* Callout */
+  .callout {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .callout .callout-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 8px;
+  }
+  .callout p {
+    font-size: 14px;
+    color: #78350f;
+    line-height: 1.7;
+  }
+
+  /* Variance table */
+  .variance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .variance-table th {
+    background: #f1f5f9;
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+  }
+  .variance-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .variance-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 700;
+    background: #f8fafc;
+  }
+
+  /* Action items */
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .action-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-top: 3px solid #1a1a2e;
+  }
+  .action-card .action-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .action-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .action-card p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 20px; }
+    .chart-box, .kpi-card, .action-card { box-shadow: none; border: 1px solid #e5e7eb; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Newmix 성수점 2월 매출 리포트</h1>
+    <div class="subtitle">2026.01 vs 2026.02 | 작성: 이림</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="headline">2월 총매출</div>
+    <div>
+      <span class="big-number">9,900만원</span>
+      <span class="growth">+47.3%</span>
+    </div>
+    <div class="subline">
+      모든 지표가 녹색입니다. 그런데 이 성장이 어디서 왔는지를 분해하면, 이야기가 달라집니다.<br>
+      3,178만원 성장의 <strong>100%가 수량 효과</strong>. 단가 기여는 0%. 그리고 그 방문객의 <strong>87%가 외국인</strong>입니다.
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">일평균 매출</div>
+      <div class="value">354만</div>
+      <div class="change up">+63.1% vs 1월</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">주문 건수</div>
+      <div class="value">1,957건</div>
+      <div class="change up">+27.6%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">객단가</div>
+      <div class="value">50,586원</div>
+      <div class="change up">+15.5%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">외국인 매출 비중</div>
+      <div class="value">87.4%</div>
+      <div class="change down">75.8% -> 87.4%</div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1: Line + Doughnut -->
+  <div class="chart-grid-2">
+    <!-- Weekly Trend Line Chart -->
+    <div class="chart-box">
+      <h3>주차별 매출 추이 (1월 vs 2월)</h3>
+      <canvas id="weeklyChart"></canvas>
+    </div>
+    <!-- Category Pie Chart -->
+    <div class="chart-box">
+      <h3>카테고리별 매출 비중 (2월)</h3>
+      <canvas id="categoryChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Charts Row 2: Bar + Doughnut -->
+  <div class="chart-grid-2">
+    <!-- Top 5 Bar Chart -->
+    <div class="chart-box">
+      <h3>베스트셀러 TOP 5 (매출 기준)</h3>
+      <canvas id="topProductsChart"></canvas>
+    </div>
+    <!-- Nationality Pie Chart -->
+    <div class="chart-box">
+      <h3>고객 국적별 매출 비중 (2월)</h3>
+      <canvas id="nationalityChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Callout: Warning -->
+  <div class="callout">
+    <div class="callout-title">가장 중요한 숫자: 87%</div>
+    <p>
+      외국인 매출 비중이 한 달 만에 75.8% -> 87.4%로 올랐습니다.
+      일본 관광객 매출이 +102% 폭등하며 성장을 이끈 반면, 한국인 매출은 -23% 역성장.
+      <strong>성장하고 있지만, 한쪽 다리로 서 있는 상태입니다.</strong>
+    </p>
+  </div>
+
+  <!-- Variance Analysis Table -->
+  <div class="section">
+    <div class="section-title">성장 원인 분해 (Variance Analysis)</div>
+    <div class="chart-box">
+      <table class="variance-table">
+        <thead>
+          <tr><th>요인</th><th>기여액</th><th>비중</th><th>해석</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>수량 효과</td>
+            <td>+3,192만원</td>
+            <td>100.4%</td>
+            <td>더 많은 사람이 왔다 (주문 +423건, 수량 +2,302개)</td>
+          </tr>
+          <tr>
+            <td>단가 효과</td>
+            <td>-14만원</td>
+            <td>-0.4%</td>
+            <td>개당 단가는 변화 없음 (13,867원 -> 13,848원)</td>
+          </tr>
+          <tr>
+            <td>합계</td>
+            <td>+3,178만원</td>
+            <td>100%</td>
+            <td>"더 비싸게 판 게 아니라, 더 많은 사람이 온 것"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Nationality MoM Bar Chart -->
+  <div class="section">
+    <div class="section-title">국적별 매출 변화 (1월 vs 2월)</div>
+    <div class="chart-box">
+      <canvas id="nationalityMomChart" style="max-height:260px"></canvas>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="section">
+    <div class="section-title">3월 액션 플랜</div>
+    <div class="actions">
+      <div class="action-card">
+        <div class="action-num">Action 1</div>
+        <h4>재고 선확보</h4>
+        <p>오리지날 + 볶은쌀 커피포 = 전체 매출 28%. 벚꽃 시즌 수요 급증 전에 선발주 필요.</p>
+      </div>
+      <div class="action-card">
+        <div class="action-num">Action 2</div>
+        <h4>일본 관광객 경험 강화</h4>
+        <p>매출 1위 국적(35.5%). 일본어 POP, SNS 리뷰 유도, 세트 구성으로 객단가 추가 견인.</p>
+      </div>
+      <div class="action-card">
+        <div class="action-num">Action 3</div>
+        <h4>한국인 매출 회복</h4>
+        <p>-23% 역성장. "관광객 카페"로 굳어지기 전에 로컬 단골 유지 전략 필요.</p>
+      </div>
+      <div class="action-card">
+        <div class="action-num">Action 4</div>
+        <h4>MD상품 크로스셀링</h4>
+        <p>성장률 +55.5%로 가장 빠름. 커피포 구매 시 MD상품 세트 할인으로 비중 확대.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    분석 기준: Variance Analysis (Horngren, 2014) | MoM Growth Rate | Pareto 80/20 | BCG Matrix
+  </div>
+
+</div>
+
+<script>
+// Color palette
+const C = {
+  navy: '#1a1a2e',
+  blue: '#0f3460',
+  teal: '#16a085',
+  green: '#16a34a',
+  amber: '#f59e0b',
+  red: '#dc2626',
+  purple: '#7c3aed',
+  pink: '#ec4899',
+  sky: '#0ea5e9',
+  slate: '#64748b',
+  orange: '#ea580c',
+};
+
+Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.legend.labels.padding = 12;
+
+// 1. Weekly Trend Line Chart
+new Chart(document.getElementById('weeklyChart'), {
+  type: 'line',
+  data: {
+    labels: ['W1 (1~7)', 'W2 (8~14)', 'W3 (15~21)', 'W4 (22~28)'],
+    datasets: [
+      {
+        label: '2월',
+        data: [2433, 2646, 2380, 2441],
+        borderColor: C.navy,
+        backgroundColor: C.navy + '18',
+        borderWidth: 3,
+        pointRadius: 6,
+        pointBackgroundColor: C.navy,
+        fill: true,
+        tension: 0.3,
+      },
+      {
+        label: '1월',
+        data: [1300, 1607, 1520, 2296],
+        borderColor: C.slate,
+        backgroundColor: C.slate + '10',
+        borderWidth: 2,
+        borderDash: [6, 4],
+        pointRadius: 5,
+        pointBackgroundColor: C.slate,
+        fill: false,
+        tension: 0.3,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + '만원'
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: v => v.toLocaleString() + '만'
+        }
+      }
+    }
+  }
+});
+
+// 2. Category Doughnut
+new Chart(document.getElementById('categoryChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['커피포 (82.0%)', 'MD상품 (11.7%)', '스낵 (6.3%)'],
+    datasets: [{
+      data: [81213600, 11576000, 6208500],
+      backgroundColor: [C.navy, C.teal, C.amber],
+      borderWidth: 2,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const v = ctx.parsed;
+            return ctx.label + ': ' + (v/10000).toLocaleString() + '만원';
+          }
+        }
+      }
+    }
+  }
+});
+
+// 3. Top 5 Products Bar Chart
+new Chart(document.getElementById('topProductsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['오리지날 10T', '볶은쌀 10T', '바나나우유맛', '군밤맛', '말차라떼맛'],
+    datasets: [
+      {
+        label: '2월',
+        data: [1730, 1006, 798, 747, 617],
+        backgroundColor: C.navy,
+        borderRadius: 6,
+        barPercentage: 0.7,
+      },
+      {
+        label: '1월',
+        data: [1131, 708, 551, 525, 402],
+        backgroundColor: C.slate + '55',
+        borderRadius: 6,
+        barPercentage: 0.7,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.x.toLocaleString() + '만원'
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          callback: v => v.toLocaleString() + '만'
+        }
+      }
+    }
+  }
+});
+
+// 4. Nationality Doughnut
+new Chart(document.getElementById('nationalityChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['일본 35.5%', '대만 12.9%', '한국 12.6%', '미국 9.6%', '중국 6.6%', '태국 6.5%', '홍콩 6.1%', '기타 10.2%'],
+    datasets: [{
+      data: [3510, 1272, 1252, 951, 657, 643, 604, 1011],
+      backgroundColor: [
+        C.red, C.teal, C.navy, C.blue, C.amber, C.pink, C.purple, C.slate
+      ],
+      borderWidth: 2,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '50%',
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 8 } },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.label + ': ' + ctx.parsed.toLocaleString() + '만원'
+        }
+      }
+    }
+  }
+});
+
+// 5. Nationality MoM Grouped Bar
+new Chart(document.getElementById('nationalityMomChart'), {
+  type: 'bar',
+  data: {
+    labels: ['일본', '대만', '한국', '미국', '중국', '태국', '홍콩', '유럽'],
+    datasets: [
+      {
+        label: '2월',
+        data: [3510, 1272, 1252, 951, 657, 643, 604, 495],
+        backgroundColor: C.navy,
+        borderRadius: 4,
+      },
+      {
+        label: '1월',
+        data: [1736, 649, 1624, 520, 606, 556, 309, 230],
+        backgroundColor: C.slate + '55',
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString() + '만원'
+        }
+      }
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: v => v.toLocaleString() + '만'
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
