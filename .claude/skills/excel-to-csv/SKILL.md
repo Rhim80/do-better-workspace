@@ -5,7 +5,9 @@ allowed-tools:
   - Bash
   - Read
   - Write
+  - Edit
   - Glob
+  - Skill
 ---
 
 # Excel to CSV Converter
@@ -14,7 +16,7 @@ Claude Code는 .xlsx/.xls 파일을 직접 읽을 수 없다. 이 스킬은 Exce
 
 ## Script Location
 
-`~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py`
+`.claude/skills/excel-to-csv/scripts/excel-to-csv.py`
 
 ## Prerequisites
 
@@ -34,7 +36,7 @@ pip install openpyxl>=3.1.0
 ### Step 2: 파일 정보 분석
 
 ```bash
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --info
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --info
 ```
 
 출력 내용:
@@ -63,28 +65,28 @@ Excel 구조 문제는 이 스킬의 옵션으로 해결하고, 데이터 품질
 
 ```bash
 # 기본 변환
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all
 
 # 특정 시트만
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --sheet "시트명"
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --sheet "시트명"
 
 # 다단 헤더 평탄화
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --flatten-headers
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --flatten-headers
 
 # 메타데이터 건너뛰기 + 헤더 평탄화
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --skip-rows 3 --flatten-headers
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --skip-rows 3 --flatten-headers
 
 # 헤더 행 수 수동 지정
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --flatten-headers --header-rows 2
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --flatten-headers --header-rows 2
 
 # 출력 경로 지정
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --output /path/to/output/
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <파일경로> --all --output /path/to/output/
 
 # 폴더 일괄 변환
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <폴더경로> --all
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <폴더경로> --all
 
 # CSV 인코딩 변환 (EUC-KR -> UTF-8)
-python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <csv파일경로> --encoding euc-kr
+python .claude/skills/excel-to-csv/scripts/excel-to-csv.py <csv파일경로> --encoding euc-kr
 ```
 
 ### Step 4: 결과 확인
@@ -96,14 +98,14 @@ python ~/.claude/skills/excel-to-csv/scripts/excel-to-csv.py <csv파일경로> -
 
 ### Step 5: 데이터 정리 (필요 시)
 
-Complexity Analysis에서 데이터 품질 문제가 감지된 경우, csv-clean 스킬로 연결:
+Complexity Analysis에서 데이터 품질 문제가 감지된 경우, `/csv-clean` 스킬을 Skill tool로 호출하거나 직접 스크립트를 실행한다:
 
 ```bash
 # 소계 제거 + 숫자 정리
-python ~/.claude/skills/csv-clean/scripts/csv-clean.py <변환된csv> --remove-subtotals --clean-numbers
+python .claude/skills/csv-clean/scripts/csv-clean.py <변환된csv> --remove-subtotals --clean-numbers
 
 # 날짜 정규화
-python ~/.claude/skills/csv-clean/scripts/csv-clean.py <변환된csv> --normalize-dates
+python .claude/skills/csv-clean/scripts/csv-clean.py <변환된csv> --normalize-dates
 ```
 
 ## CLI Options

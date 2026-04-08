@@ -243,6 +243,33 @@ def analyze_complexity(ws):
     max_row = get_max_row(ws, header_start)
     detected_header_rows = detect_header_rows(ws)
 
+    # Find the "real" header row: the row right before data starts
+    # Data rows have significant numeric content; header rows are mostly text
+    real_header_row = header_start  # 0-indexed
+    data_start_candidate = header_start + detected_header_rows
+
+    # Scan from header_start to find the last all-text row before data
+    for row_idx in range(header_start + 1, min(header_start + 8, ws.max_row + 1)):
+        row_values = []
+        for col_idx in range(1, max_col + 1):
+            val = ws.cell(row=row_idx, column=col_idx).value
+            row_values.append(val)
+
+        filled = [v for v in row_values if v is not None and str(v).strip()]
+        nums = [v for v in filled if isinstance(v, (int, float))]
+        texts = [v for v in filled if isinstance(v, str) and v.strip()]
+
+        # If this row has numbers and filled cells, it's likely data
+        if len(nums) > 0 and len(filled) > max_col * 0.3:
+            # The previous row with mostly text is the real header
+            real_header_row = row_idx - 2  # 0-indexed (row before this one)
+            data_start_candidate = row_idx - 1  # 0-indexed
+            break
+
+    # Calculate recommended skip_rows: everything before the real column headers
+    # real_header_row is the 0-indexed row of the actual column headers
+    recommended_skip = max(0, data_start_candidate - detected_header_rows)
+
     print("--- Complexity Analysis ---")
     found = False
 
@@ -332,6 +359,27 @@ def analyze_complexity(ws):
 
     if not found:
         print("No complexity issues detected. Standard conversion should work fine.")
+
+    # Recommended command
+    opts = []
+    if recommended_skip > 0:
+        opts.append(f"--skip-rows {recommended_skip}")
+    if detected_header_rows > 1:
+        opts.append("--flatten-headers")
+    opts.append("--all")
+
+    if opts:
+        print()
+        print(f"[RECOMMENDED] python excel-to-csv.py <file> {' '.join(opts)}")
+        if subtotal_count > 0 or num_cols_with_text > 0 or date_cols > 0:
+            clean_opts = []
+            if subtotal_count > 0:
+                clean_opts.append("--remove-subtotals")
+            if num_cols_with_text > 0:
+                clean_opts.append("--clean-numbers")
+            if date_cols > 0:
+                clean_opts.append("--normalize-dates")
+            print(f"[RECOMMENDED] Then: python csv-clean.py <output.csv> {' '.join(clean_opts)}")
     print()
 
 

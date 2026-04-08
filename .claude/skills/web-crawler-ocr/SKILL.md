@@ -39,21 +39,21 @@ Extract URL(s) from user message:
 
 ### Step 2: Determine Output Location
 
-Based on user context, choose appropriate path:
+Based on user context, choose appropriate path within the workspace:
 
 **Competitor Analysis:**
 ```
-/Users/rhim/Projects/pkm/50-resources/competitor-analysis/
+./50-resources/competitor-analysis/
 ```
 
-**Educational Reference (e.g. HFK):**
+**Project Reference:**
 ```
-/Users/rhim/Projects/pkm/10-projects/12-education/{project-folder}/
+./10-projects/{project-folder}/
 ```
 
 **General Web Research:**
 ```
-/Users/rhim/Projects/pkm/50-resources/web-research/
+./50-resources/web-research/
 ```
 
 **Filename:** Use domain + timestamp or user-specified name.
@@ -62,14 +62,14 @@ Based on user context, choose appropriate path:
 
 ```bash
 # 1. Install dependencies (first time only)
-cd ~/.claude/skills/web-crawler-ocr/scripts && \
+cd .claude/skills/web-crawler-ocr/scripts && \
 python3 -m venv venv && \
 source venv/bin/activate && \
 pip install -r requirements.txt && \
 pip install playwright && playwright install chromium
 
 # 2. Run crawler
-cd ~/.claude/skills/web-crawler-ocr/scripts && \
+cd .claude/skills/web-crawler-ocr/scripts && \
 source venv/bin/activate && \
 python3 web-crawler.py "<URL>" "<output-path>"
 
@@ -137,13 +137,13 @@ python3 web-crawler.py <URL> --max-images 5
 
 **Claude Actions:**
 ```bash
-mkdir -p /Users/rhim/Projects/pkm/50-resources/competitor-analysis
+mkdir -p ./50-resources/competitor-analysis
 
-cd ~/.claude/skills/web-crawler-ocr/scripts && \
+cd .claude/skills/web-crawler-ocr/scripts && \
 source venv/bin/activate && \
 python3 web-crawler.py \
     "https://competitor-cafe.com" \
-    /Users/rhim/Projects/pkm/50-resources/competitor-analysis/competitor-cafe-20260315.md
+    ./50-resources/competitor-analysis/competitor-cafe-20260315.md
 ```
 
 ### Example 2: Multiple URLs
@@ -164,7 +164,7 @@ export GEMINI_API_KEY="your_gemini_key_here"
 
 ### Alternative: .env File
 
-Create `~/.claude/skills/web-crawler-ocr/scripts/.env`:
+Create `.claude/skills/web-crawler-ocr/scripts/.env`:
 ```
 GEMINI_API_KEY=your_gemini_key_here
 ```
@@ -173,7 +173,7 @@ GEMINI_API_KEY=your_gemini_key_here
 
 For Cloudflare-protected or JS-heavy sites:
 ```bash
-cd ~/.claude/skills/web-crawler-ocr/scripts && \
+cd .claude/skills/web-crawler-ocr/scripts && \
 source venv/bin/activate && \
 pip install -r requirements-stealth.txt && \
 scrapling install
@@ -202,7 +202,7 @@ Or use `--stealth` flag.
 ### Python Package Errors
 
 ```bash
-cd ~/.claude/skills/web-crawler-ocr/scripts
+cd .claude/skills/web-crawler-ocr/scripts
 rm -rf venv
 python3 -m venv venv
 source venv/bin/activate
@@ -211,12 +211,12 @@ pip install -r requirements.txt
 
 ## Script Location
 
-- **Main Script**: `~/.claude/skills/web-crawler-ocr/scripts/web-crawler.py`
-- **Helper Script**: `~/.claude/skills/web-crawler-ocr/scripts/gemini-ocr.py`
-- **Config Template**: `~/.claude/skills/web-crawler-ocr/scripts/.env.example`
-- **Requirements**: `~/.claude/skills/web-crawler-ocr/scripts/requirements.txt`
-- **Stealth Requirements**: `~/.claude/skills/web-crawler-ocr/scripts/requirements-stealth.txt`
-- **Virtual Env**: `~/.claude/skills/web-crawler-ocr/scripts/venv/` (created on first run)
+- **Main Script**: `.claude/skills/web-crawler-ocr/scripts/web-crawler.py`
+- **Helper Script**: `.claude/skills/web-crawler-ocr/scripts/gemini-ocr.py`
+- **Config Template**: `.claude/skills/web-crawler-ocr/scripts/.env.example`
+- **Requirements**: `.claude/skills/web-crawler-ocr/scripts/requirements.txt`
+- **Stealth Requirements**: `.claude/skills/web-crawler-ocr/scripts/requirements-stealth.txt`
+- **Virtual Env**: `.claude/skills/web-crawler-ocr/scripts/venv/` (created on first run)
 
 ## Version History
 

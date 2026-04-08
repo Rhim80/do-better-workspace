@@ -23,7 +23,7 @@ This skill **automatically activates** when you mention:
 ## Setup
 
 ```bash
-cd ~/.claude/skills/web-crawler-ocr/scripts
+cd .claude/skills/web-crawler-ocr/scripts
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -32,7 +32,7 @@ pip install playwright && playwright install chromium
 
 ### API Key (OCR only)
 
-Create `.env` file in `~/.claude/skills/web-crawler-ocr/scripts/`:
+Create `.env` file in `.claude/skills/web-crawler-ocr/scripts/`:
 ```
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
@@ -48,7 +48,7 @@ scrapling install
 ## Usage
 
 ```bash
-cd ~/.claude/skills/web-crawler-ocr/scripts && source venv/bin/activate
+cd .claude/skills/web-crawler-ocr/scripts && source venv/bin/activate
 
 # Static sites
 python3 web-crawler.py "https://example.com" /tmp/test.md --no-ocr
@@ -73,6 +73,6 @@ python3 web-crawler.py "https://oliveyoung.co.kr/..." /tmp/oy.md --wait 5000 --s
 
 ## Related Files
 
-- **Skill Definition**: `~/.claude/skills/web-crawler-ocr/SKILL.md`
-- **Scripts**: `~/.claude/skills/web-crawler-ocr/scripts/`
-- **Config**: `~/.claude/skills/web-crawler-ocr/scripts/.env` (gitignored)
+- **Skill Definition**: `.claude/skills/web-crawler-ocr/SKILL.md`
+- **Scripts**: `.claude/skills/web-crawler-ocr/scripts/`
+- **Config**: `.claude/skills/web-crawler-ocr/scripts/.env` (gitignored)
