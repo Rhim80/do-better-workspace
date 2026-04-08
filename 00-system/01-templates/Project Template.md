@@ -39,10 +39,3 @@
 ---
 *Using Claude Code? Say: "I'm working on {{title}} in thinking mode. Let's explore."*
 
-## Related Notes
-
-- [[PHASE_3_SUMMARY]] - ai_automation 관련; 'status' 개념 공유
-- [[30-knowledge/36-ai-tools/36.01-claude-code/ab-method-study/ab-method/.ab-method/core/create-mission]] - ai_automation 관련; 'status' 개념 공유
-- [[30-knowledge/36-ai-tools/36.01-claude-code/ab-method-study/ab-method/.ab-method/core/test-mission]] - ai_automation 관련; 'status' 개념 공유
-- [[30-knowledge/36-ai-tools/36.01-claude-code/ab-method-study/ab-method/.ab-method/utils/planning-mission]] - ai_automation 관련; 'status' 개념 공유
-- [[PHASE_3_LINK_GENERATION_FINAL_REPORT]] - ai_automation 관련; 'status' 개념 공유

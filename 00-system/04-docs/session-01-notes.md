@@ -3,7 +3,7 @@
 | 항목 | 내용 |
 | --- | --- |
 | 날짜 | 2026-02-05 (수) |
-| 강사 | 이림 (Do Better Things) |
+| 진행 | Do Better Things |
 | 주제 | Claude Code 설치 + AI 에이전트 개념 + 워크스페이스 활용 |
 
 ---

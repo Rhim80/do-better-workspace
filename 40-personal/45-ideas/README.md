@@ -9,8 +9,8 @@
 ## 카테고리
 
 - business
-- ai  
-- cafe
+- ai
+- operations
 - study
 - daily
 - random

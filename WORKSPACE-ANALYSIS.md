@@ -222,5 +222,4 @@ cd do-better-workspace
 
 ---
 
-**Made with Claude Code by hovoo (이림)**
-F&B Professional x AI Practitioner
+**Made with Claude Code by [Do Better Things](https://dbt.imiwork.com)**

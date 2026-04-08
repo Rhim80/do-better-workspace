@@ -16,7 +16,7 @@
 
 ### 1. `/todos` (기본 - 전체 보기)
 
-`pkm/40-personal/43-todos/active-todos.md` 파일을 읽어서 표시
+`40-personal/46-todos/active-todos.md` 파일을 읽어서 표시
 
 **출력 형식:**
 ```markdown
@@ -184,5 +184,5 @@
 6. 출력
 
 **파일 경로:**
-- 읽기: `pkm/40-personal/43-todos/active-todos.md`
+- 읽기: `40-personal/46-todos/active-todos.md`
 - 아카이브: `pkm/40-personal/43-todos/completed-todos.md`

@@ -27,7 +27,7 @@
    - 현재 디렉토리가 프로젝트면 자동 연결
 
 4. **저장 위치**
-   - `pkm/40-personal/43-todos/active-todos.md`의 "📥 Inbox" 섹션
+   - `40-personal/46-todos/active-todos.md`의 "📥 Inbox" 섹션
 
 ## 실행
 

@@ -10,12 +10,11 @@
 Claude Code와 Johnny Decimal 시스템을 결합한 **실전 PKM 워크스페이스**입니다.
 
 **핵심 특징:**
-- 15년 F&B 경력 + AI 활용 전문가의 **실제 운영 시스템** 기반
-- 강의/워크숍용으로 정리된 **교육용 버전**
+- **실제 운영 시스템** 기반으로 설계
+- 워크숍/교육용으로 정리된 **범용 버전**
 - 바로 clone해서 사용 가능한 **즉시 활용형** 구조
 
-> 이 레포지토리는 이림(hovoo)이 실제로 사용하는 PKM 시스템을 교육용으로 정리한 버전입니다.
-> Daily Note, Todo 관리, 프로젝트 구조화 등 모든 기능이 실제 업무에서 검증된 것들입니다.
+> Daily Note, Todo 관리, 프로젝트 구조화 등 실무에서 검증된 워크플로우가 포함되어 있습니다.
 
 ## Quick Start (5분)
 
@@ -99,7 +98,7 @@ do-better-workspace/
 [숫자]-[설명적-이름]
 
 예시:
-✅ 11-imi-cafe-project
+✅ 11-website-redesign
 ✅ 21-daily-store-operations
 ✅ 31-business-frameworks
 ❌ my-project (숫자 없음)
@@ -371,8 +370,8 @@ Johnny Decimal 시스템은:
 
 Inspired by:
 - [Claudesidian](https://github.com/heyitsnoah/claudesidian) by Noah Brier
-- 15 years of F&B operations experience
-- Real-world AI automation workflows
+- Real-world business operations experience
+- AI automation workflows
 
 ## License
 
@@ -384,5 +383,4 @@ Issues나 질문이 있으시면 GitHub Issues를 활용해주세요.
 
 ---
 
-**Made with by hovoo (이림)**
-F&B Professional × AI Practitioner
+**Made with Claude Code by [Do Better Things](https://dbt.imiwork.com)**

@@ -20,20 +20,15 @@ System settings folder for the do-better-workspace PKM. Contains templates, scri
 
 ---
 
-## 01-templates/ (10 templates)
+## 01-templates/ (3 templates)
 
 | File | Purpose |
 |------|---------|
-| `Daily Note Template.md` | Daily note structure |
-| `daily-note-template.md` | Daily note (alternate) |
+| `daily-note-template.md` | Daily note structure |
 | `weekly-review-template.md` | Weekly review format |
 | `Project Template.md` | Project note structure |
-| `channel-mix-framework.md` | Marketing channel analysis |
-| `executive-report-framework.md` | Executive summary report |
-| `inventory-analysis-framework.md` | Inventory review template |
-| `sales-growth-framework.md` | Sales growth analysis |
-| `store-comparison-framework.md` | Multi-store comparison |
-| `tourism-segmentation-framework.md` | Tourism segment analysis |
+
+> 데이터 분석용 프레임워크 템플릿은 클라이언트별 브랜치에 포함되어 있습니다.
 
 ---
 
@@ -76,11 +71,11 @@ Automation scripts for workspace operations.
 
 | Item | Count |
 |------|-------|
-| Templates | 10 |
+| Templates | 3 |
 | Guides | 3 |
 | Docs | 2 |
 | Root guides | 3 |
-| Total files | 19+ |
+| Total files | 12+ |
 
 ---
 
