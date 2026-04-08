@@ -13,6 +13,7 @@
 ### 어려웠던 점
 -
 
+<!-- template:dbt-ws-v2 -->
 ## Projects Progress
 ### 완료한 작업
 -
