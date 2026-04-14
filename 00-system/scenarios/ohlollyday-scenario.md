@@ -37,6 +37,7 @@
 **분석 요청**:
 ```
 "@ohlollyday_orders_2601_2603.csv 랑 @ohlollyday_product_master.csv 같이 분석해줘.
+@channel-profitability-framework.md 관점으로
 
 1. 채널별 총 매출, 수수료, 원가, 영업이익 비교
 2. 채널별 영업이익률 (매출 대비 순이익)
@@ -60,6 +61,7 @@
 **분석 요청**:
 ```
 "@ohlollyday_instagram_content_2601_2603.csv 분석해줘.
+@content-conversion-framework.md 관점으로
 
 1. 콘텐츠 유형별(릴스/캐러셀/단일이미지/스토리) 도달 대비 전환율 비교
 2. 광고 vs 오가닉 콘텐츠의 ROI 비교 (광고비 대비 주문금액)
@@ -85,6 +87,7 @@
 **분석 요청**:
 ```
 "@ohlollyday_instagram_content_2601_2603.csv 랑 @ohlollyday_orders_2601_2603.csv 교차 분석해줘.
+@channel-content-integration-framework.md 관점으로
 
 1. 인스타 콘텐츠 게시 후 자사몰 유입경로 '인스타그램' 주문 추이 (게시일 전후 비교)
 2. 인스타 콘텐츠 유형별 자사몰 전환 퍼널 (도달 → 링크클릭 → 자사몰유입 → 주문)
