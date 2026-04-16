@@ -1,0 +1,13 @@
+﻿position_id,title,market,priority,department,hiring_manager,opened_date,headcount,seniority,target_close_days,sf_interviewer_required
+POS-2601-001,"Senior Growth Marketing Manager, Korea",KR,P0,Marketing,Danny Lee,2026-01-08,1,Senior,60,N
+POS-2601-002,"Product Designer, APAC",KR,P0,Design,Jin Park,2026-01-12,1,Mid-Senior,60,Y
+POS-2602-003,"Content Marketing Lead, Japan",JP,P0,Marketing,Yuki Tanaka,2026-02-03,1,Senior,60,N
+POS-2602-004,"Customer Support Specialist, Taiwan",TW,P1,CX,Wei Chen,2026-02-17,2,Junior,90,N
+POS-2602-005,"Senior Backend Engineer, Korea",KR,P0,Engineering,Minho Kim,2026-02-20,1,Senior,60,Y
+POS-2603-006,"Business Development Manager, Japan",JP,P1,BD,Yuki Tanaka,2026-03-02,1,Mid-Senior,90,N
+POS-2603-007,"Performance Marketing Manager, Korea",KR,P1,Marketing,Danny Lee,2026-03-10,1,Mid-Senior,90,N
+POS-2603-008,"People Ops Coordinator, Taiwan",TW,P2,People,Sunjae Lee,2026-03-15,1,Junior,120,N
+POS-2603-009,"Senior iOS Engineer, Korea",KR,P0,Engineering,Minho Kim,2026-03-18,1,Senior,60,Y
+POS-2604-010,"Community Manager, Japan",JP,P2,Marketing,Yuki Tanaka,2026-04-01,1,Mid,120,N
+POS-2604-011,"Data Analyst, APAC",KR,P1,Data,Minho Kim,2026-04-03,1,Mid,90,Y
+POS-2604-012,"Account Executive, Taiwan",TW,P1,Sales,Wei Chen,2026-04-07,2,Mid-Senior,90,N

@@ -1,0 +1,481 @@
+﻿interview_id,candidate_id,position_id,market,interview_type,interview_date,interviewer_name,interviewer_team,interviewer_location,interviewer_role,feedback_submitted,submitted_date,days_to_submit,score_1to5,reminder_sent_count,days_since_interview
+INT-0001,CAND-0003,POS-2601-001,KR,HM Interview,2026-03-31,Danny Lee,Marketing,Seoul,HM,Y,2026-04-01,1,2,0,15
+INT-0002,CAND-0004,POS-2601-001,KR,HM Interview,2026-03-28,Danny Lee,Marketing,Seoul,HM,Y,2026-03-29,1,3,0,18
+INT-0003,CAND-0005,POS-2601-001,KR,HM Interview,2026-03-29,Danny Lee,Marketing,Seoul,HM,Y,2026-04-01,3,3,0,17
+INT-0004,CAND-0006,POS-2601-001,KR,HM Interview,2026-02-13,Danny Lee,Marketing,Seoul,HM,Y,2026-02-15,2,4,0,61
+INT-0005,CAND-0006,POS-2601-001,KR,Technical/Panel,2026-03-09,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-10,1,3,0,37
+INT-0006,CAND-0006,POS-2601-001,KR,Technical/Panel,2026-03-09,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-13,4,3,0,37
+INT-0007,CAND-0006,POS-2601-001,KR,Onsite Loop,2026-04-02,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-12,10,2,0,13
+INT-0008,CAND-0006,POS-2601-001,KR,Onsite Loop,2026-04-02,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-07,5,3,0,13
+INT-0009,CAND-0006,POS-2601-001,KR,Onsite Loop,2026-04-02,서지현,Marketing,Seoul,Panel,Y,2026-04-06,4,3,0,13
+INT-0010,CAND-0008,POS-2601-001,KR,HM Interview,2026-02-18,Danny Lee,Marketing,Seoul,HM,Y,2026-02-19,1,3,0,56
+INT-0011,CAND-0008,POS-2601-001,KR,Technical/Panel,2026-03-27,陳冠宇,Sales,Taipei,Panel,Y,2026-03-31,4,2,0,19
+INT-0012,CAND-0008,POS-2601-001,KR,Technical/Panel,2026-03-27,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-31,4,1,0,19
+INT-0013,CAND-0010,POS-2601-001,KR,HM Interview,2026-04-01,Danny Lee,Marketing,Seoul,HM,Y,2026-04-01,0,2,0,14
+INT-0014,CAND-0010,POS-2601-001,KR,Technical/Panel,2026-04-10,서지현,Marketing,Seoul,Panel,Y,2026-04-12,2,3,0,5
+INT-0015,CAND-0010,POS-2601-001,KR,Technical/Panel,2026-04-10,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-13,3,2,0,5
+INT-0016,CAND-0011,POS-2601-001,KR,HM Interview,2026-03-15,Danny Lee,Marketing,Seoul,HM,Y,2026-03-17,2,2,0,31
+INT-0017,CAND-0011,POS-2601-001,KR,Technical/Panel,2026-03-27,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-31,4,3,0,19
+INT-0018,CAND-0011,POS-2601-001,KR,Technical/Panel,2026-03-27,陳冠宇,Sales,Taipei,Panel,Y,2026-03-27,0,3,0,19
+INT-0019,CAND-0011,POS-2601-001,KR,Onsite Loop,2026-04-08,Elena Rossi,Design,San Francisco,Panel,N,,,,3,7
+INT-0020,CAND-0011,POS-2601-001,KR,Onsite Loop,2026-04-08,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-11,3,4,0,7
+INT-0021,CAND-0011,POS-2601-001,KR,Onsite Loop,2026-04-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-09,1,4,0,7
+INT-0022,CAND-0012,POS-2601-001,KR,HM Interview,2026-03-23,Danny Lee,Marketing,Seoul,HM,Y,2026-03-23,0,3,0,23
+INT-0023,CAND-0012,POS-2601-001,KR,Technical/Panel,2026-03-29,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-01,3,2,0,17
+INT-0024,CAND-0012,POS-2601-001,KR,Technical/Panel,2026-03-29,陳冠宇,Sales,Taipei,Panel,Y,2026-03-30,1,3,0,17
+INT-0025,CAND-0012,POS-2601-001,KR,Onsite Loop,2026-04-05,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,3,10
+INT-0026,CAND-0012,POS-2601-001,KR,Onsite Loop,2026-04-05,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-08,3,3,0,10
+INT-0027,CAND-0012,POS-2601-001,KR,Onsite Loop,2026-04-05,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-05,0,2,0,10
+INT-0028,CAND-0012,POS-2601-001,KR,Exec Interview,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-15,4,4,0,4
+INT-0029,CAND-0013,POS-2601-001,KR,HM Interview,2026-03-20,Danny Lee,Marketing,Seoul,HM,Y,2026-03-21,1,4,0,26
+INT-0030,CAND-0013,POS-2601-001,KR,Technical/Panel,2026-03-27,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-03,7,3,0,19
+INT-0031,CAND-0013,POS-2601-001,KR,Technical/Panel,2026-03-27,陳冠宇,Sales,Taipei,Panel,Y,2026-03-31,4,4,0,19
+INT-0032,CAND-0013,POS-2601-001,KR,Onsite Loop,2026-04-04,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-07,3,4,0,11
+INT-0033,CAND-0013,POS-2601-001,KR,Onsite Loop,2026-04-04,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-11,7,3,0,11
+INT-0034,CAND-0013,POS-2601-001,KR,Onsite Loop,2026-04-04,박준호,Engineering,Seoul,Panel,N,,,,3,11
+INT-0035,CAND-0013,POS-2601-001,KR,Exec Interview,2026-04-11,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-15,4,4,0,4
+INT-0036,CAND-0014,POS-2601-001,KR,HM Interview,2026-03-16,Danny Lee,Marketing,Seoul,HM,Y,2026-03-16,0,3,0,30
+INT-0037,CAND-0014,POS-2601-001,KR,Technical/Panel,2026-04-05,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-10,5,2,0,10
+INT-0038,CAND-0014,POS-2601-001,KR,Technical/Panel,2026-04-05,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-06,1,2,0,10
+INT-0039,CAND-0018,POS-2601-001,KR,HM Interview,2026-01-31,Danny Lee,Marketing,Seoul,HM,Y,2026-02-02,2,3,0,74
+INT-0040,CAND-0018,POS-2601-001,KR,Technical/Panel,2026-02-21,陳冠宇,Sales,Taipei,Panel,Y,2026-02-22,1,5,0,53
+INT-0041,CAND-0018,POS-2601-001,KR,Technical/Panel,2026-02-21,서지현,Marketing,Seoul,Panel,Y,2026-02-22,1,5,0,53
+INT-0042,CAND-0018,POS-2601-001,KR,Onsite Loop,2026-03-14,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-16,2,4,0,32
+INT-0043,CAND-0018,POS-2601-001,KR,Onsite Loop,2026-03-14,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-18,4,4,0,32
+INT-0044,CAND-0018,POS-2601-001,KR,Onsite Loop,2026-03-14,서지현,Marketing,Seoul,Panel,Y,2026-03-16,2,5,0,32
+INT-0045,CAND-0018,POS-2601-001,KR,Exec Interview,2026-04-04,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,11
+INT-0046,CAND-0019,POS-2601-001,KR,HM Interview,2026-04-04,Danny Lee,Marketing,Seoul,HM,Y,2026-04-04,0,3,0,11
+INT-0047,CAND-0020,POS-2601-001,KR,HM Interview,2026-02-07,Danny Lee,Marketing,Seoul,HM,Y,2026-02-08,1,4,0,67
+INT-0048,CAND-0020,POS-2601-001,KR,Technical/Panel,2026-02-26,陳冠宇,Sales,Taipei,Panel,Y,2026-02-28,2,4,0,48
+INT-0049,CAND-0020,POS-2601-001,KR,Technical/Panel,2026-02-26,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-01,3,3,0,48
+INT-0050,CAND-0020,POS-2601-001,KR,Onsite Loop,2026-03-17,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,3,29
+INT-0051,CAND-0020,POS-2601-001,KR,Onsite Loop,2026-03-17,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-22,5,5,0,29
+INT-0052,CAND-0020,POS-2601-001,KR,Onsite Loop,2026-03-17,陳冠宇,Sales,Taipei,Panel,Y,2026-03-18,1,5,0,29
+INT-0053,CAND-0020,POS-2601-001,KR,Exec Interview,2026-04-05,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-06,1,5,0,10
+INT-0054,CAND-0021,POS-2601-001,KR,HM Interview,2026-03-10,Danny Lee,Marketing,Seoul,HM,Y,2026-03-11,1,5,0,36
+INT-0055,CAND-0021,POS-2601-001,KR,Technical/Panel,2026-03-20,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-24,4,4,0,26
+INT-0056,CAND-0021,POS-2601-001,KR,Technical/Panel,2026-03-20,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-30,10,4,0,26
+INT-0057,CAND-0021,POS-2601-001,KR,Onsite Loop,2026-03-30,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-02,3,4,0,16
+INT-0058,CAND-0021,POS-2601-001,KR,Onsite Loop,2026-03-30,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-03,4,4,0,16
+INT-0059,CAND-0021,POS-2601-001,KR,Onsite Loop,2026-03-30,박준호,Engineering,Seoul,Panel,Y,2026-03-31,1,5,0,16
+INT-0060,CAND-0021,POS-2601-001,KR,Exec Interview,2026-04-09,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-12,3,3,0,6
+INT-0061,CAND-0022,POS-2601-001,KR,HM Interview,2026-02-16,Danny Lee,Marketing,Seoul,HM,Y,2026-02-18,2,4,0,58
+INT-0062,CAND-0022,POS-2601-001,KR,Technical/Panel,2026-03-11,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-18,7,3,0,35
+INT-0063,CAND-0022,POS-2601-001,KR,Technical/Panel,2026-03-11,서지현,Marketing,Seoul,Panel,Y,2026-03-12,1,3,0,35
+INT-0064,CAND-0022,POS-2601-001,KR,Onsite Loop,2026-04-03,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-07,4,3,0,12
+INT-0065,CAND-0022,POS-2601-001,KR,Onsite Loop,2026-04-03,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-08,5,3,0,12
+INT-0066,CAND-0022,POS-2601-001,KR,Onsite Loop,2026-04-03,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-05,2,3,0,12
+INT-0067,CAND-0023,POS-2601-001,KR,HM Interview,2026-03-24,Danny Lee,Marketing,Seoul,HM,Y,2026-03-26,2,4,0,22
+INT-0068,CAND-0023,POS-2601-001,KR,Technical/Panel,2026-03-30,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-02,3,3,0,16
+INT-0069,CAND-0023,POS-2601-001,KR,Technical/Panel,2026-03-30,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-03,4,4,0,16
+INT-0070,CAND-0023,POS-2601-001,KR,Onsite Loop,2026-04-05,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-09,4,4,0,10
+INT-0071,CAND-0023,POS-2601-001,KR,Onsite Loop,2026-04-05,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,10
+INT-0072,CAND-0023,POS-2601-001,KR,Onsite Loop,2026-04-05,陳冠宇,Sales,Taipei,Panel,Y,2026-04-06,1,3,0,10
+INT-0073,CAND-0023,POS-2601-001,KR,Exec Interview,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,2,4
+INT-0074,CAND-0024,POS-2601-001,KR,HM Interview,2026-03-13,Danny Lee,Marketing,Seoul,HM,Y,2026-03-14,1,1,0,33
+INT-0075,CAND-0024,POS-2601-001,KR,Technical/Panel,2026-03-26,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-05,10,2,0,20
+INT-0076,CAND-0024,POS-2601-001,KR,Technical/Panel,2026-03-26,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-30,4,2,0,20
+INT-0077,CAND-0024,POS-2601-001,KR,Onsite Loop,2026-04-08,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-09,1,3,0,7
+INT-0078,CAND-0024,POS-2601-001,KR,Onsite Loop,2026-04-08,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-10,2,2,0,7
+INT-0079,CAND-0024,POS-2601-001,KR,Onsite Loop,2026-04-08,박준호,Engineering,Seoul,Panel,Y,2026-04-09,1,2,0,7
+INT-0080,CAND-0028,POS-2601-001,KR,HM Interview,2026-03-29,Danny Lee,Marketing,Seoul,HM,Y,2026-03-29,0,2,0,17
+INT-0081,CAND-0028,POS-2601-001,KR,Technical/Panel,2026-04-05,박준호,Engineering,Seoul,Panel,Y,2026-04-05,0,4,0,10
+INT-0082,CAND-0028,POS-2601-001,KR,Technical/Panel,2026-04-05,서지현,Marketing,Seoul,Panel,Y,2026-04-09,4,2,0,10
+INT-0083,CAND-0028,POS-2601-001,KR,Onsite Loop,2026-04-11,David Nguyen,Engineering,San Francisco,Panel,N,,,,2,4
+INT-0084,CAND-0028,POS-2601-001,KR,Onsite Loop,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-13,2,4,0,4
+INT-0085,CAND-0028,POS-2601-001,KR,Onsite Loop,2026-04-11,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-14,3,2,0,4
+INT-0086,CAND-0029,POS-2601-001,KR,HM Interview,2026-03-30,Danny Lee,Marketing,Seoul,HM,Y,2026-04-01,2,3,0,16
+INT-0087,CAND-0030,POS-2601-001,KR,HM Interview,2026-02-19,Danny Lee,Marketing,Seoul,HM,Y,2026-02-20,1,3,0,55
+INT-0088,CAND-0030,POS-2601-001,KR,Technical/Panel,2026-03-07,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-08,1,3,0,39
+INT-0089,CAND-0030,POS-2601-001,KR,Technical/Panel,2026-03-07,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-08,1,3,0,39
+INT-0090,CAND-0030,POS-2601-001,KR,Onsite Loop,2026-03-22,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-01,10,3,0,24
+INT-0091,CAND-0030,POS-2601-001,KR,Onsite Loop,2026-03-22,Priya Shah,Engineering,San Francisco,Panel,N,,,,3,24
+INT-0092,CAND-0030,POS-2601-001,KR,Onsite Loop,2026-03-22,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-22,0,4,0,24
+INT-0093,CAND-0030,POS-2601-001,KR,Exec Interview,2026-04-07,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,8
+INT-0094,CAND-0032,POS-2601-001,KR,HM Interview,2026-03-24,Danny Lee,Marketing,Seoul,HM,Y,2026-03-24,0,4,0,22
+INT-0095,CAND-0033,POS-2601-001,KR,HM Interview,2026-03-24,Danny Lee,Marketing,Seoul,HM,Y,2026-03-25,1,1,0,22
+INT-0096,CAND-0036,POS-2601-002,KR,HM Interview,2026-02-21,Jin Park,Design,Seoul,HM,Y,2026-02-21,0,4,0,53
+INT-0097,CAND-0036,POS-2601-002,KR,Technical/Panel,2026-03-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-10,2,5,0,38
+INT-0098,CAND-0036,POS-2601-002,KR,Technical/Panel,2026-03-08,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-12,4,4,0,38
+INT-0099,CAND-0036,POS-2601-002,KR,Onsite Loop,2026-03-23,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-24,1,5,0,23
+INT-0100,CAND-0036,POS-2601-002,KR,Onsite Loop,2026-03-23,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-28,5,4,0,23
+INT-0101,CAND-0036,POS-2601-002,KR,Onsite Loop,2026-03-23,陳冠宇,Sales,Taipei,Panel,Y,2026-03-24,1,3,0,23
+INT-0102,CAND-0036,POS-2601-002,KR,Exec Interview,2026-04-07,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-10,3,4,0,8
+INT-0103,CAND-0038,POS-2601-002,KR,HM Interview,2026-03-15,Jin Park,Design,Seoul,HM,Y,2026-03-16,1,2,0,31
+INT-0104,CAND-0038,POS-2601-002,KR,Technical/Panel,2026-04-04,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,5,3,0,11
+INT-0105,CAND-0038,POS-2601-002,KR,Technical/Panel,2026-04-04,서지현,Marketing,Seoul,Panel,Y,2026-04-04,0,2,0,11
+INT-0106,CAND-0041,POS-2601-002,KR,HM Interview,2026-04-11,Jin Park,Design,Seoul,HM,Y,2026-04-14,3,3,0,4
+INT-0107,CAND-0044,POS-2601-002,KR,HM Interview,2026-04-08,Jin Park,Design,Seoul,HM,Y,2026-04-12,4,3,0,7
+INT-0108,CAND-0044,POS-2601-002,KR,Technical/Panel,2026-04-11,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,4,4,0,4
+INT-0109,CAND-0044,POS-2601-002,KR,Technical/Panel,2026-04-11,박준호,Engineering,Seoul,Panel,Y,2026-04-12,1,2,0,4
+INT-0110,CAND-0044,POS-2601-002,KR,Onsite Loop,2026-04-13,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-15,2,3,0,2
+INT-0111,CAND-0044,POS-2601-002,KR,Onsite Loop,2026-04-13,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-15,2,4,0,2
+INT-0112,CAND-0044,POS-2601-002,KR,Onsite Loop,2026-04-13,서지현,Marketing,Seoul,Panel,Y,2026-04-14,1,2,0,2
+INT-0113,CAND-0045,POS-2601-002,KR,HM Interview,2026-04-12,Jin Park,Design,Seoul,HM,Y,2026-04-13,1,1,0,3
+INT-0114,CAND-0046,POS-2601-002,KR,HM Interview,2026-03-11,Jin Park,Design,Seoul,HM,Y,2026-03-15,4,3,0,35
+INT-0115,CAND-0046,POS-2601-002,KR,Technical/Panel,2026-04-03,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-06,3,4,0,12
+INT-0116,CAND-0046,POS-2601-002,KR,Technical/Panel,2026-04-03,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-06,3,4,0,12
+INT-0117,CAND-0047,POS-2601-002,KR,HM Interview,2026-03-01,Jin Park,Design,Seoul,HM,Y,2026-03-03,2,4,0,45
+INT-0118,CAND-0047,POS-2601-002,KR,Technical/Panel,2026-03-14,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-15,1,3,0,32
+INT-0119,CAND-0047,POS-2601-002,KR,Technical/Panel,2026-03-14,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-19,5,3,0,32
+INT-0120,CAND-0047,POS-2601-002,KR,Onsite Loop,2026-03-27,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-03-28,1,2,0,19
+INT-0121,CAND-0047,POS-2601-002,KR,Onsite Loop,2026-03-27,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-31,4,3,0,19
+INT-0122,CAND-0047,POS-2601-002,KR,Onsite Loop,2026-03-27,陳冠宇,Sales,Taipei,Panel,N,,,,3,19
+INT-0123,CAND-0047,POS-2601-002,KR,Exec Interview,2026-04-08,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,7
+INT-0124,CAND-0050,POS-2601-002,KR,HM Interview,2026-03-25,Jin Park,Design,Seoul,HM,Y,2026-03-25,0,2,0,21
+INT-0125,CAND-0051,POS-2601-002,KR,HM Interview,2026-03-19,Jin Park,Design,Seoul,HM,Y,2026-03-20,1,4,0,27
+INT-0126,CAND-0051,POS-2601-002,KR,Technical/Panel,2026-03-30,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-06,7,3,0,16
+INT-0127,CAND-0051,POS-2601-002,KR,Technical/Panel,2026-03-30,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-30,0,3,0,16
+INT-0128,CAND-0051,POS-2601-002,KR,Onsite Loop,2026-04-09,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-11,2,3,0,6
+INT-0129,CAND-0051,POS-2601-002,KR,Onsite Loop,2026-04-09,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,4,4,0,6
+INT-0130,CAND-0051,POS-2601-002,KR,Onsite Loop,2026-04-09,박준호,Engineering,Seoul,Panel,N,,,,3,6
+INT-0131,CAND-0052,POS-2601-002,KR,HM Interview,2026-03-08,Jin Park,Design,Seoul,HM,Y,2026-03-11,3,2,0,38
+INT-0132,CAND-0052,POS-2601-002,KR,Technical/Panel,2026-04-02,박준호,Engineering,Seoul,Panel,Y,2026-04-04,2,3,0,13
+INT-0133,CAND-0052,POS-2601-002,KR,Technical/Panel,2026-04-02,서지현,Marketing,Seoul,Panel,Y,2026-04-02,0,1,0,13
+INT-0134,CAND-0053,POS-2601-002,KR,HM Interview,2026-03-03,Jin Park,Design,Seoul,HM,Y,2026-03-06,3,4,0,43
+INT-0135,CAND-0053,POS-2601-002,KR,Technical/Panel,2026-03-20,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-22,2,4,0,26
+INT-0136,CAND-0053,POS-2601-002,KR,Technical/Panel,2026-03-20,서지현,Marketing,Seoul,Panel,Y,2026-03-21,1,3,0,26
+INT-0137,CAND-0053,POS-2601-002,KR,Onsite Loop,2026-04-06,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,3,3,0,9
+INT-0138,CAND-0053,POS-2601-002,KR,Onsite Loop,2026-04-06,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-11,5,3,0,9
+INT-0139,CAND-0053,POS-2601-002,KR,Onsite Loop,2026-04-06,박준호,Engineering,Seoul,Panel,Y,2026-04-08,2,4,0,9
+INT-0140,CAND-0054,POS-2601-002,KR,HM Interview,2026-03-06,Jin Park,Design,Seoul,HM,Y,2026-03-07,1,3,0,40
+INT-0141,CAND-0054,POS-2601-002,KR,Technical/Panel,2026-03-17,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-24,7,2,0,29
+INT-0142,CAND-0054,POS-2601-002,KR,Technical/Panel,2026-03-17,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-18,1,3,0,29
+INT-0143,CAND-0054,POS-2601-002,KR,Onsite Loop,2026-03-29,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-31,2,2,0,17
+INT-0144,CAND-0054,POS-2601-002,KR,Onsite Loop,2026-03-29,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-01,3,3,0,17
+INT-0145,CAND-0054,POS-2601-002,KR,Onsite Loop,2026-03-29,서지현,Marketing,Seoul,Panel,Y,2026-03-30,1,3,0,17
+INT-0146,CAND-0054,POS-2601-002,KR,Exec Interview,2026-04-09,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-11,2,4,0,6
+INT-0147,CAND-0056,POS-2601-002,KR,HM Interview,2026-03-27,Jin Park,Design,Seoul,HM,Y,2026-03-28,1,3,0,19
+INT-0148,CAND-0056,POS-2601-002,KR,Technical/Panel,2026-04-01,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-04,3,4,0,14
+INT-0149,CAND-0056,POS-2601-002,KR,Technical/Panel,2026-04-01,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-04,3,4,0,14
+INT-0150,CAND-0056,POS-2601-002,KR,Onsite Loop,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-11,4,3,0,8
+INT-0151,CAND-0056,POS-2601-002,KR,Onsite Loop,2026-04-07,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,2,4,0,8
+INT-0152,CAND-0056,POS-2601-002,KR,Onsite Loop,2026-04-07,서지현,Marketing,Seoul,Panel,Y,2026-04-07,0,5,0,8
+INT-0153,CAND-0056,POS-2601-002,KR,Exec Interview,2026-04-12,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,1,3
+INT-0154,CAND-0058,POS-2601-002,KR,HM Interview,2026-02-09,Jin Park,Design,Seoul,HM,Y,2026-02-10,1,4,0,65
+INT-0155,CAND-0058,POS-2601-002,KR,Technical/Panel,2026-02-27,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-02,3,4,0,47
+INT-0156,CAND-0058,POS-2601-002,KR,Technical/Panel,2026-02-27,박준호,Engineering,Seoul,Panel,Y,2026-03-01,2,3,0,47
+INT-0157,CAND-0058,POS-2601-002,KR,Onsite Loop,2026-03-18,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,28
+INT-0158,CAND-0058,POS-2601-002,KR,Onsite Loop,2026-03-18,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-21,3,4,0,28
+INT-0159,CAND-0058,POS-2601-002,KR,Onsite Loop,2026-03-18,서지현,Marketing,Seoul,Panel,Y,2026-03-19,1,4,0,28
+INT-0160,CAND-0058,POS-2601-002,KR,Exec Interview,2026-04-05,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-08,3,5,0,10
+INT-0161,CAND-0059,POS-2601-002,KR,HM Interview,2026-03-19,Jin Park,Design,Seoul,HM,Y,2026-03-20,1,3,0,27
+INT-0162,CAND-0059,POS-2601-002,KR,Technical/Panel,2026-04-06,陳冠宇,Sales,Taipei,Panel,Y,2026-04-08,2,3,0,9
+INT-0163,CAND-0059,POS-2601-002,KR,Technical/Panel,2026-04-06,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-06,0,4,0,9
+INT-0164,CAND-0060,POS-2601-002,KR,HM Interview,2026-03-17,Jin Park,Design,Seoul,HM,Y,2026-03-18,1,3,0,29
+INT-0165,CAND-0063,POS-2601-002,KR,HM Interview,2026-02-08,Jin Park,Design,Seoul,HM,N,,,,3,66
+INT-0166,CAND-0063,POS-2601-002,KR,Technical/Panel,2026-02-27,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-04,5,5,0,47
+INT-0167,CAND-0063,POS-2601-002,KR,Technical/Panel,2026-02-27,Haruto Saito,BD,Tokyo,Panel,Y,2026-02-28,1,4,0,47
+INT-0168,CAND-0063,POS-2601-002,KR,Onsite Loop,2026-03-18,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-19,1,5,0,28
+INT-0169,CAND-0063,POS-2601-002,KR,Onsite Loop,2026-03-18,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,3,28
+INT-0170,CAND-0063,POS-2601-002,KR,Onsite Loop,2026-03-18,박준호,Engineering,Seoul,Panel,Y,2026-03-20,2,4,0,28
+INT-0171,CAND-0063,POS-2601-002,KR,Exec Interview,2026-04-05,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-09,4,4,0,10
+INT-0172,CAND-0064,POS-2601-002,KR,HM Interview,2026-02-11,Jin Park,Design,Seoul,HM,Y,2026-02-12,1,3,0,63
+INT-0173,CAND-0064,POS-2601-002,KR,Technical/Panel,2026-03-08,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-15,7,4,0,38
+INT-0174,CAND-0064,POS-2601-002,KR,Technical/Panel,2026-03-08,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-13,5,3,0,38
+INT-0175,CAND-0064,POS-2601-002,KR,Onsite Loop,2026-04-02,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-04,2,4,0,13
+INT-0176,CAND-0064,POS-2601-002,KR,Onsite Loop,2026-04-02,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-04,2,3,0,13
+INT-0177,CAND-0064,POS-2601-002,KR,Onsite Loop,2026-04-02,박준호,Engineering,Seoul,Panel,Y,2026-04-03,1,3,0,13
+INT-0178,CAND-0066,POS-2601-002,KR,HM Interview,2026-03-26,Jin Park,Design,Seoul,HM,Y,2026-03-27,1,4,0,20
+INT-0179,CAND-0066,POS-2601-002,KR,Technical/Panel,2026-04-08,Marcus Johnson,Product,San Francisco,Panel,N,,,,3,7
+INT-0180,CAND-0066,POS-2601-002,KR,Technical/Panel,2026-04-08,陳冠宇,Sales,Taipei,Panel,Y,2026-04-10,2,3,0,7
+INT-0181,CAND-0067,POS-2601-002,KR,HM Interview,2026-03-21,Jin Park,Design,Seoul,HM,Y,2026-03-22,1,2,0,25
+INT-0182,CAND-0067,POS-2601-002,KR,Technical/Panel,2026-03-31,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-01,1,3,0,15
+INT-0183,CAND-0067,POS-2601-002,KR,Technical/Panel,2026-03-31,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-02,2,4,0,15
+INT-0184,CAND-0067,POS-2601-002,KR,Onsite Loop,2026-04-10,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-12,2,4,0,5
+INT-0185,CAND-0067,POS-2601-002,KR,Onsite Loop,2026-04-10,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-11,1,4,0,5
+INT-0186,CAND-0067,POS-2601-002,KR,Onsite Loop,2026-04-10,박준호,Engineering,Seoul,Panel,Y,2026-04-10,0,3,0,5
+INT-0187,CAND-0068,POS-2601-002,KR,HM Interview,2026-04-04,Jin Park,Design,Seoul,HM,Y,2026-04-06,2,3,0,11
+INT-0188,CAND-0068,POS-2601-002,KR,Technical/Panel,2026-04-11,서지현,Marketing,Seoul,Panel,Y,2026-04-15,4,3,0,4
+INT-0189,CAND-0068,POS-2601-002,KR,Technical/Panel,2026-04-11,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-13,2,2,0,4
+INT-0190,CAND-0070,POS-2601-002,KR,HM Interview,2026-04-12,Jin Park,Design,Seoul,HM,Y,2026-04-15,3,2,0,3
+INT-0191,CAND-0071,POS-2602-003,JP,HM Interview,2026-03-02,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-04,2,4,0,44
+INT-0192,CAND-0071,POS-2602-003,JP,Technical/Panel,2026-03-14,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-15,1,5,0,32
+INT-0193,CAND-0071,POS-2602-003,JP,Technical/Panel,2026-03-14,박준호,Engineering,Seoul,Panel,Y,2026-03-15,1,3,0,32
+INT-0194,CAND-0071,POS-2602-003,JP,Onsite Loop,2026-03-27,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-30,3,5,0,19
+INT-0195,CAND-0071,POS-2602-003,JP,Onsite Loop,2026-03-27,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-28,1,4,0,19
+INT-0196,CAND-0071,POS-2602-003,JP,Onsite Loop,2026-03-27,박준호,Engineering,Seoul,Panel,Y,2026-03-29,2,5,0,19
+INT-0197,CAND-0071,POS-2602-003,JP,Exec Interview,2026-04-08,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,5,5,0,7
+INT-0198,CAND-0074,POS-2602-003,JP,HM Interview,2026-02-19,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-02-20,1,3,0,55
+INT-0199,CAND-0074,POS-2602-003,JP,Technical/Panel,2026-03-07,陳冠宇,Sales,Taipei,Panel,Y,2026-03-08,1,3,0,39
+INT-0200,CAND-0074,POS-2602-003,JP,Technical/Panel,2026-03-07,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-10,3,3,0,39
+INT-0201,CAND-0074,POS-2602-003,JP,Onsite Loop,2026-03-22,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-27,5,4,0,24
+INT-0202,CAND-0074,POS-2602-003,JP,Onsite Loop,2026-03-22,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,3,24
+INT-0203,CAND-0074,POS-2602-003,JP,Onsite Loop,2026-03-22,陳冠宇,Sales,Taipei,Panel,Y,2026-03-24,2,3,0,24
+INT-0204,CAND-0074,POS-2602-003,JP,Exec Interview,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-14,7,3,0,8
+INT-0205,CAND-0076,POS-2602-003,JP,HM Interview,2026-03-12,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-15,3,4,0,34
+INT-0206,CAND-0076,POS-2602-003,JP,Technical/Panel,2026-03-22,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-27,5,3,0,24
+INT-0207,CAND-0076,POS-2602-003,JP,Technical/Panel,2026-03-22,Marcus Johnson,Product,San Francisco,Panel,N,,,,3,24
+INT-0208,CAND-0076,POS-2602-003,JP,Onsite Loop,2026-03-31,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-02,2,4,0,15
+INT-0209,CAND-0076,POS-2602-003,JP,Onsite Loop,2026-03-31,Priya Shah,Engineering,San Francisco,Panel,N,,,,3,15
+INT-0210,CAND-0076,POS-2602-003,JP,Onsite Loop,2026-03-31,박준호,Engineering,Seoul,Panel,Y,2026-04-01,1,3,0,15
+INT-0211,CAND-0076,POS-2602-003,JP,Exec Interview,2026-04-10,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-14,4,2,0,5
+INT-0212,CAND-0077,POS-2602-003,JP,HM Interview,2026-03-10,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-13,3,1,0,36
+INT-0213,CAND-0077,POS-2602-003,JP,Technical/Panel,2026-04-03,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-10,7,3,0,12
+INT-0214,CAND-0077,POS-2602-003,JP,Technical/Panel,2026-04-03,陳冠宇,Sales,Taipei,Panel,Y,2026-04-03,0,2,0,12
+INT-0215,CAND-0081,POS-2602-003,JP,HM Interview,2026-03-25,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-28,3,4,0,21
+INT-0216,CAND-0081,POS-2602-003,JP,Technical/Panel,2026-04-08,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-12,4,3,0,7
+INT-0217,CAND-0081,POS-2602-003,JP,Technical/Panel,2026-04-08,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-11,3,4,0,7
+INT-0218,CAND-0082,POS-2602-003,JP,HM Interview,2026-04-05,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-07,2,4,0,10
+INT-0219,CAND-0082,POS-2602-003,JP,Technical/Panel,2026-04-11,박준호,Engineering,Seoul,Panel,Y,2026-04-12,1,4,0,4
+INT-0220,CAND-0082,POS-2602-003,JP,Technical/Panel,2026-04-11,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-14,3,3,0,4
+INT-0221,CAND-0083,POS-2602-003,JP,HM Interview,2026-03-11,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-13,2,3,0,35
+INT-0222,CAND-0083,POS-2602-003,JP,Technical/Panel,2026-03-25,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-30,5,3,0,21
+INT-0223,CAND-0083,POS-2602-003,JP,Technical/Panel,2026-03-25,박준호,Engineering,Seoul,Panel,Y,2026-03-27,2,3,0,21
+INT-0224,CAND-0083,POS-2602-003,JP,Onsite Loop,2026-04-08,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,7
+INT-0225,CAND-0083,POS-2602-003,JP,Onsite Loop,2026-04-08,Elena Rossi,Design,San Francisco,Panel,N,,,,3,7
+INT-0226,CAND-0083,POS-2602-003,JP,Onsite Loop,2026-04-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-09,1,4,0,7
+INT-0227,CAND-0084,POS-2602-003,JP,HM Interview,2026-04-05,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-05,0,3,0,10
+INT-0228,CAND-0085,POS-2602-003,JP,HM Interview,2026-04-04,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-07,3,2,0,11
+INT-0229,CAND-0086,POS-2602-003,JP,HM Interview,2026-03-28,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-30,2,3,0,18
+INT-0230,CAND-0086,POS-2602-003,JP,Technical/Panel,2026-04-04,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-08,4,3,0,11
+INT-0231,CAND-0086,POS-2602-003,JP,Technical/Panel,2026-04-04,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,5,2,0,11
+INT-0232,CAND-0086,POS-2602-003,JP,Onsite Loop,2026-04-11,Marcus Johnson,Product,San Francisco,Panel,N,,,,2,4
+INT-0233,CAND-0086,POS-2602-003,JP,Onsite Loop,2026-04-11,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-14,3,3,0,4
+INT-0234,CAND-0086,POS-2602-003,JP,Onsite Loop,2026-04-11,박준호,Engineering,Seoul,Panel,Y,2026-04-12,1,4,0,4
+INT-0235,CAND-0088,POS-2602-003,JP,HM Interview,2026-03-05,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-05,0,3,0,41
+INT-0236,CAND-0088,POS-2602-003,JP,Technical/Panel,2026-03-21,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-23,2,2,0,25
+INT-0237,CAND-0088,POS-2602-003,JP,Technical/Panel,2026-03-21,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-28,7,3,0,25
+INT-0238,CAND-0088,POS-2602-003,JP,Onsite Loop,2026-04-06,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-15,9,4,0,9
+INT-0239,CAND-0088,POS-2602-003,JP,Onsite Loop,2026-04-06,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,3,3,0,9
+INT-0240,CAND-0088,POS-2602-003,JP,Onsite Loop,2026-04-06,서지현,Marketing,Seoul,Panel,Y,2026-04-07,1,2,0,9
+INT-0241,CAND-0092,POS-2602-003,JP,HM Interview,2026-04-07,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-07,0,3,0,8
+INT-0242,CAND-0093,POS-2602-003,JP,HM Interview,2026-03-08,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-09,1,3,0,38
+INT-0243,CAND-0093,POS-2602-003,JP,Technical/Panel,2026-03-23,서지현,Marketing,Seoul,Panel,Y,2026-03-24,1,3,0,23
+INT-0244,CAND-0093,POS-2602-003,JP,Technical/Panel,2026-03-23,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-24,1,2,0,23
+INT-0245,CAND-0093,POS-2602-003,JP,Onsite Loop,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-08,1,3,0,8
+INT-0246,CAND-0093,POS-2602-003,JP,Onsite Loop,2026-04-07,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-08,1,4,0,8
+INT-0247,CAND-0093,POS-2602-003,JP,Onsite Loop,2026-04-07,陳冠宇,Sales,Taipei,Panel,Y,2026-04-08,1,3,0,8
+INT-0248,CAND-0095,POS-2602-003,JP,HM Interview,2026-03-23,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-25,2,3,0,23
+INT-0249,CAND-0095,POS-2602-003,JP,Technical/Panel,2026-04-01,박준호,Engineering,Seoul,Panel,Y,2026-04-02,1,3,0,14
+INT-0250,CAND-0095,POS-2602-003,JP,Technical/Panel,2026-04-01,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-03,2,3,0,14
+INT-0251,CAND-0095,POS-2602-003,JP,Onsite Loop,2026-04-10,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,3,3,0,5
+INT-0252,CAND-0095,POS-2602-003,JP,Onsite Loop,2026-04-10,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,2,5
+INT-0253,CAND-0095,POS-2602-003,JP,Onsite Loop,2026-04-10,서지현,Marketing,Seoul,Panel,Y,2026-04-11,1,4,0,5
+INT-0254,CAND-0096,POS-2602-003,JP,HM Interview,2026-03-03,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-04,1,4,0,43
+INT-0255,CAND-0096,POS-2602-003,JP,Technical/Panel,2026-03-20,陳冠宇,Sales,Taipei,Panel,Y,2026-03-21,1,2,0,26
+INT-0256,CAND-0096,POS-2602-003,JP,Technical/Panel,2026-03-20,서지현,Marketing,Seoul,Panel,Y,2026-03-22,2,3,0,26
+INT-0257,CAND-0096,POS-2602-003,JP,Onsite Loop,2026-04-06,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-11,5,3,0,9
+INT-0258,CAND-0096,POS-2602-003,JP,Onsite Loop,2026-04-06,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,9
+INT-0259,CAND-0096,POS-2602-003,JP,Onsite Loop,2026-04-06,박준호,Engineering,Seoul,Panel,N,,,,3,9
+INT-0260,CAND-0098,POS-2602-003,JP,HM Interview,2026-04-12,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-13,1,3,0,3
+INT-0261,CAND-0099,POS-2602-003,JP,HM Interview,2026-03-21,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-24,3,2,0,25
+INT-0262,CAND-0099,POS-2602-003,JP,Technical/Panel,2026-03-31,서지현,Marketing,Seoul,Panel,Y,2026-04-03,3,2,0,15
+INT-0263,CAND-0099,POS-2602-003,JP,Technical/Panel,2026-03-31,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-03,3,3,0,15
+INT-0264,CAND-0099,POS-2602-003,JP,Onsite Loop,2026-04-10,Priya Shah,Engineering,San Francisco,Panel,N,,,,2,5
+INT-0265,CAND-0099,POS-2602-003,JP,Onsite Loop,2026-04-10,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,5,3,0,5
+INT-0266,CAND-0099,POS-2602-003,JP,Onsite Loop,2026-04-10,陳冠宇,Sales,Taipei,Panel,Y,2026-04-10,0,2,0,5
+INT-0267,CAND-0100,POS-2602-003,JP,HM Interview,2026-04-04,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-06,2,4,0,11
+INT-0268,CAND-0101,POS-2602-003,JP,HM Interview,2026-04-08,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-08,0,3,0,7
+INT-0269,CAND-0102,POS-2602-003,JP,HM Interview,2026-03-15,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-18,3,3,0,31
+INT-0270,CAND-0102,POS-2602-003,JP,Technical/Panel,2026-03-27,陳冠宇,Sales,Taipei,Panel,Y,2026-03-27,0,3,0,19
+INT-0271,CAND-0102,POS-2602-003,JP,Technical/Panel,2026-03-27,서지현,Marketing,Seoul,Panel,Y,2026-03-29,2,3,0,19
+INT-0272,CAND-0102,POS-2602-003,JP,Onsite Loop,2026-04-08,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-09,1,3,0,7
+INT-0273,CAND-0102,POS-2602-003,JP,Onsite Loop,2026-04-08,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-11,3,3,0,7
+INT-0274,CAND-0102,POS-2602-003,JP,Onsite Loop,2026-04-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-09,1,4,0,7
+INT-0275,CAND-0104,POS-2602-003,JP,HM Interview,2026-04-10,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-14,4,1,0,5
+INT-0276,CAND-0104,POS-2602-003,JP,Technical/Panel,2026-04-12,서지현,Marketing,Seoul,Panel,Y,2026-04-15,3,2,0,3
+INT-0277,CAND-0104,POS-2602-003,JP,Technical/Panel,2026-04-12,박준호,Engineering,Seoul,Panel,Y,2026-04-14,2,1,0,3
+INT-0278,CAND-0104,POS-2602-003,JP,Onsite Loop,2026-04-14,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,0,1
+INT-0279,CAND-0104,POS-2602-003,JP,Onsite Loop,2026-04-14,Marcus Johnson,Product,San Francisco,Panel,N,,,,0,1
+INT-0280,CAND-0104,POS-2602-003,JP,Onsite Loop,2026-04-14,陳冠宇,Sales,Taipei,Panel,N,,,,0,1
+INT-0281,CAND-0105,POS-2602-003,JP,HM Interview,2026-03-05,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-05,0,4,0,41
+INT-0282,CAND-0105,POS-2602-003,JP,Technical/Panel,2026-03-21,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-22,1,3,0,25
+INT-0283,CAND-0105,POS-2602-003,JP,Technical/Panel,2026-03-21,Marcus Johnson,Product,San Francisco,Panel,Y,2026-03-28,7,3,0,25
+INT-0284,CAND-0105,POS-2602-003,JP,Onsite Loop,2026-04-06,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,7,4,0,9
+INT-0285,CAND-0105,POS-2602-003,JP,Onsite Loop,2026-04-06,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-11,5,3,0,9
+INT-0286,CAND-0105,POS-2602-003,JP,Onsite Loop,2026-04-06,서지현,Marketing,Seoul,Panel,Y,2026-04-06,0,2,0,9
+INT-0287,CAND-0106,POS-2602-004,TW,HM Interview,2026-03-11,Wei Chen,CX,Taipei,HM,Y,2026-03-12,1,4,0,35
+INT-0288,CAND-0106,POS-2602-004,TW,Technical/Panel,2026-04-03,陳冠宇,Sales,Taipei,Panel,Y,2026-04-04,1,4,0,12
+INT-0289,CAND-0106,POS-2602-004,TW,Technical/Panel,2026-04-03,서지현,Marketing,Seoul,Panel,Y,2026-04-06,3,2,0,12
+INT-0290,CAND-0108,POS-2602-004,TW,HM Interview,2026-03-18,Wei Chen,CX,Taipei,HM,Y,2026-03-18,0,3,0,28
+INT-0291,CAND-0108,POS-2602-004,TW,Technical/Panel,2026-03-29,David Nguyen,Engineering,San Francisco,Panel,Y,2026-03-31,2,3,0,17
+INT-0292,CAND-0108,POS-2602-004,TW,Technical/Panel,2026-03-29,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-30,1,4,0,17
+INT-0293,CAND-0108,POS-2602-004,TW,Onsite Loop,2026-04-09,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,6
+INT-0294,CAND-0108,POS-2602-004,TW,Onsite Loop,2026-04-09,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,4,2,0,6
+INT-0295,CAND-0108,POS-2602-004,TW,Onsite Loop,2026-04-09,陳冠宇,Sales,Taipei,Panel,Y,2026-04-11,2,3,0,6
+INT-0296,CAND-0109,POS-2602-004,TW,HM Interview,2026-03-29,Wei Chen,CX,Taipei,HM,Y,2026-03-30,1,3,0,17
+INT-0297,CAND-0109,POS-2602-004,TW,Technical/Panel,2026-04-09,박준호,Engineering,Seoul,Panel,Y,2026-04-10,1,3,0,6
+INT-0298,CAND-0109,POS-2602-004,TW,Technical/Panel,2026-04-09,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,6
+INT-0299,CAND-0115,POS-2602-004,TW,HM Interview,2026-03-07,Wei Chen,CX,Taipei,HM,Y,2026-03-07,0,5,0,39
+INT-0300,CAND-0115,POS-2602-004,TW,Technical/Panel,2026-03-18,박준호,Engineering,Seoul,Panel,Y,2026-03-20,2,4,0,28
+INT-0301,CAND-0115,POS-2602-004,TW,Technical/Panel,2026-03-18,서지현,Marketing,Seoul,Panel,Y,2026-03-18,0,5,0,28
+INT-0302,CAND-0115,POS-2602-004,TW,Onsite Loop,2026-03-29,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-03,5,5,0,17
+INT-0303,CAND-0115,POS-2602-004,TW,Onsite Loop,2026-03-29,Priya Shah,Engineering,San Francisco,Panel,Y,2026-03-31,2,5,0,17
+INT-0304,CAND-0115,POS-2602-004,TW,Onsite Loop,2026-03-29,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-31,2,5,0,17
+INT-0305,CAND-0115,POS-2602-004,TW,Exec Interview,2026-04-09,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-13,4,5,0,6
+INT-0306,CAND-0117,POS-2602-004,TW,HM Interview,2026-03-25,Wei Chen,CX,Taipei,HM,Y,2026-03-26,1,5,0,21
+INT-0307,CAND-0117,POS-2602-004,TW,Technical/Panel,2026-03-31,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-01,1,5,0,15
+INT-0308,CAND-0117,POS-2602-004,TW,Technical/Panel,2026-03-31,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-03,3,5,0,15
+INT-0309,CAND-0117,POS-2602-004,TW,Onsite Loop,2026-04-06,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,9
+INT-0310,CAND-0117,POS-2602-004,TW,Onsite Loop,2026-04-06,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-10,4,5,0,9
+INT-0311,CAND-0117,POS-2602-004,TW,Onsite Loop,2026-04-06,陳冠宇,Sales,Taipei,Panel,Y,2026-04-09,3,4,0,9
+INT-0312,CAND-0117,POS-2602-004,TW,Exec Interview,2026-04-12,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-15,3,5,0,3
+INT-0313,CAND-0118,POS-2602-004,TW,HM Interview,2026-03-08,Wei Chen,CX,Taipei,HM,Y,2026-03-08,0,3,0,38
+INT-0314,CAND-0118,POS-2602-004,TW,Technical/Panel,2026-03-23,박준호,Engineering,Seoul,Panel,Y,2026-03-24,1,4,0,23
+INT-0315,CAND-0118,POS-2602-004,TW,Technical/Panel,2026-03-23,陳冠宇,Sales,Taipei,Panel,Y,2026-03-25,2,3,0,23
+INT-0316,CAND-0118,POS-2602-004,TW,Onsite Loop,2026-04-07,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-09,2,2,0,8
+INT-0317,CAND-0118,POS-2602-004,TW,Onsite Loop,2026-04-07,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-11,4,3,0,8
+INT-0318,CAND-0118,POS-2602-004,TW,Onsite Loop,2026-04-07,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-07,0,2,0,8
+INT-0319,CAND-0119,POS-2602-004,TW,HM Interview,2026-04-08,Wei Chen,CX,Taipei,HM,Y,2026-04-09,1,2,0,7
+INT-0320,CAND-0122,POS-2602-004,TW,HM Interview,2026-04-07,Wei Chen,CX,Taipei,HM,Y,2026-04-07,0,3,0,8
+INT-0321,CAND-0123,POS-2602-004,TW,HM Interview,2026-03-06,Wei Chen,CX,Taipei,HM,Y,2026-03-10,4,2,0,40
+INT-0322,CAND-0123,POS-2602-004,TW,Technical/Panel,2026-03-17,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-20,3,4,0,29
+INT-0323,CAND-0123,POS-2602-004,TW,Technical/Panel,2026-03-17,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-17,0,3,0,29
+INT-0324,CAND-0123,POS-2602-004,TW,Onsite Loop,2026-03-29,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-03,5,2,0,17
+INT-0325,CAND-0123,POS-2602-004,TW,Onsite Loop,2026-03-29,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-02,4,3,0,17
+INT-0326,CAND-0123,POS-2602-004,TW,Onsite Loop,2026-03-29,박준호,Engineering,Seoul,Panel,N,,,,3,17
+INT-0327,CAND-0123,POS-2602-004,TW,Exec Interview,2026-04-09,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-13,4,4,0,6
+INT-0328,CAND-0124,POS-2602-004,TW,HM Interview,2026-04-08,Wei Chen,CX,Taipei,HM,Y,2026-04-10,2,3,0,7
+INT-0329,CAND-0125,POS-2602-004,TW,HM Interview,2026-03-30,Wei Chen,CX,Taipei,HM,Y,2026-04-01,2,1,0,16
+INT-0330,CAND-0126,POS-2602-005,KR,HM Interview,2026-04-08,Minho Kim,Engineering,Seoul,HM,Y,2026-04-09,1,2,0,7
+INT-0331,CAND-0127,POS-2602-005,KR,HM Interview,2026-03-29,Minho Kim,Engineering,Seoul,HM,Y,2026-03-29,0,4,0,17
+INT-0332,CAND-0128,POS-2602-005,KR,HM Interview,2026-03-14,Minho Kim,Engineering,Seoul,HM,Y,2026-03-15,1,3,0,32
+INT-0333,CAND-0128,POS-2602-005,KR,Technical/Panel,2026-03-23,박준호,Engineering,Seoul,Panel,Y,2026-03-27,4,3,0,23
+INT-0334,CAND-0128,POS-2602-005,KR,Technical/Panel,2026-03-23,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,23
+INT-0335,CAND-0128,POS-2602-005,KR,Onsite Loop,2026-04-01,Priya Shah,Engineering,San Francisco,Panel,N,,,,3,14
+INT-0336,CAND-0128,POS-2602-005,KR,Onsite Loop,2026-04-01,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,3,14
+INT-0337,CAND-0128,POS-2602-005,KR,Onsite Loop,2026-04-01,박준호,Engineering,Seoul,Panel,Y,2026-04-01,0,4,0,14
+INT-0338,CAND-0128,POS-2602-005,KR,Exec Interview,2026-04-10,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-11,1,3,0,5
+INT-0339,CAND-0131,POS-2602-005,KR,HM Interview,2026-03-08,Minho Kim,Engineering,Seoul,HM,Y,2026-03-10,2,2,0,38
+INT-0340,CAND-0131,POS-2602-005,KR,Technical/Panel,2026-03-23,서지현,Marketing,Seoul,Panel,Y,2026-03-23,0,4,0,23
+INT-0341,CAND-0131,POS-2602-005,KR,Technical/Panel,2026-03-23,Haruto Saito,BD,Tokyo,Panel,Y,2026-03-25,2,2,0,23
+INT-0342,CAND-0131,POS-2602-005,KR,Onsite Loop,2026-04-07,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-09,2,3,0,8
+INT-0343,CAND-0131,POS-2602-005,KR,Onsite Loop,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-09,2,3,0,8
+INT-0344,CAND-0131,POS-2602-005,KR,Onsite Loop,2026-04-07,陳冠宇,Sales,Taipei,Panel,Y,2026-04-08,1,2,0,8
+INT-0345,CAND-0132,POS-2602-005,KR,HM Interview,2026-04-03,Minho Kim,Engineering,Seoul,HM,Y,2026-04-05,2,2,0,12
+INT-0346,CAND-0134,POS-2602-005,KR,HM Interview,2026-04-01,Minho Kim,Engineering,Seoul,HM,Y,2026-04-03,2,2,0,14
+INT-0347,CAND-0136,POS-2602-005,KR,HM Interview,2026-04-11,Minho Kim,Engineering,Seoul,HM,Y,2026-04-13,2,3,0,4
+INT-0348,CAND-0139,POS-2602-005,KR,HM Interview,2026-03-27,Minho Kim,Engineering,Seoul,HM,N,,,,3,19
+INT-0349,CAND-0139,POS-2602-005,KR,Technical/Panel,2026-04-03,박준호,Engineering,Seoul,Panel,Y,2026-04-03,0,2,0,12
+INT-0350,CAND-0139,POS-2602-005,KR,Technical/Panel,2026-04-03,陳冠宇,Sales,Taipei,Panel,Y,2026-04-05,2,2,0,12
+INT-0351,CAND-0139,POS-2602-005,KR,Onsite Loop,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-15,4,3,0,4
+INT-0352,CAND-0139,POS-2602-005,KR,Onsite Loop,2026-04-11,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,2,1,0,4
+INT-0353,CAND-0139,POS-2602-005,KR,Onsite Loop,2026-04-11,서지현,Marketing,Seoul,Panel,Y,2026-04-13,2,1,0,4
+INT-0354,CAND-0141,POS-2602-005,KR,HM Interview,2026-03-30,Minho Kim,Engineering,Seoul,HM,Y,2026-03-31,1,4,0,16
+INT-0355,CAND-0141,POS-2602-005,KR,Technical/Panel,2026-04-09,서지현,Marketing,Seoul,Panel,Y,2026-04-11,2,4,0,6
+INT-0356,CAND-0141,POS-2602-005,KR,Technical/Panel,2026-04-09,David Nguyen,Engineering,San Francisco,Panel,N,,,,3,6
+INT-0357,CAND-0142,POS-2602-005,KR,HM Interview,2026-04-10,Minho Kim,Engineering,Seoul,HM,Y,2026-04-11,1,4,0,5
+INT-0358,CAND-0145,POS-2602-005,KR,HM Interview,2026-03-08,Minho Kim,Engineering,Seoul,HM,Y,2026-03-11,3,2,0,38
+INT-0359,CAND-0145,POS-2602-005,KR,Technical/Panel,2026-03-23,Elena Rossi,Design,San Francisco,Panel,Y,2026-03-26,3,4,0,23
+INT-0360,CAND-0145,POS-2602-005,KR,Technical/Panel,2026-03-23,박준호,Engineering,Seoul,Panel,N,,,,3,23
+INT-0361,CAND-0145,POS-2602-005,KR,Onsite Loop,2026-04-07,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-09,2,3,0,8
+INT-0362,CAND-0145,POS-2602-005,KR,Onsite Loop,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,3,8
+INT-0363,CAND-0145,POS-2602-005,KR,Onsite Loop,2026-04-07,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-08,1,4,0,8
+INT-0364,CAND-0152,POS-2602-005,KR,HM Interview,2026-03-26,Minho Kim,Engineering,Seoul,HM,Y,2026-03-28,2,1,0,20
+INT-0365,CAND-0152,POS-2602-005,KR,Technical/Panel,2026-04-08,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-11,3,2,0,7
+INT-0366,CAND-0152,POS-2602-005,KR,Technical/Panel,2026-04-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-10,2,1,0,7
+INT-0367,CAND-0155,POS-2602-005,KR,HM Interview,2026-04-02,Minho Kim,Engineering,Seoul,HM,Y,2026-04-04,2,4,0,13
+INT-0368,CAND-0155,POS-2602-005,KR,Technical/Panel,2026-04-10,Elena Rossi,Design,San Francisco,Panel,N,,,,2,5
+INT-0369,CAND-0155,POS-2602-005,KR,Technical/Panel,2026-04-10,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-13,3,2,0,5
+INT-0370,CAND-0156,POS-2602-005,KR,HM Interview,2026-04-14,Minho Kim,Engineering,Seoul,HM,N,,,,0,1
+INT-0371,CAND-0156,POS-2602-005,KR,Technical/Panel,2026-04-14,Priya Shah,Engineering,San Francisco,Panel,N,,,,0,1
+INT-0372,CAND-0156,POS-2602-005,KR,Technical/Panel,2026-04-14,박준호,Engineering,Seoul,Panel,Y,2026-04-15,1,4,0,1
+INT-0373,CAND-0157,POS-2603-006,JP,HM Interview,2026-03-25,Yuki Tanaka,Marketing,Tokyo,HM,N,,,,3,21
+INT-0374,CAND-0157,POS-2603-006,JP,Technical/Panel,2026-04-02,박준호,Engineering,Seoul,Panel,Y,2026-04-04,2,2,0,13
+INT-0375,CAND-0157,POS-2603-006,JP,Technical/Panel,2026-04-02,서지현,Marketing,Seoul,Panel,Y,2026-04-02,0,3,0,13
+INT-0376,CAND-0157,POS-2603-006,JP,Onsite Loop,2026-04-10,David Nguyen,Engineering,San Francisco,Panel,N,,,,2,5
+INT-0377,CAND-0157,POS-2603-006,JP,Onsite Loop,2026-04-10,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-15,5,2,0,5
+INT-0378,CAND-0157,POS-2603-006,JP,Onsite Loop,2026-04-10,박준호,Engineering,Seoul,Panel,Y,2026-04-10,0,4,0,5
+INT-0379,CAND-0163,POS-2603-006,JP,HM Interview,2026-04-02,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-02,0,3,0,13
+INT-0380,CAND-0163,POS-2603-006,JP,Technical/Panel,2026-04-10,David Nguyen,Engineering,San Francisco,Panel,N,,,,2,5
+INT-0381,CAND-0163,POS-2603-006,JP,Technical/Panel,2026-04-10,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-12,2,3,0,5
+INT-0382,CAND-0169,POS-2603-006,JP,HM Interview,2026-04-02,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-02,0,3,0,13
+INT-0383,CAND-0169,POS-2603-006,JP,Technical/Panel,2026-04-10,陳冠宇,Sales,Taipei,Panel,Y,2026-04-11,1,2,0,5
+INT-0384,CAND-0169,POS-2603-006,JP,Technical/Panel,2026-04-10,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-14,4,2,0,5
+INT-0385,CAND-0170,POS-2603-006,JP,HM Interview,2026-03-26,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-27,1,4,0,20
+INT-0386,CAND-0170,POS-2603-006,JP,Technical/Panel,2026-04-03,서지현,Marketing,Seoul,Panel,Y,2026-04-05,2,3,0,12
+INT-0387,CAND-0170,POS-2603-006,JP,Technical/Panel,2026-04-03,陳冠宇,Sales,Taipei,Panel,Y,2026-04-06,3,4,0,12
+INT-0388,CAND-0170,POS-2603-006,JP,Onsite Loop,2026-04-11,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-14,3,3,0,4
+INT-0389,CAND-0170,POS-2603-006,JP,Onsite Loop,2026-04-11,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-15,4,2,0,4
+INT-0390,CAND-0170,POS-2603-006,JP,Onsite Loop,2026-04-11,陳冠宇,Sales,Taipei,Panel,Y,2026-04-13,2,4,0,4
+INT-0391,CAND-0172,POS-2603-006,JP,HM Interview,2026-03-28,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-03-30,2,1,0,18
+INT-0392,CAND-0172,POS-2603-006,JP,Technical/Panel,2026-04-04,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-09,5,2,0,11
+INT-0393,CAND-0172,POS-2603-006,JP,Technical/Panel,2026-04-04,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-08,4,1,0,11
+INT-0394,CAND-0172,POS-2603-006,JP,Onsite Loop,2026-04-11,Marcus Johnson,Product,San Francisco,Panel,N,,,,2,4
+INT-0395,CAND-0172,POS-2603-006,JP,Onsite Loop,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-14,3,3,0,4
+INT-0396,CAND-0172,POS-2603-006,JP,Onsite Loop,2026-04-11,陳冠宇,Sales,Taipei,Panel,Y,2026-04-13,2,2,0,4
+INT-0397,CAND-0173,POS-2603-007,KR,HM Interview,2026-03-29,Danny Lee,Marketing,Seoul,HM,Y,2026-03-30,1,4,0,17
+INT-0398,CAND-0173,POS-2603-007,KR,Technical/Panel,2026-04-03,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-08,5,4,0,12
+INT-0399,CAND-0173,POS-2603-007,KR,Technical/Panel,2026-04-03,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-07,4,5,0,12
+INT-0400,CAND-0173,POS-2603-007,KR,Onsite Loop,2026-04-08,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-10,2,4,0,7
+INT-0401,CAND-0173,POS-2603-007,KR,Onsite Loop,2026-04-08,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,7,4,0,7
+INT-0402,CAND-0173,POS-2603-007,KR,Onsite Loop,2026-04-08,박준호,Engineering,Seoul,Panel,Y,2026-04-12,4,5,0,7
+INT-0403,CAND-0173,POS-2603-007,KR,Exec Interview,2026-04-12,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-15,3,5,0,3
+INT-0404,CAND-0175,POS-2603-007,KR,HM Interview,2026-03-26,Danny Lee,Marketing,Seoul,HM,Y,2026-03-26,0,3,0,20
+INT-0405,CAND-0175,POS-2603-007,KR,Technical/Panel,2026-04-08,서지현,Marketing,Seoul,Panel,Y,2026-04-11,3,4,0,7
+INT-0406,CAND-0175,POS-2603-007,KR,Technical/Panel,2026-04-08,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-10,2,3,0,7
+INT-0407,CAND-0176,POS-2603-007,KR,HM Interview,2026-03-20,Danny Lee,Marketing,Seoul,HM,Y,2026-03-22,2,5,0,26
+INT-0408,CAND-0176,POS-2603-007,KR,Technical/Panel,2026-03-27,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-06,10,4,0,19
+INT-0409,CAND-0176,POS-2603-007,KR,Technical/Panel,2026-03-27,박준호,Engineering,Seoul,Panel,Y,2026-03-28,1,3,0,19
+INT-0410,CAND-0176,POS-2603-007,KR,Onsite Loop,2026-04-04,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-11,7,5,0,11
+INT-0411,CAND-0176,POS-2603-007,KR,Onsite Loop,2026-04-04,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-11,7,4,0,11
+INT-0412,CAND-0176,POS-2603-007,KR,Onsite Loop,2026-04-04,陳冠宇,Sales,Taipei,Panel,Y,2026-04-05,1,3,0,11
+INT-0413,CAND-0176,POS-2603-007,KR,Exec Interview,2026-04-11,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-13,2,4,0,4
+INT-0414,CAND-0177,POS-2603-007,KR,HM Interview,2026-04-10,Danny Lee,Marketing,Seoul,HM,Y,2026-04-12,2,3,0,5
+INT-0415,CAND-0178,POS-2603-007,KR,HM Interview,2026-03-26,Danny Lee,Marketing,Seoul,HM,Y,2026-03-29,3,3,0,20
+INT-0416,CAND-0178,POS-2603-007,KR,Technical/Panel,2026-04-03,서지현,Marketing,Seoul,Panel,Y,2026-04-03,0,4,0,12
+INT-0417,CAND-0178,POS-2603-007,KR,Technical/Panel,2026-04-03,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-10,7,4,0,12
+INT-0418,CAND-0178,POS-2603-007,KR,Onsite Loop,2026-04-11,Andrew Hsu,Founder Office,San Francisco,Exec,Y,2026-04-15,4,4,0,4
+INT-0419,CAND-0178,POS-2603-007,KR,Onsite Loop,2026-04-11,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,4,4,0,4
+INT-0420,CAND-0178,POS-2603-007,KR,Onsite Loop,2026-04-11,陳冠宇,Sales,Taipei,Panel,Y,2026-04-15,4,4,0,4
+INT-0421,CAND-0179,POS-2603-007,KR,HM Interview,2026-04-04,Danny Lee,Marketing,Seoul,HM,N,,,,3,11
+INT-0422,CAND-0179,POS-2603-007,KR,Technical/Panel,2026-04-08,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-10,2,4,0,7
+INT-0423,CAND-0179,POS-2603-007,KR,Technical/Panel,2026-04-08,陳冠宇,Sales,Taipei,Panel,Y,2026-04-09,1,3,0,7
+INT-0424,CAND-0179,POS-2603-007,KR,Onsite Loop,2026-04-12,David Nguyen,Engineering,San Francisco,Panel,N,,,,1,3
+INT-0425,CAND-0179,POS-2603-007,KR,Onsite Loop,2026-04-12,Priya Shah,Engineering,San Francisco,Panel,N,,,,1,3
+INT-0426,CAND-0179,POS-2603-007,KR,Onsite Loop,2026-04-12,박준호,Engineering,Seoul,Panel,Y,2026-04-12,0,3,0,3
+INT-0427,CAND-0180,POS-2603-007,KR,HM Interview,2026-04-13,Danny Lee,Marketing,Seoul,HM,N,,,,1,2
+INT-0428,CAND-0187,POS-2603-008,TW,HM Interview,2026-04-08,Sunjae Lee,People,Seoul,HM,Y,2026-04-09,1,3,0,7
+INT-0429,CAND-0188,POS-2603-008,TW,HM Interview,2026-03-31,Sunjae Lee,People,Seoul,HM,Y,2026-03-31,0,4,0,15
+INT-0430,CAND-0188,POS-2603-008,TW,Technical/Panel,2026-04-06,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-13,7,2,0,9
+INT-0431,CAND-0188,POS-2603-008,TW,Technical/Panel,2026-04-06,Elena Rossi,Design,San Francisco,Panel,N,,,,3,9
+INT-0432,CAND-0188,POS-2603-008,TW,Onsite Loop,2026-04-12,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,3,3,0,3
+INT-0433,CAND-0188,POS-2603-008,TW,Onsite Loop,2026-04-12,Connor Zwick,Founder Office,San Francisco,Exec,N,,,,1,3
+INT-0434,CAND-0188,POS-2603-008,TW,Onsite Loop,2026-04-12,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-12,0,3,0,3
+INT-0435,CAND-0190,POS-2603-008,TW,HM Interview,2026-04-02,Sunjae Lee,People,Seoul,HM,Y,2026-04-02,0,3,0,13
+INT-0436,CAND-0190,POS-2603-008,TW,Technical/Panel,2026-04-10,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-13,3,3,0,5
+INT-0437,CAND-0190,POS-2603-008,TW,Technical/Panel,2026-04-10,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-13,3,4,0,5
+INT-0438,CAND-0191,POS-2603-008,TW,HM Interview,2026-04-09,Sunjae Lee,People,Seoul,HM,Y,2026-04-13,4,4,0,6
+INT-0439,CAND-0193,POS-2603-009,KR,HM Interview,2026-04-09,Minho Kim,Engineering,Seoul,HM,Y,2026-04-11,2,3,0,6
+INT-0440,CAND-0196,POS-2603-009,KR,HM Interview,2026-04-03,Minho Kim,Engineering,Seoul,HM,Y,2026-04-05,2,4,0,12
+INT-0441,CAND-0196,POS-2603-009,KR,Technical/Panel,2026-04-11,박준호,Engineering,Seoul,Panel,Y,2026-04-15,4,3,0,4
+INT-0442,CAND-0196,POS-2603-009,KR,Technical/Panel,2026-04-11,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-14,3,4,0,4
+INT-0443,CAND-0197,POS-2603-009,KR,HM Interview,2026-04-09,Minho Kim,Engineering,Seoul,HM,Y,2026-04-10,1,3,0,6
+INT-0444,CAND-0197,POS-2603-009,KR,Technical/Panel,2026-04-13,서지현,Marketing,Seoul,Panel,Y,2026-04-14,1,4,0,2
+INT-0445,CAND-0197,POS-2603-009,KR,Technical/Panel,2026-04-13,박준호,Engineering,Seoul,Panel,Y,2026-04-15,2,3,0,2
+INT-0446,CAND-0198,POS-2603-009,KR,HM Interview,2026-04-06,Minho Kim,Engineering,Seoul,HM,Y,2026-04-06,0,3,0,9
+INT-0447,CAND-0198,POS-2603-009,KR,Technical/Panel,2026-04-12,David Nguyen,Engineering,San Francisco,Panel,N,,,,1,3
+INT-0448,CAND-0198,POS-2603-009,KR,Technical/Panel,2026-04-12,Haruto Saito,BD,Tokyo,Panel,Y,2026-04-12,0,4,0,3
+INT-0449,CAND-0200,POS-2603-009,KR,HM Interview,2026-04-10,Minho Kim,Engineering,Seoul,HM,Y,2026-04-12,2,4,0,5
+INT-0450,CAND-0200,POS-2603-009,KR,Technical/Panel,2026-04-13,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,2,2,0,2
+INT-0451,CAND-0200,POS-2603-009,KR,Technical/Panel,2026-04-13,Priya Shah,Engineering,San Francisco,Panel,Y,2026-04-15,2,3,0,2
+INT-0452,CAND-0201,POS-2603-009,KR,HM Interview,2026-03-26,Minho Kim,Engineering,Seoul,HM,Y,2026-03-29,3,2,0,20
+INT-0453,CAND-0201,POS-2603-009,KR,Technical/Panel,2026-04-03,陳冠宇,Sales,Taipei,Panel,Y,2026-04-04,1,2,0,12
+INT-0454,CAND-0201,POS-2603-009,KR,Technical/Panel,2026-04-03,박준호,Engineering,Seoul,Panel,Y,2026-04-03,0,2,0,12
+INT-0455,CAND-0201,POS-2603-009,KR,Onsite Loop,2026-04-11,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-12,1,3,0,4
+INT-0456,CAND-0201,POS-2603-009,KR,Onsite Loop,2026-04-11,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-15,4,2,0,4
+INT-0457,CAND-0201,POS-2603-009,KR,Onsite Loop,2026-04-11,서지현,Marketing,Seoul,Panel,Y,2026-04-13,2,2,0,4
+INT-0458,CAND-0203,POS-2603-009,KR,HM Interview,2026-04-05,Minho Kim,Engineering,Seoul,HM,Y,2026-04-05,0,3,0,10
+INT-0459,CAND-0204,POS-2603-009,KR,HM Interview,2026-03-28,Minho Kim,Engineering,Seoul,HM,Y,2026-03-29,1,5,0,18
+INT-0460,CAND-0204,POS-2603-009,KR,Technical/Panel,2026-04-02,서지현,Marketing,Seoul,Panel,Y,2026-04-04,2,5,0,13
+INT-0461,CAND-0204,POS-2603-009,KR,Technical/Panel,2026-04-02,박준호,Engineering,Seoul,Panel,Y,2026-04-04,2,4,0,13
+INT-0462,CAND-0204,POS-2603-009,KR,Onsite Loop,2026-04-07,Connor Zwick,Founder Office,San Francisco,Exec,Y,2026-04-08,1,4,0,8
+INT-0463,CAND-0204,POS-2603-009,KR,Onsite Loop,2026-04-07,Elena Rossi,Design,San Francisco,Panel,Y,2026-04-14,7,4,0,8
+INT-0464,CAND-0204,POS-2603-009,KR,Onsite Loop,2026-04-07,박준호,Engineering,Seoul,Panel,Y,2026-04-10,3,4,0,8
+INT-0465,CAND-0204,POS-2603-009,KR,Exec Interview,2026-04-12,Andrew Hsu,Founder Office,San Francisco,Exec,N,,,,1,3
+INT-0466,CAND-0205,POS-2603-009,KR,HM Interview,2026-04-10,Minho Kim,Engineering,Seoul,HM,Y,2026-04-10,0,3,0,5
+INT-0467,CAND-0205,POS-2603-009,KR,Technical/Panel,2026-04-13,서지현,Marketing,Seoul,Panel,Y,2026-04-15,2,3,0,2
+INT-0468,CAND-0205,POS-2603-009,KR,Technical/Panel,2026-04-13,Marcus Johnson,Product,San Francisco,Panel,Y,2026-04-15,2,4,0,2
+INT-0469,CAND-0209,POS-2604-010,JP,HM Interview,2026-04-11,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-12,1,3,0,4
+INT-0470,CAND-0210,POS-2604-010,JP,HM Interview,2026-04-08,Yuki Tanaka,Marketing,Tokyo,HM,Y,2026-04-08,0,3,0,7
+INT-0471,CAND-0210,POS-2604-010,JP,Technical/Panel,2026-04-12,박준호,Engineering,Seoul,Panel,Y,2026-04-14,2,2,0,3
+INT-0472,CAND-0210,POS-2604-010,JP,Technical/Panel,2026-04-12,Elena Rossi,Design,San Francisco,Panel,N,,,,1,3
+INT-0473,CAND-0213,POS-2604-011,KR,HM Interview,2026-04-10,Minho Kim,Engineering,Seoul,HM,Y,2026-04-11,1,3,0,5
+INT-0474,CAND-0213,POS-2604-011,KR,Technical/Panel,2026-04-13,서지현,Marketing,Seoul,Panel,Y,2026-04-14,1,3,0,2
+INT-0475,CAND-0213,POS-2604-011,KR,Technical/Panel,2026-04-13,박준호,Engineering,Seoul,Panel,Y,2026-04-14,1,2,0,2
+INT-0476,CAND-0214,POS-2604-011,KR,HM Interview,2026-04-11,Minho Kim,Engineering,Seoul,HM,Y,2026-04-13,2,2,0,4
+INT-0477,CAND-0216,POS-2604-011,KR,HM Interview,2026-04-09,Minho Kim,Engineering,Seoul,HM,Y,2026-04-09,0,4,0,6
+INT-0478,CAND-0216,POS-2604-011,KR,Technical/Panel,2026-04-13,陳冠宇,Sales,Taipei,Panel,Y,2026-04-15,2,3,0,2
+INT-0479,CAND-0216,POS-2604-011,KR,Technical/Panel,2026-04-13,David Nguyen,Engineering,San Francisco,Panel,Y,2026-04-15,2,2,0,2
+INT-0480,CAND-0217,POS-2604-011,KR,HM Interview,2026-04-12,Minho Kim,Engineering,Seoul,HM,N,,,,1,3

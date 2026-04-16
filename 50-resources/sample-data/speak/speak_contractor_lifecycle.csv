@@ -1,0 +1,38 @@
+﻿contractor_id,contractor_name,role,country,department,requester,manager,start_date,end_date,contract_months,days_to_end,current_stage,docusign_status,welcome_email_sent,deel_uploaded,deel_upload_date,tool_onboarded,notion_tracker_status,end_tracking_risk_flag,extension_requested,rate_amount,rate_unit,rate_krw_monthly_equiv
+CTR-0001,Shota Maeda,Content Creator (JP),JP,Marketing,Sunjae Lee,Jin Park,2025-12-06,2026-03-06,3,-40,Ended,Fully executed,Y,Y,2025-12-01,Y,Upon hiring done,N,N,3500000,JPY/month,31500000
+CTR-0002,배수빈,Translator (EN-KR),KR,Content,Jin Park,Elena Rossi,2026-02-23,2026-08-22,6,129,Active,Fully executed,Y,Y,2026-02-20,Y,Week 1 done,N,N,2800000,KRW/month,2800000
+CTR-0003,최은지,Translator (EN-KR),KR,Content,Jin Park,陳冠宇,2025-10-26,2026-04-24,6,9,Ending Soon (1mo),Fully executed,Y,Y,2025-10-21,Y,Week 1 done,N,N,2800000,KRW/month,2800000
+CTR-0004,Yuna Abe,Translator (EN-JP),JP,Content,Yuki Tanaka,陳冠宇,2026-05-02,2026-10-29,6,197,Awaiting Manager Signature,"Contractor signed, manager pending",Y,N,,N,Week 1 done,N,N,3200000,JPY/month,28800000
+CTR-0005,吳冠廷,Translator (EN-ZH-TW),TW,Content,Sunjae Lee,Yuki Tanaka,2026-01-18,2026-07-17,6,93,Active,Fully executed,Y,Y,2026-01-14,Y,Week 1 done,N,N,45000,TWD/month,1845000
+CTR-0006,임하윤,UX Research Consultant,KR,Design,Yuki Tanaka,Elena Rossi,2025-11-21,2026-05-20,6,35,Active,Fully executed,Y,Y,2025-11-17,Y,Week 1 done,N,N,5500000,KRW/month,5500000
+CTR-0007,Miyu Kondo,Legal Advisor (JP),JP,Legal,Minho Kim,Yuki Tanaka,2026-01-16,2026-04-16,3,1,Ending Soon (1wk),Fully executed,Y,Y,2026-01-16,Y,Week 1 done,N,N,400000,JPY/hour,576000000
+CTR-0008,김서준,Brand Designer (Freelance),KR,Design,Wei Chen,Haruto Saito,2026-04-06,2026-07-05,3,81,Active,Fully executed,Y,Y,2026-04-03,Y,Week 1 done,N,N,4800000,KRW/month,4800000
+CTR-0009,林美玲,SEO Consultant (TW),TW,Marketing,Sunjae Lee,Marcus Johnson,2026-04-01,2026-09-28,6,166,Active,Fully executed,Y,Y,2026-03-27,Y,Week 1 done,N,N,60000,TWD/month,2460000
+CTR-0010,李書華,SEO Consultant (TW),TW,Marketing,Yuki Tanaka,Haruto Saito,2026-03-14,2026-09-10,6,148,Active,Fully executed,Y,Y,2026-03-09,Y,Week 1 done,N,N,60000,TWD/month,2460000
+CTR-0011,오서연,Video Editor,KR,Marketing,Yuki Tanaka,Marcus Johnson,2025-11-05,2026-05-04,6,19,Ending Soon (1mo),Fully executed,Y,Y,2025-11-02,Y,Week 1 done,N,N,3500000,KRW/month,3500000
+CTR-0012,Saki Hayashi,Social Media Manager (JP),JP,Marketing,Jin Park,Danny Lee,2026-02-18,2027-02-13,12,304,Active,Fully executed,Y,Y,2026-02-14,Y,Week 1 done,N,N,3800000,JPY/month,34200000
+CTR-0013,Miyu Kondo,Social Media Manager (JP),JP,Marketing,Jin Park,Wei Chen,2025-11-28,2026-02-26,3,-48,Ended,Fully executed,Y,Y,2025-11-27,Y,1wk before done,N,N,3800000,JPY/month,34200000
+CTR-0014,강지우,QA Tester (Contract),KR,Engineering,Danny Lee,Yuki Tanaka,2026-03-20,2026-09-16,6,154,Active,Fully executed,Y,Y,2026-03-17,Y,Week 1 done,N,N,4000000,KRW/month,4000000
+CTR-0015,劉欣怡,Content Writer (EN native),TW,Content,Yuki Tanaka,Elena Rossi,2026-04-07,2026-10-04,6,172,Active,Fully executed,Y,Y,2026-04-06,Y,Week 1 done,N,N,55000,TWD/month,2255000
+CTR-0016,吳冠廷,Content Writer (EN native),TW,Content,Yuki Tanaka,Elena Rossi,2025-10-22,2026-01-20,3,-85,Ended,Fully executed,Y,Y,2025-10-18,Y,1wk before done,N,N,55000,TWD/month,2255000
+CTR-0017,Shota Maeda,Event Coordinator (JP),JP,Marketing,Yuki Tanaka,Danny Lee,2025-10-27,2026-10-22,12,190,Active,Fully executed,Y,Y,2025-10-26,Y,Week 1 done,N,N,3000000,JPY/month,27000000
+CTR-0018,임하윤,Copywriter (KR),KR,Marketing,Jin Park,Danny Lee,2026-01-28,2026-07-27,6,103,Active,Fully executed,Y,Y,2026-01-23,Y,Week 1 done,N,N,3200000,KRW/month,3200000
+CTR-0019,오서연,Copywriter (KR),KR,Marketing,Minho Kim,Elena Rossi,2026-05-15,2026-08-13,3,120,Requested,Not sent,N,N,,N,Day 1 done,N,N,3200000,KRW/month,3200000
+CTR-0020,黃詩涵,PR Consultant (TW),TW,Marketing,Jin Park,Minho Kim,2025-12-12,2026-12-07,12,236,Active,Fully executed,Y,Y,2025-12-08,Y,Week 1 done,N,N,70000,TWD/month,2870000
+CTR-0021,楊惠君,PR Consultant (TW),TW,Marketing,Yuki Tanaka,Sunjae Lee,2026-04-03,2026-09-30,6,168,Active,Fully executed,Y,Y,2026-03-31,Y,Week 1 done,N,N,70000,TWD/month,2870000
+CTR-0022,Yuna Abe,Localization Specialist,JP,Content,Danny Lee,Danny Lee,2026-01-21,2026-07-20,6,96,Active,Fully executed,Y,Y,2026-01-20,Y,Week 1 done,N,N,3600000,JPY/month,32400000
+CTR-0023,임하윤,Illustrator (Freelance),KR,Design,Yuki Tanaka,Elena Rossi,2026-04-10,2026-10-07,6,175,Active,Fully executed,Y,Y,2026-04-10,Y,Week 1 done,N,N,2500000,KRW/month,2500000
+CTR-0024,장예준,Illustrator (Freelance),KR,Design,Jin Park,Marcus Johnson,2026-03-23,2026-09-19,6,157,Active,Fully executed,Y,Y,2026-03-23,Y,Week 1 done,N,N,2500000,KRW/month,2500000
+CTR-0025,黃詩涵,Community Moderator (TW),TW,CX,Danny Lee,Haruto Saito,2026-03-20,2026-09-16,6,154,Active,Fully executed,Y,Y,2026-03-16,Y,Week 1 done,N,N,38000,TWD/month,1558000
+CTR-0026,Kenji Mori,Voice Actor (EN-JP),JP,Content,Yuki Tanaka,陳冠宇,2026-04-13,2026-10-10,6,178,Active,Fully executed,Y,Y,2026-04-10,Y,Week 1 done,N,N,500000,JPY/session,4500000
+CTR-0027,신유나,Data Annotation Lead,KR,Data,Minho Kim,Minho Kim,2026-04-29,2027-04-24,12,374,Deel Uploaded,Fully executed,Y,Y,2026-04-27,N,Day 1 done,N,N,4500000,KRW/month,4500000
+CTR-0028,陳俊宏,Partnership Scout (TW),TW,BD,Jin Park,Haruto Saito,2025-12-28,2026-06-26,6,72,Active,Fully executed,Y,Y,2025-12-26,Y,Week 1 done,N,N,65000,TWD/month,2665000
+CTR-0029,林美玲,Partnership Scout (TW),TW,BD,Jin Park,Jin Park,2026-04-16,2026-10-13,6,181,Signed,Fully executed,Y,N,,N,Week 1 done,N,N,65000,TWD/month,2665000
+CTR-0030,Yuna Abe,Content Strategist (JP),JP,Marketing,Minho Kim,Sunjae Lee,2026-04-11,2027-04-06,12,356,Active,Fully executed,Y,Y,2026-04-11,Y,Week 1 done,N,N,4500000,JPY/month,40500000
+CTR-0031,한지훈,Video Producer (KR),KR,Marketing,Jin Park,Haruto Saito,2025-12-20,2026-03-20,3,-26,Ended,Fully executed,Y,Y,2025-12-16,Y,1d before done,N,N,5200000,KRW/month,5200000
+CTR-0032,오서연,UX Writer (Contract),KR,Design,Minho Kim,Marcus Johnson,2026-01-26,2027-01-21,12,281,Active,Fully executed,Y,Y,2026-01-22,Y,Week 1 done,N,N,3800000,KRW/month,3800000
+CTR-0033,Shota Maeda,Customer Research Contractor,JP,CX,Wei Chen,Elena Rossi,2026-03-08,2026-09-04,6,142,Active,Fully executed,Y,Y,2026-03-06,Y,Week 1 done,N,N,3300000,JPY/month,29700000
+CTR-0034,박도현,Korean Native Tutor (Pilot),KR,Product,Yuki Tanaka,陳冠宇,2026-04-03,2026-07-02,3,78,Active,Fully executed,Y,Y,2026-03-29,Y,Week 1 done,N,N,2800000,KRW/month,2800000
+CTR-0035,蔡明翰,Taiwan Entity Setup Advisor,TW,Legal,Jin Park,Elena Rossi,2026-01-27,2027-01-22,12,282,Active,Fully executed,Y,Y,2026-01-22,Y,Week 1 done,N,N,150000,TWD/month,6150000
+CTR-0036,黃詩涵,Mandarin Content QA,TW,Content,Danny Lee,Jin Park,2026-01-24,2027-01-19,12,279,Active,Fully executed,Y,Y,2026-01-23,Y,Week 1 done,N,N,42000,TWD/month,1722000
+CTR-0037,楊惠君,Mandarin Content QA,TW,Content,Wei Chen,Jin Park,2026-02-05,2026-05-06,3,21,Extension Requested,Fully executed,Y,Y,2026-02-01,Y,Upon hiring done,N,Y,42000,TWD/month,1722000
