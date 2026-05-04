@@ -55,3 +55,15 @@
 - 다매장 통합 운영 모니터링
 - POS+배달앱 통합 매출 추적
 - 페르소나별 객단가·재방문 분석
+
+## 도구 만들 때 쓸 수 있는 스킬·에이전트
+
+> Day 2 본인 도구 제작 시 호출.
+
+- `webapp-prd` — **웹앱/대시보드 PRD 대화형 생성** (사장님이 만들고 싶은 도구를 AI가 PRD로 정리)
+- `dashboard-prd` — 대시보드 전용 PRD (KPI·차트·필터 구조)
+- `analysis-worker` — 데이터 분석 보조 에이전트 (트렌드·SWOT·페르소나 분석)
+- `csv-clean` / `excel-to-csv` — POS·매출 raw 데이터 정리
+- `transcript-organizer` — 직원 미팅·고객 인터뷰 녹취 정리
+- `notion-handler` — 결과를 Notion DB로 저장
+- `web-crawler-ocr` — 경쟁사 메뉴·리뷰·이미지 크롤링
