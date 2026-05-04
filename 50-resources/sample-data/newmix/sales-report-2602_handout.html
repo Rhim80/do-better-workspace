@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>뉴믹스 성수 매장 월간 매출 분석</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-dark: #111111;
+  --color-bg-muted: #F5F5F5;
+  --color-text: #111111;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #666666;
+  --color-border: #E0E0E0;
+  --color-accent: #111111;
+  --font-sans: 'Helvetica Neue', 'Pretendard', -apple-system, sans-serif;
+  --font-mono: 'SF Mono', 'Menlo', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: #888;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm; height: 297mm;
+  padding: 18mm 20mm 20mm 20mm;
+  margin: 10px auto;
+  background: var(--color-bg);
+  position: relative; overflow: hidden;
+  page-break-after: always; page-break-inside: avoid;
+}
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+}
+@media screen { .page { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+
+.cover {
+  width: 210mm; height: 297mm;
+  background: var(--color-bg-dark); color: var(--color-text-light);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 24mm; margin: 10px auto;
+  position: relative; overflow: hidden;
+  page-break-after: always;
+}
+@media screen { .cover { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .cover { margin: 0; box-shadow: none; } }
+.cover-label { font-family: var(--font-mono); font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.4; margin-bottom: 12mm; }
+.cover-title { font-family: var(--font-sans); font-size: 28pt; font-weight: 700; line-height: 1.15; margin-bottom: 5mm; letter-spacing: -0.02em; }
+.cover-title em { font-style: normal; font-weight: 300; }
+.cover-subtitle { font-family: var(--font-sans); font-size: 12pt; font-weight: 300; opacity: 0.7; margin-bottom: 18mm; line-height: 1.5; }
+.cover-meta { display: grid; grid-template-columns: auto 1fr; gap: 2mm 6mm; font-size: 8.5pt; opacity: 0.5; }
+.cover-meta dt { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.05em; text-transform: uppercase; }
+.cover-meta dd { margin: 0; }
+.cover-brand { position: absolute; bottom: 18mm; left: 24mm; font-size: 10pt; font-weight: 600; letter-spacing: 0.05em; }
+
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8mm; padding-bottom: 3mm; border-bottom: 1pt solid var(--color-border); }
+.page-brand { font-size: 8pt; font-weight: 600; opacity: 0.3; letter-spacing: 0.1em; }
+.page-number { font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.1em; opacity: 0.3; }
+.page-footer { position: absolute; bottom: 12mm; left: 20mm; right: 20mm; display: flex; justify-content: space-between; font-size: 6.5pt; opacity: 0.25; font-family: var(--font-mono); }
+
+.section-number { font-family: var(--font-mono); font-size: 6.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.section-title { font-family: var(--font-sans); font-size: 16pt; font-weight: 700; line-height: 1.25; margin-bottom: 5mm; color: var(--color-text); letter-spacing: -0.01em; }
+.section-title em { font-weight: 300; font-style: normal; }
+h3 { font-family: var(--font-sans); font-size: 8.5pt; font-weight: 700; margin-bottom: 2.5mm; margin-top: 5mm; color: var(--color-text); }
+h3:first-of-type { margin-top: 0; }
+h4 { font-family: var(--font-sans); font-size: 8pt; font-weight: 700; margin-bottom: 1.5mm; color: var(--color-text); }
+p { font-size: 8pt; line-height: 1.65; margin-bottom: 2.5mm; color: var(--color-text-muted); }
+strong { color: var(--color-text); font-weight: 600; }
+
+.quote { background: var(--color-bg-dark); color: var(--color-text-light); padding: 4.5mm 5.5mm; border-radius: 1pt; margin: 4mm 0; }
+.quote p { color: var(--color-text-light); margin: 0; font-size: 8pt; line-height: 1.6; }
+.quote strong { color: var(--color-text-light); }
+.quote-light { background: var(--color-bg-muted); color: var(--color-text); border-left: 2pt solid var(--color-text); padding: 3mm 4mm; margin: 3mm 0; font-size: 8pt; line-height: 1.6; }
+.quote-light p { color: var(--color-text-muted); margin: 0; }
+
+ul, ol { padding-left: 5mm; margin-bottom: 3mm; }
+li { font-size: 8pt; line-height: 1.65; margin-bottom: 1mm; color: var(--color-text-muted); }
+li strong { color: var(--color-text); font-weight: 600; }
+.flow { counter-reset: flow-counter; list-style: none; padding: 0; }
+.flow li { counter-increment: flow-counter; padding-left: 9mm; position: relative; margin-bottom: 2mm; }
+.flow li::before { content: counter(flow-counter); position: absolute; left: 0; top: 0.5mm; width: 5mm; height: 5mm; background: var(--color-bg-dark); color: var(--color-text-light); font-family: var(--font-mono); font-size: 6pt; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.principles { list-style: none; padding: 0; counter-reset: principle; }
+.principles li { counter-increment: principle; padding: 2.5mm 0; border-bottom: 0.5pt solid var(--color-border); display: flex; align-items: baseline; gap: 3mm; font-size: 8pt; }
+.principles li:last-child { border-bottom: none; }
+.principles li::before { content: '0' counter(principle); font-family: var(--font-mono); font-size: 7pt; color: var(--color-text-muted); flex-shrink: 0; width: 6mm; }
+
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card { background: var(--color-bg-muted); border: 0.5pt solid var(--color-border); padding: 4mm; border-radius: 1pt; }
+.card-number { font-family: var(--font-mono); font-size: 6pt; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.card h4 { font-size: 8pt; font-weight: 600; margin-bottom: 1.5mm; }
+.card p { font-size: 7.5pt; line-height: 1.55; margin: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 3mm 0; }
+
+.dark-inline { background: var(--color-bg-dark); color: var(--color-text-light); margin: 4mm 0; padding: 5mm; border-radius: 1pt; }
+.dark-inline h3, .dark-inline h4 { color: var(--color-text-light); }
+.dark-inline p { color: rgba(255,255,255,0.75); }
+.dark-inline li { color: rgba(255,255,255,0.75); }
+.dark-inline li strong { color: var(--color-text-light); }
+.dark-inline code { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); padding: 0.5mm 1.5mm; border-radius: 1pt; }
+.highlight-box { border: 1.5pt solid var(--color-text); padding: 4mm 5mm; margin: 4mm 0; border-radius: 1pt; }
+.highlight-box h4 { font-size: 9pt; font-weight: 700; margin-bottom: 2.5mm; }
+.highlight-box p { font-size: 8pt; line-height: 1.6; color: var(--color-text); margin: 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 3mm 0; font-size: 7.5pt; }
+th { background: var(--color-bg-dark); color: var(--color-text-light); padding: 2.5mm 3mm; text-align: left; font-weight: 600; font-size: 7pt; letter-spacing: 0.05em; }
+td { padding: 2.5mm 3mm; border-bottom: 0.5pt solid var(--color-border); color: var(--color-text-muted); }
+tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td strong { color: var(--color-text); }
+
+.divider { height: 0.5pt; background: var(--color-border); margin: 5mm 0; }
+code { font-family: var(--font-mono); font-size: 7.5pt; color: var(--color-text); background: var(--color-bg-muted); padding: 0.5mm 1.5mm; border-radius: 1pt; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 4mm 0; }
+.kpi { background: var(--color-bg-muted); border: 0.5pt solid var(--color-border); padding: 4mm; }
+.kpi-label { font-family: var(--font-mono); font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1.5mm; }
+.kpi-value { font-size: 14pt; font-weight: 700; color: var(--color-text); letter-spacing: -0.02em; }
+.kpi-delta { font-family: var(--font-mono); font-size: 7pt; color: var(--color-text-muted); margin-top: 1mm; }
+.kpi-delta.up { color: var(--color-text); font-weight: 600; }
+
+.closing { width: 210mm; height: 297mm; background: var(--color-bg-dark); color: var(--color-text-light); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24mm; margin: 10px auto; page-break-after: avoid; }
+@media screen { .closing { box-shadow: 0 4px 20px rgba(0,0,0,0.2); } }
+@media print { .closing { margin: 0; box-shadow: none; } }
+.closing-title { font-size: 26pt; font-weight: 700; line-height: 1.2; margin-bottom: 6mm; letter-spacing: -0.02em; }
+.closing-title em { font-weight: 300; font-style: normal; }
+.closing-sub { font-size: 10pt; opacity: 0.4; margin-bottom: 16mm; }
+.closing-info { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.1em; opacity: 0.3; line-height: 2.2; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Monthly Sales Report</div>
+  <h1 class="cover-title">뉴믹스 성수 매장<br/>월간 매출 <em>분석</em></h1>
+  <p class="cover-subtitle">2026년 1월 → 2월 비교 · MoM +47.3%<br/>외국인 트래픽 폭증과 한국인 이탈의 두 얼굴</p>
+  <dl class="cover-meta">
+    <dt>Period</dt><dd>2026.01.02 — 2026.02.28</dd>
+    <dt>Records</dt><dd>1,534건 (1월) + 1,957건 (2월)</dd>
+    <dt>Framework</dt><dd>Variance Analysis · MoM · Time Series</dd>
+    <dt>Prepared by</dt><dd>Do Better Things</dd>
+    <dt>Date</dt><dd>2026.04.28</dd>
+  </dl>
+  <div class="cover-brand">NEWMIX · SEONGSU</div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">01 / 07</div>
+  </div>
+
+  <div class="section-number">Overview</div>
+  <h2 class="section-title">핵심 <em>숫자</em></h2>
+
+  <div class="highlight-box">
+    <p><strong>한 줄 요약.</strong> 단가는 거의 변동 없이(-0.1%), 영업일은 2일 줄었음에도 일평균 매출이 +59.6% 증가했다. 가격이 아닌 <strong>트래픽 폭증</strong>으로 만든 성장.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>지표</th><th class="num">1월</th><th class="num">2월</th><th class="num">MoM</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>매출</td><td class="num">67,214,700원</td><td class="num">98,998,100원</td><td class="num"><strong>+47.3%</strong></td></tr>
+      <tr><td>주문 수</td><td class="num">1,534건</td><td class="num">1,957건</td><td class="num">+27.6%</td></tr>
+      <tr><td>판매 수량</td><td class="num">4,847개</td><td class="num">7,149개</td><td class="num">+47.5%</td></tr>
+      <tr><td>객단가 (주문당)</td><td class="num">43,817원</td><td class="num">50,587원</td><td class="num">+15.5%</td></tr>
+      <tr><td>평균 단가 (개당)</td><td class="num">13,867원</td><td class="num">13,848원</td><td class="num">-0.1%</td></tr>
+      <tr><td>영업일</td><td class="num">26일</td><td class="num">24일</td><td class="num">-2일</td></tr>
+      <tr><td><strong>일평균 매출</strong></td><td class="num">2,585,181원</td><td class="num"><strong>4,124,921원</strong></td><td class="num"><strong>+59.6%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 01</div>
+  <h2 class="section-title">성장 원인 <em>분해</em> · Variance Analysis</h2>
+
+  <table>
+    <thead>
+      <tr><th>요인</th><th class="num">기여액</th><th class="num">비중</th><th>해석</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>수량 효과</td><td class="num"><strong>+31,922,000원</strong></td><td class="num"><strong>+100.4%</strong></td><td>더 많이 팔렸다</td></tr>
+      <tr><td>단가 효과</td><td class="num">-139,000원</td><td class="num">-0.4%</td><td>단가 거의 변동 없음</td></tr>
+      <tr><td>믹스 효과</td><td class="num">0원</td><td class="num">0.0%</td><td>카테고리 구성 변화 미미</td></tr>
+      <tr><td><strong>총 차이</strong></td><td class="num"><strong>+31,783,000원</strong></td><td class="num">100%</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>해석 — 사실상 "수량 단독 성장"</h3>
+  <ul>
+    <li>가격 할인을 한 것이 아니라(-0.1%는 노이즈 수준), <strong>순수하게 더 많은 손님이 더 많이 산 것</strong></li>
+    <li>단가가 그대로인데 수량이 47% 늘었다 → <strong>매장 캐파(처리량)에 압박</strong>이 가해졌을 가능성</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">02 / 07</div>
+  </div>
+
+  <div class="section-number">Section 02</div>
+  <h2 class="section-title">시계열 <em>추이</em></h2>
+
+  <h3>주차별 매출 (2월 기준)</h3>
+  <table>
+    <thead>
+      <tr><th>주차</th><th class="num">매출</th><th class="num">주문</th><th class="num">일평균</th><th class="num">영업일</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1주차 (2/1—2/7)</td><td class="num">24,329,000</td><td class="num">460</td><td class="num">4,054,833</td><td class="num">6일</td></tr>
+      <tr><td>2주차 (2/8—2/14)</td><td class="num"><strong>26,457,400</strong></td><td class="num">524</td><td class="num"><strong>4,409,566</strong></td><td class="num">6일</td></tr>
+      <tr><td>3주차 (2/15—2/21, 설)</td><td class="num">23,804,500</td><td class="num">482</td><td class="num">3,967,416</td><td class="num">6일</td></tr>
+      <tr><td>4주차 (2/22—2/28)</td><td class="num">24,407,200</td><td class="num">491</td><td class="num">4,067,866</td><td class="num">6일</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>편차 작음.</strong> 4주 모두 일평균 4M원 ±5% 이내. 한 번의 이벤트가 아닌 <strong>구조적 트래픽 상승</strong></li>
+    <li>설 연휴(2/16—2/18)가 포함된 3주차도 큰 충격 없음 → 외국인 비중이 높은 매장이라 한국 명절 영향 적음</li>
+    <li>1월 일평균(2.58M) 대비 매주 +55~70% 수준 유지</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>요일별 평균 매출 (2월)</h3>
+  <table>
+    <thead>
+      <tr><th>요일</th><th class="num">평균 매출</th><th>비고</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>일요일</strong></td><td class="num"><strong>5,909,325원</strong></td><td>주중 평균의 약 1.8배</td></tr>
+      <tr><td>토요일</td><td class="num">5,270,600원</td><td>주중 평균의 약 1.6배</td></tr>
+      <tr><td>화—금</td><td class="num">3,326,000—3,447,000원</td><td>편차 미미</td></tr>
+      <tr><td>월요일</td><td class="num">—</td><td>휴무</td></tr>
+    </tbody>
+  </table>
+
+  <h3>일별 특이점</h3>
+  <ul>
+    <li>최고 매출일: <strong>2/22(일) 6,505,100원</strong> — 설 연휴 직후 회복일</li>
+    <li>최저 매출일: 2/26(목) 2,946,400원</li>
+    <li>평일 최저 vs 일요일 최고 = 약 2.2배 차이</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">03 / 07</div>
+  </div>
+
+  <div class="section-number">Section 03</div>
+  <h2 class="section-title">카테고리 <em>기여도</em></h2>
+
+  <table>
+    <thead>
+      <tr><th>카테고리</th><th class="num">1월 매출</th><th class="num">2월 매출</th><th class="num">증감</th><th class="num">MoM%</th><th class="num">기여도</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>커피포</strong></td><td class="num">55,641,200</td><td class="num">81,213,600</td><td class="num">+25,572,400</td><td class="num">+46.0%</td><td class="num"><strong>80.5%</strong></td></tr>
+      <tr><td>MD상품</td><td class="num">7,442,000</td><td class="num">11,576,000</td><td class="num">+4,134,000</td><td class="num">+55.5%</td><td class="num">13.0%</td></tr>
+      <tr><td>스낵</td><td class="num">4,131,500</td><td class="num">6,208,500</td><td class="num">+2,077,000</td><td class="num">+50.3%</td><td class="num">6.5%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>비중 변화 — 거의 그대로 유지된 채 동반 성장</h3>
+  <ul>
+    <li>커피포 82.8% → 82.0%, MD상품 11.1% → 11.7%, 스낵 6.1% → 6.3%</li>
+    <li>비중은 거의 그대로 유지된 채, <strong>모든 카테고리가 동반 성장</strong></li>
+    <li>성장의 80%는 커피포에서 발생 → 커피포 재고/SKU 관리가 가장 중요</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>BCG 매트릭스 적용</h3>
+  <div class="dark-inline">
+    <div class="two-col">
+      <div>
+        <h4>Star — 커피포</h4>
+        <p>매출 비중 82% + 성장률 +46%. 비중도 크고 성장도 크다. 핵심 효자 카테고리.</p>
+      </div>
+      <div>
+        <h4>Question Mark — MD상품 / 스낵</h4>
+        <p>비중은 10%대로 작지만 성장률(+55%, +50%)은 커피포보다 높음. SKU 추가 투입 시 Star로 끌어올릴 잠재력.</p>
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    <li>커피포는 매장의 정체성 자체. 단일 카테고리 의존(82%)은 동시에 <strong>리스크 신호</strong>이기도 하다</li>
+    <li>MD상품·스낵은 비중이 작은 만큼 SKU 확장 실험의 비용도 작다 → 외국인 선호 SKU 추가 테스트 적기</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">04 / 07</div>
+  </div>
+
+  <div class="section-number">Section 04</div>
+  <h2 class="section-title">베스트셀러 <em>분석</em></h2>
+
+  <h3>2월 TOP 10 (수량 기준)</h3>
+  <table>
+    <thead>
+      <tr><th class="num">#</th><th>상품명</th><th>카테고리</th><th class="num">수량</th><th class="num">매출</th><th class="num">전월 변동</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td>오리지날 커피포 10T</td><td>커피포</td><td class="num">1,193</td><td class="num">17,298,500</td><td class="num">— (부동)</td></tr>
+      <tr><td class="num">2</td><td>볶은쌀 커피포 10T</td><td>커피포</td><td class="num">694</td><td class="num">10,063,000</td><td class="num">— (부동)</td></tr>
+      <tr><td class="num">3</td><td>바나나우유맛 커피포</td><td>커피포</td><td class="num">502</td><td class="num">7,981,800</td><td class="num">— (부동)</td></tr>
+      <tr><td class="num">4</td><td>군밤맛 커피포</td><td>커피포</td><td class="num">470</td><td class="num">7,473,000</td><td class="num">— (부동)</td></tr>
+      <tr><td class="num">5</td><td>말차라떼맛 커피포</td><td>커피포</td><td class="num">388</td><td class="num">6,169,200</td><td class="num">+1 (6→5)</td></tr>
+      <tr><td class="num">6</td><td>생일파티바닐라 커피포</td><td>커피포</td><td class="num">366</td><td class="num">5,819,400</td><td class="num">+2 (8→6)</td></tr>
+      <tr><td class="num">7</td><td>밀크카라멜맛 커피포</td><td>커피포</td><td class="num">357</td><td class="num">5,676,300</td><td class="num">−2 (5→7)</td></tr>
+      <tr><td class="num">8</td><td>건빵크런치 8개입</td><td>스낵</td><td class="num">341</td><td class="num">2,216,500</td><td class="num">−1 (7→8)</td></tr>
+      <tr><td class="num">9</td><td>쌀전병 스낵 믹스커피맛</td><td>스낵</td><td class="num">311</td><td class="num">1,710,500</td><td class="num">+2 (11→9)</td></tr>
+      <tr><td class="num">10</td><td>오란다 오리지널</td><td>스낵</td><td class="num">297</td><td class="num">1,336,500</td><td class="num">— (부동)</td></tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li><strong>TOP 4 부동.</strong> 핵심 효자 라인업이 안정적으로 유지되며 수량만 늘어남</li>
+    <li><strong>신규/단종 상품 없음.</strong> 동일 SKU에서 순수 수량 성장</li>
+    <li>말차라떼·생일파티바닐라 상승, 밀크카라멜 하락 — 미세한 취향 시프트 (모니터링 가치)</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>집중도 분석</h3>
+  <table>
+    <thead>
+      <tr><th>집중도</th><th class="num">1월</th><th class="num">2월</th><th>해석</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>TOP 3 비중</td><td class="num">35.6%</td><td class="num">35.7%</td><td>변동 없음</td></tr>
+      <tr><td>TOP 10 비중</td><td class="num">70.4%</td><td class="num">66.4%</td><td><strong>−4.0p (분산 증가)</strong></td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>TOP 3는 그대로지만 TOP 10 비중이 4%p 감소 → <strong>롱테일에서도 매출이 늘었다</strong></li>
+    <li>매장 상품군 전반이 골고루 팔리는 구간 진입</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">05 / 07</div>
+  </div>
+
+  <div class="section-number">Section 05 · Key Insight</div>
+  <h2 class="section-title">고객 <em>국적별</em> 분석</h2>
+  <p>이번 분석에서 가장 큰 발견. 매출 성장의 본질은 외국인 관광객 유입이며, 한국인 고객은 오히려 빠지고 있다.</p>
+
+  <table>
+    <thead>
+      <tr><th>국적</th><th class="num">1월 매출</th><th class="num">2월 매출</th><th class="num">MoM</th><th class="num">1월 주문</th><th class="num">2월 주문</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>일본</strong></td><td class="num">17,360,100</td><td class="num"><strong>35,097,900</strong></td><td class="num"><strong>+102.2%</strong></td><td class="num">317</td><td class="num">605</td></tr>
+      <tr><td>한국</td><td class="num">16,240,500</td><td class="num">12,518,100</td><td class="num"><strong>−22.9%</strong></td><td class="num">570</td><td class="num">439</td></tr>
+      <tr><td>대만</td><td class="num">6,485,600</td><td class="num">12,722,300</td><td class="num">+96.2%</td><td class="num">124</td><td class="num">232</td></tr>
+      <tr><td>미국</td><td class="num">5,202,500</td><td class="num">9,511,600</td><td class="num">+82.8%</td><td class="num">100</td><td class="num">155</td></tr>
+      <tr><td>중국</td><td class="num">6,059,200</td><td class="num">6,574,600</td><td class="num">+8.5%</td><td class="num">114</td><td class="num">126</td></tr>
+      <tr><td>태국</td><td class="num">5,564,300</td><td class="num">6,428,700</td><td class="num">+15.5%</td><td class="num">102</td><td class="num">118</td></tr>
+      <tr><td>홍콩</td><td class="num">3,086,700</td><td class="num">6,043,700</td><td class="num">+95.8%</td><td class="num">67</td><td class="num">105</td></tr>
+      <tr><td>유럽</td><td class="num">2,298,000</td><td class="num">4,945,400</td><td class="num"><strong>+115.2%</strong></td><td class="num">42</td><td class="num">87</td></tr>
+      <tr><td>동남아 기타</td><td class="num">1,992,400</td><td class="num">2,377,800</td><td class="num">+19.3%</td><td class="num">38</td><td class="num">41</td></tr>
+      <tr><td>기타</td><td class="num">2,925,400</td><td class="num">2,778,000</td><td class="num">−5.0%</td><td class="num">60</td><td class="num">49</td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <h3>외국인 vs 한국인 — 정반대로 갈리는 두 흐름</h3>
+  <table>
+    <thead>
+      <tr><th>구분</th><th class="num">1월 매출 (비중)</th><th class="num">2월 매출 (비중)</th><th class="num">MoM</th><th class="num">객단가 1→2월</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num">50,974,200 (75.8%)</td><td class="num"><strong>86,480,000 (87.4%)</strong></td><td class="num"><strong>+69.7%</strong></td><td class="num">52,878 → 56,970</td></tr>
+      <tr><td>한국인</td><td class="num">16,240,500 (24.2%)</td><td class="num">12,518,100 (12.6%)</td><td class="num"><strong>−22.9%</strong></td><td class="num">28,492 → 28,515</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">06 / 07</div>
+  </div>
+
+  <div class="section-number">Insight Recap</div>
+  <h2 class="section-title">가장 중요한 <em>시사점</em></h2>
+
+  <div class="highlight-box">
+    <h4>1. 성장의 본질은 외국인 관광객 유입</h4>
+    <p>외국인 매출 +69.7%, 한국인 매출 −22.9%. 매출 구성이 외국인 90%에 가까워지는 중. 일본·유럽·대만·홍콩·미국이 동시에 +80~115% 성장 → 단일 국가 이슈가 아닌 <strong>방한 외국인 트래픽 전반의 상승</strong>.</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>2. 한국인 고객은 오히려 빠지고 있다</h4>
+    <p>1월 570건 → 2월 439건 (−23%). 객단가는 그대로(28,500원) → 한국인은 <strong>적게 사는 게 아니라 덜 오는 것</strong>. 가설: 매장이 외국인으로 붐비면서 한국인 회피 / 성수 인근 동선 변화 / SNS 노출 감소.</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>3. 외국인 객단가도 상승 (+8%)</h4>
+    <p>외국인 한 명이 더 많이 사고 있다 → 단순 트래픽이 아닌 <strong>인당 구매력도 함께 상승</strong>. 입소문·추천 효과로 추정.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-number">Section 06</div>
+  <h2 class="section-title">성장의 질에 대한 <em>판단</em> · So What</h2>
+
+  <div class="two-col">
+    <div>
+      <h3>좋은 신호</h3>
+      <ul>
+        <li>가격 인하 없이 수량으로만 +47% — <strong>마진 압박 없는 건강한 성장</strong></li>
+        <li>4주 내내 안정적 일평균 — 일회성 이벤트가 아님</li>
+        <li>모든 카테고리 동반 성장 — 매장 자체가 잘 팔리는 곳이 됨</li>
+        <li>TOP 10 집중도 하락 — 롱테일 SKU도 살아남</li>
+        <li>외국인 객단가 상승 — 인당 구매력 상승</li>
+      </ul>
+    </div>
+    <div>
+      <h3>경계 신호</h3>
+      <ul>
+        <li><strong>한국인 −23%</strong>는 무시할 수 없다. 외국인 의존도 87%는 환율·관광·항공편 등 외부 변수에 매우 취약</li>
+        <li>2월 일평균 200건/일 — <strong>매장 캐파 한계</strong> 점검 필요 (결제·재고·접객)</li>
+        <li>커피포 단일 카테고리 의존 82% — 오리지날·볶은쌀 두 SKU 품절 리스크가 매출 직격</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">MONTHLY REPORT</div>
+    <div class="page-number">07 / 07</div>
+  </div>
+
+  <div class="section-number">Section 07 · Action</div>
+  <h2 class="section-title">실행 <em>제안</em> · Now What</h2>
+
+  <h3>즉시 (3월 1주차)</h3>
+  <ol class="flow">
+    <li><strong>재고 안전선 재설정</strong> — 오리지날 10T(1,193개/월), 볶은쌀(694개), 바나나우유맛(502개). 일본 관광객 시즌 패턴 고려해 발주 리드타임 +20% 버퍼 확보</li>
+    <li><strong>주말 운영 강화</strong> — 일요일 매출이 평일의 1.7배. 인력·결제 동선 주말 강화 검토 (특히 일요일)</li>
+    <li><strong>한국인 이탈 원인 진단</strong> — 한국인 객단가는 동일하므로 "왜 덜 오는가"가 문제. 1월/2월 한국인 결제 시간대·요일 비교, 인근 핫플 변화 체크</li>
+  </ol>
+
+  <h3>단기 (3월—)</h3>
+  <ol class="flow">
+    <li><strong>외국인 트래픽 진원 채널 점검</strong> — 일본·대만·홍콩 SNS 어디가 트래픽 진원지인지 추적 (인스타·샤오홍슈·라인블로그). 진원 채널이 식으면 매출 즉시 영향</li>
+    <li><strong>3월 벚꽃 시즌 시뮬레이션</strong> — 외국인 관광객 추가 유입 가능성. 4월 매출 가설(2월 일평균 ×1.2~1.4) 미리 시뮬레이션 후 인력·재고 의사결정</li>
+    <li><strong>MD상품/스낵 SKU 확장</strong> — Question Mark 영역. 비중은 작아도 성장률은 커피포와 동급. 외국인 선호 SKU 추가 테스트 (귀국 선물 수요)</li>
+  </ol>
+
+  <h3>중기 (Q2)</h3>
+  <ol class="flow">
+    <li><strong>고객 구성 다변화 전략</strong> — 한국인 12%까지 떨어진 것은 리스크. 평일 한국인 타깃 메뉴/프로모션 별도 설계 (외국인 트래픽 적은 화—목 평일 집중)</li>
+    <li><strong>품절 리스크 매뉴얼</strong> — 단일 SKU 의존도가 높음. "오리지날 결품 시 대체 동선" 사전 정의</li>
+  </ol>
+
+  <div class="divider"></div>
+
+  <h3>분석 방법론</h3>
+  <ul>
+    <li><strong>차이 분석</strong> Horngren (2014) 3요인 분해 — 단가는 가중평균(매출/수량) 사용</li>
+    <li><strong>MoM</strong> 영업일 26→24일 차이 보정 위해 일평균 매출 별도 산출</li>
+    <li><strong>국적 분석</strong> 프레임워크 외 추가 차원 — 이번 분석에서 가장 큰 시사점 도출</li>
+    <li><strong>데이터 한계</strong> 2개월치만 보유, 계절성·YoY 비교 불가. 3월 누적 후 분기 패턴 확인 필요</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NEWMIX · SEONGSU</span>
+    <span>Monthly Sales Report — 2026.02</span>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2 class="closing-title">트래픽이 만든 성장,<br/>구성이 만들 <em>리스크</em>.</h2>
+  <p class="closing-sub">+47.3% 매출, −22.9% 한국인. 다음 한 달은 두 흐름의 분기점.</p>
+  <div class="closing-info">
+    NEWMIX · SEONGSU<br/>
+    PREPARED BY DO BETTER THINGS<br/>
+    2026.04.28
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+{
+  "zone_id": "11170102",
+  "zone_name": "한남동",
+  "alias": "용산구 한남동",
+  "geo": {"lat": 37.5350, "lng": 127.0010, "radius_m": 500},
+  "fetched_at": "2026-05-04T08:30:00",
+  "is_mock": true,
+  "mock_note": "부트캠프 시연용 mock 데이터. 비소비형 체류 케이스 시연 결.",
+  "sources": {
+    "행안부": {"period": "2025-12", "ok": true, "mock": true},
+    "KT생활인구": {"period": "2025-Q4", "ok": true, "mock": true},
+    "추정매출": {"period": "2025-Q4", "ok": true, "mock": true},
+    "소진공": {"period": "2025-12", "ok": true, "mock": true},
+    "상권변화": {"period": "2025-Q4", "ok": true, "mock": true},
+    "실거래": {"period": "2025-Q4", "ok": true, "mock": true},
+    "R-One임대": {"period": "2025-Q4", "ok": true, "mock": true},
+    "관광공사외국인": {"period": "2025-Q4", "ok": true, "mock": true},
+    "GoogleTrends": {"period": "2024-11~2025-12", "ok": true, "mock": true},
+    "네이버부동산": {"period": "2026-05-04 호가", "ok": true, "mock": true, "count": 6},
+    "공정위가맹": {"period": "-", "ok": false, "note": "별도 승인 필요로 제외"}
+  },
+  "demand_volume": {
+    "residents": {"total": 12500, "p_seoul": 42, "by_age_gender": {"M_30s": 1450, "F_30s": 1620, "M_40s": 1280, "F_40s": 1340}},
+    "floating": {"avg_daily": 45200, "p_seoul": 78}
+  },
+  "demand_rhythm": {
+    "by_hour": {"09": 0.10, "12": 0.18, "15": 0.16, "18": 0.22, "21": 0.18, "00": 0.08, "03": 0.04},
+    "by_day": {"mon": 0.13, "tue": 0.14, "wed": 0.14, "thu": 0.15, "fri": 0.16, "sat": 0.15, "sun": 0.13}
+  },
+  "demand_timeseries": {
+    "quarters": ["2024-Q1", "2024-Q2", "2024-Q3", "2024-Q4", "2025-Q1", "2025-Q2", "2025-Q3", "2025-Q4"],
+    "living_pop": [44200, 44800, 45100, 45500, 45200, 45800, 45200, 45200],
+    "sales_total": [105e8, 102e8, 99e8, 95e8, 92e8, 90e8, 87e8, 85e8],
+    "foreign_visit": [820, 950, 1020, 980, 760, 680, 580, 520]
+  },
+  "spending": {
+    "by_category": {
+      "카페": {"quarterly_total": 4200000000, "p_seoul": 71, "avg_check_est": 11500, "monthly_per_pyeong": 1620000},
+      "한식": {"quarterly_total": 8500000000, "p_seoul": 65, "avg_check_est": 24000, "monthly_per_pyeong": 2180000},
+      "양식": {"quarterly_total": 6800000000, "p_seoul": 88, "avg_check_est": 38000, "monthly_per_pyeong": 3220000},
+      "일식": {"quarterly_total": 3200000000, "p_seoul": 82, "avg_check_est": 28000, "monthly_per_pyeong": 2410000},
+      "디저트": {"quarterly_total": 2100000000, "p_seoul": 78, "avg_check_est": 12500, "monthly_per_pyeong": 1820000},
+      "의류·잡화": {"quarterly_total": 5400000000, "p_seoul": 62, "avg_check_est": 0, "monthly_per_pyeong": 0, "trend_yoy": "-18%"},
+      "화장품": {"quarterly_total": 1800000000, "p_seoul": 48, "avg_check_est": 0, "monthly_per_pyeong": 0, "trend_yoy": "-22%"}
+    },
+    "category_change_yoy": {
+      "카페": "-12%",
+      "한식": "-5%",
+      "양식": "+2%",
+      "일식": "-3%",
+      "디저트": "-8%",
+      "의류·잡화": "-18%",
+      "화장품": "-22%"
+    }
+  },
+  "supply": {
+    "stores_by_category": {"카페": 92, "한식": 38, "양식": 42, "일식": 28, "디저트": 32},
+    "franchise_ratio_mock": {"카페": 0.42, "한식": 0.15, "양식": 0.18},
+    "open_close_4q": {
+      "카페": {"new": 12, "closed": 14},
+      "한식": {"new": 5, "closed": 8},
+      "양식": {"new": 4, "closed": 3}
+    },
+    "close_rate_p_seoul": {"카페": 78, "한식": 71, "양식": 52}
+  },
+  "real_estate": {
+    "rone_p50_per_pyeong_monthly": 280000,
+    "rone_p50_deposit_per_pyeong": 5000000,
+    "naver_listings": [
+      {"size_pyeong": 25, "deposit": 100000000, "monthly": 7500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 30, "deposit": 130000000, "monthly": 9000000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 18, "deposit": 80000000, "monthly": 5500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 22, "deposit": 90000000, "monthly": 6500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 35, "deposit": 150000000, "monthly": 10500000, "floor": "1F", "url": "mock"}
+    ],
+    "naver_p50_monthly_per_pyeong": 320000
+  },
+  "search_interest": {
+    "keyword": "한남동 카페",
+    "monthly": [
+      {"month": "2024-11", "value": 65}, {"month": "2024-12", "value": 62},
+      {"month": "2025-01", "value": 58}, {"month": "2025-02", "value": 56},
+      {"month": "2025-03", "value": 54}, {"month": "2025-04", "value": 52},
+      {"month": "2025-05", "value": 51}, {"month": "2025-06", "value": 49},
+      {"month": "2025-07", "value": 48}, {"month": "2025-08", "value": 47},
+      {"month": "2025-09", "value": 47}, {"month": "2025-10", "value": 46},
+      {"month": "2025-11", "value": 46}, {"month": "2025-12", "value": 47}
+    ],
+    "trend": "-28% (12개월)"
+  },
+  "interpretation_hint": "Q2 비소비형 체류. 유동인구 유지·매출 -19%, 외국인 -49%, 검색 -28% 선행, 명품·패션 동반 빠짐."
+}

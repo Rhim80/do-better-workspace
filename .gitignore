@@ -14,6 +14,7 @@ firecrawl_config.sh
 
 # Claude files
 CLAUDE.md
+!participants/*/CLAUDE.md
 .claude/settings.local.json
 
 # MCP config
@@ -31,6 +32,18 @@ scripts/*_local.sh
 .claude/skills/*/scripts/venv/
 .claude/skills/*/scripts/*.pyc
 .claude/skills/*/scripts/__pycache__/
+
+# Python cache (any location)
+__pycache__/
+*.pyc
+*.pyo
+
+# Workspace temp files
+pdf.txt
+*.zip
+
+# Old zone-fetch local data (moved to 50-resources/data/)
+.claude/skills/zone-fetch/data/
 
 # Payroll - 회사별 정보 (각자 setup.py로 생성, commit 금지)
 .claude/skills/payroll/config/company.yaml

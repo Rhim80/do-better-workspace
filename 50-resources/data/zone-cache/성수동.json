@@ -1,0 +1,89 @@
+{
+  "zone_id": "1120053",
+  "zone_name": "성수동",
+  "alias": "성동구 성수동1가",
+  "geo": {"lat": 37.5447, "lng": 127.0557, "radius_m": 500},
+  "fetched_at": "2026-05-04T08:30:00",
+  "is_mock": true,
+  "mock_note": "부트캠프 시연용 mock 데이터. 외국인+내국인 핫플 집중 케이스.",
+  "sources": {
+    "행안부": {"period": "2025-12", "ok": true, "mock": true},
+    "KT생활인구": {"period": "2025-Q4", "ok": true, "mock": true},
+    "추정매출": {"period": "2025-Q4", "ok": true, "mock": true},
+    "소진공": {"period": "2025-12", "ok": true, "mock": true},
+    "상권변화": {"period": "2025-Q4", "ok": true, "mock": true},
+    "실거래": {"period": "2025-Q4", "ok": true, "mock": true},
+    "R-One임대": {"period": "2025-Q4", "ok": true, "mock": true},
+    "관광공사외국인": {"period": "2025-Q4", "ok": true, "mock": true},
+    "GoogleTrends": {"period": "2024-11~2025-12", "ok": true, "mock": true},
+    "네이버부동산": {"period": "2026-05-04 호가", "ok": true, "mock": true, "count": 7},
+    "공정위가맹": {"period": "-", "ok": false, "note": "별도 승인 필요로 제외"}
+  },
+  "demand_volume": {
+    "residents": {"total": 9800, "p_seoul": 32, "by_age_gender": {"M_20s": 1240, "F_20s": 1380, "M_30s": 1180, "F_30s": 1280}},
+    "floating": {"avg_daily": 58200, "p_seoul": 89}
+  },
+  "demand_rhythm": {
+    "by_hour": {"09": 0.07, "12": 0.14, "15": 0.18, "18": 0.20, "21": 0.18, "00": 0.10, "03": 0.04},
+    "by_day": {"mon": 0.10, "tue": 0.11, "wed": 0.12, "thu": 0.14, "fri": 0.17, "sat": 0.20, "sun": 0.16}
+  },
+  "demand_timeseries": {
+    "quarters": ["2024-Q1", "2024-Q2", "2024-Q3", "2024-Q4", "2025-Q1", "2025-Q2", "2025-Q3", "2025-Q4"],
+    "living_pop": [48200, 50800, 52400, 54100, 55200, 56800, 57500, 58200],
+    "sales_total": [98e8, 105e8, 112e8, 121e8, 128e8, 138e8, 148e8, 156e8],
+    "foreign_visit": [620, 850, 1180, 1450, 1680, 2050, 2380, 2620]
+  },
+  "spending": {
+    "by_category": {
+      "카페": {"quarterly_total": 7800000000, "p_seoul": 96, "avg_check_est": 12500, "monthly_per_pyeong": 2580000},
+      "한식": {"quarterly_total": 6200000000, "p_seoul": 71, "avg_check_est": 18000, "monthly_per_pyeong": 2180000},
+      "양식": {"quarterly_total": 5400000000, "p_seoul": 81, "avg_check_est": 32000, "monthly_per_pyeong": 2920000},
+      "일식": {"quarterly_total": 3800000000, "p_seoul": 78, "avg_check_est": 26000, "monthly_per_pyeong": 2480000},
+      "디저트": {"quarterly_total": 3200000000, "p_seoul": 92, "avg_check_est": 11000, "monthly_per_pyeong": 2120000}
+    },
+    "category_change_yoy": {
+      "카페": "+22%",
+      "한식": "+8%",
+      "양식": "+12%",
+      "일식": "+6%",
+      "디저트": "+18%"
+    }
+  },
+  "supply": {
+    "stores_by_category": {"카페": 168, "한식": 52, "양식": 38, "일식": 22, "디저트": 48},
+    "franchise_ratio_mock": {"카페": 0.32, "한식": 0.10, "양식": 0.15},
+    "open_close_4q": {
+      "카페": {"new": 28, "closed": 12},
+      "한식": {"new": 8, "closed": 4},
+      "디저트": {"new": 14, "closed": 5}
+    },
+    "close_rate_p_seoul": {"카페": 42, "한식": 38, "디저트": 35}
+  },
+  "real_estate": {
+    "rone_p50_per_pyeong_monthly": 360000,
+    "rone_p50_deposit_per_pyeong": 6000000,
+    "naver_listings": [
+      {"size_pyeong": 20, "deposit": 100000000, "monthly": 7000000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 25, "deposit": 130000000, "monthly": 8800000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 30, "deposit": 160000000, "monthly": 10500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 18, "deposit": 90000000, "monthly": 6200000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 22, "deposit": 110000000, "monthly": 7800000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 28, "deposit": 140000000, "monthly": 9500000, "floor": "1F", "url": "mock"}
+    ],
+    "naver_p50_monthly_per_pyeong": 350000
+  },
+  "search_interest": {
+    "keyword": "성수동 카페",
+    "monthly": [
+      {"month": "2024-11", "value": 72}, {"month": "2024-12", "value": 75},
+      {"month": "2025-01", "value": 78}, {"month": "2025-02", "value": 82},
+      {"month": "2025-03", "value": 86}, {"month": "2025-04", "value": 89},
+      {"month": "2025-05", "value": 92}, {"month": "2025-06", "value": 94},
+      {"month": "2025-07", "value": 96}, {"month": "2025-08", "value": 98},
+      {"month": "2025-09", "value": 100}, {"month": "2025-10", "value": 99},
+      {"month": "2025-11", "value": 98}, {"month": "2025-12", "value": 97}
+    ],
+    "trend": "+35% (12개월)"
+  },
+  "interpretation_hint": "Q1 강한 성장. 외국인+내국인 동반 +60%, 카페 카테고리 P96, 임대 상승률 우려."
+}

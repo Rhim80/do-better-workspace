@@ -1,0 +1,78 @@
+# Magnitude 추정 임계치 + 계수 (참가자 본인 사업 특성에 맞춰 수정 가능)
+# entry-verdict가 직접 로드. 외식업 산업 통계 기준.
+
+# ============================================================
+# 평당 매출 P25/P50/P75 환산 계수
+# zone-cache.spending.by_category[my_cat].monthly_per_pyeong 위에서 계산
+# ============================================================
+sales_percentile_factor:
+  p25: 0.75   # 보수 시나리오 (개업 초기·약점 입지)
+  p50: 1.00   # 중립 (상권 평균)
+  p75: 1.30   # 낙관 (강점 입지·운영)
+
+# ============================================================
+# 임대비중 한도 (월매출 대비)
+# 기본값. personal-context.md의 rent_ratio_max로 덮어쓰기 가능.
+# ============================================================
+rent_ratio:
+  default: 0.10            # F&B 일반 권장 (월매출의 10%)
+  conservative: 0.08       # 마진 박한 업종 (한식 분식·테이크아웃)
+  premium: 0.12            # 객단가 높은 업종 (다이닝·바)
+  high_risk_warning: 0.15  # 이 이상이면 손익분기 깨뜨림 경고
+
+# ============================================================
+# 7 CQ 임계치
+# ============================================================
+cq_thresholds:
+  volume_percentile_min: 50      # CQ1 거주+생활인구 P50+
+  rhythm_match_ratio_min: 0.40   # CQ2 운영시간대 매칭 40%+
+  spending_percentile_min: 50    # CQ3 동 카테고리 추정매출 P50+
+  saturation_close_max: 75       # CQ4 폐업률 P75 미만
+  saturation_concept_count_max: 5  # CQ4 동일 컨셉 점포 5개 미만
+  cannibal_distance_min_km: 3.0   # CQ5 본점과 3km+
+  concept_percentile_min: 30      # CQ6 객단가 상권 P30+
+  concept_percentile_max: 75      # CQ6 객단가 상권 P75-
+  magnitude_delta_pass: 10        # CQ7 Δ ≤ 10% 충족
+  magnitude_delta_pending: 30     # CQ7 Δ ≤ 30% 보류
+
+# ============================================================
+# Verdict 판정 규칙
+# ============================================================
+verdict_rules:
+  go:
+    cq_pass_min: 5
+    cq_fail_max: 1
+    magnitude_must_pass: true   # CQ7 미충족이면 Go 불가
+  conditional:
+    cq_pass_min: 4
+    cq_fail_max: 3
+    note: "재검토 조건 자동 도출"
+  no_go:
+    cq_fail_min: 4
+    or_magnitude_fail: true     # CQ7 미충족이면 자동 No-Go
+
+# ============================================================
+# 산업 통계 (Backing 인용용)
+# ============================================================
+industry_stats:
+  fnb_1y_survival_rate: 0.70           # 한국외식산업연구원 2023
+  fnb_5y_survival_rate: 0.40
+  high_close_rate_zone_multiplier: 2.3  # 폐업률 P75 초과 상권 신규점 1년 폐업률 배수
+  notes: |
+    수치는 매년 변동. 실제 인용 시 출처·연도 명시 필수.
+    참가자 매장 카테고리·지역에 따라 조정.
+
+# ============================================================
+# 카테고리별 객단가 기본값 (서울 기준, 2025)
+# 참고치. zone-cache의 by_category 데이터 우선.
+# ============================================================
+avg_check_default:
+  카페: 8500
+  한식: 14000
+  한식·구이: 35000
+  분식: 9000
+  중식: 13000
+  일식: 22000
+  양식: 28000
+  다이닝: 65000
+  바: 35000

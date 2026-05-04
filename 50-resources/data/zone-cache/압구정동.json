@@ -1,0 +1,90 @@
+{
+  "zone_id": "11680107",
+  "zone_name": "압구정동",
+  "alias": "강남구 압구정동",
+  "geo": {"lat": 37.5274, "lng": 127.0288, "radius_m": 500},
+  "fetched_at": "2026-05-04T08:30:00",
+  "is_mock": true,
+  "mock_note": "부트캠프 시연용 mock 데이터. 프리미엄 안정 케이스, 임대 과대 신호.",
+  "sources": {
+    "행안부": {"period": "2025-12", "ok": true, "mock": true},
+    "KT생활인구": {"period": "2025-Q4", "ok": true, "mock": true},
+    "추정매출": {"period": "2025-Q4", "ok": true, "mock": true},
+    "소진공": {"period": "2025-12", "ok": true, "mock": true},
+    "상권변화": {"period": "2025-Q4", "ok": true, "mock": true},
+    "실거래": {"period": "2025-Q4", "ok": true, "mock": true},
+    "R-One임대": {"period": "2025-Q4", "ok": true, "mock": true},
+    "관광공사외국인": {"period": "2025-Q4", "ok": true, "mock": true},
+    "GoogleTrends": {"period": "2024-11~2025-12", "ok": true, "mock": true},
+    "네이버부동산": {"period": "2026-05-04 호가", "ok": true, "mock": true, "count": 5},
+    "공정위가맹": {"period": "-", "ok": false, "note": "별도 승인 필요로 제외"}
+  },
+  "demand_volume": {
+    "residents": {"total": 14200, "p_seoul": 65, "by_age_gender": {"M_40s": 1820, "F_40s": 1980, "M_50s": 1680, "F_50s": 1740}},
+    "floating": {"avg_daily": 38400, "p_seoul": 71}
+  },
+  "demand_rhythm": {
+    "by_hour": {"09": 0.08, "12": 0.18, "15": 0.16, "18": 0.20, "21": 0.16, "00": 0.06, "03": 0.02},
+    "by_day": {"mon": 0.12, "tue": 0.13, "wed": 0.14, "thu": 0.15, "fri": 0.16, "sat": 0.16, "sun": 0.14}
+  },
+  "demand_timeseries": {
+    "quarters": ["2024-Q1", "2024-Q2", "2024-Q3", "2024-Q4", "2025-Q1", "2025-Q2", "2025-Q3", "2025-Q4"],
+    "living_pop": [38800, 38600, 38400, 38500, 38400, 38400, 38500, 38400],
+    "sales_total": [128e8, 130e8, 132e8, 135e8, 138e8, 140e8, 143e8, 146e8],
+    "foreign_visit": [420, 480, 520, 540, 560, 580, 600, 620]
+  },
+  "spending": {
+    "by_category": {
+      "카페": {"quarterly_total": 4800000000, "p_seoul": 78, "avg_check_est": 14500, "monthly_per_pyeong": 1980000},
+      "한식": {"quarterly_total": 9200000000, "p_seoul": 88, "avg_check_est": 38000, "monthly_per_pyeong": 2820000},
+      "양식": {"quarterly_total": 12400000000, "p_seoul": 96, "avg_check_est": 65000, "monthly_per_pyeong": 4280000},
+      "일식": {"quarterly_total": 8200000000, "p_seoul": 94, "avg_check_est": 52000, "monthly_per_pyeong": 3580000},
+      "디저트": {"quarterly_total": 2400000000, "p_seoul": 88, "avg_check_est": 16500, "monthly_per_pyeong": 2120000},
+      "다이닝": {"quarterly_total": 6800000000, "p_seoul": 98, "avg_check_est": 95000, "monthly_per_pyeong": 5180000}
+    },
+    "category_change_yoy": {
+      "카페": "+5%",
+      "한식": "+8%",
+      "양식": "+10%",
+      "일식": "+6%",
+      "디저트": "+4%",
+      "다이닝": "+12%"
+    }
+  },
+  "supply": {
+    "stores_by_category": {"카페": 78, "한식": 42, "양식": 58, "일식": 38, "디저트": 22, "다이닝": 28},
+    "franchise_ratio_mock": {"카페": 0.28, "한식": 0.12, "양식": 0.18},
+    "open_close_4q": {
+      "카페": {"new": 4, "closed": 6},
+      "한식": {"new": 3, "closed": 2},
+      "양식": {"new": 6, "closed": 4}
+    },
+    "close_rate_p_seoul": {"카페": 68, "한식": 32, "양식": 38}
+  },
+  "real_estate": {
+    "rone_p50_per_pyeong_monthly": 580000,
+    "rone_p50_deposit_per_pyeong": 9500000,
+    "naver_listings": [
+      {"size_pyeong": 22, "deposit": 200000000, "monthly": 14000000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 28, "deposit": 250000000, "monthly": 17500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 35, "deposit": 320000000, "monthly": 21500000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 18, "deposit": 160000000, "monthly": 11200000, "floor": "1F", "url": "mock"},
+      {"size_pyeong": 30, "deposit": 280000000, "monthly": 18500000, "floor": "1F", "url": "mock"}
+    ],
+    "naver_p50_monthly_per_pyeong": 620000
+  },
+  "search_interest": {
+    "keyword": "압구정 카페",
+    "monthly": [
+      {"month": "2024-11", "value": 58}, {"month": "2024-12", "value": 60},
+      {"month": "2025-01", "value": 62}, {"month": "2025-02", "value": 60},
+      {"month": "2025-03", "value": 61}, {"month": "2025-04", "value": 63},
+      {"month": "2025-05", "value": 64}, {"month": "2025-06", "value": 63},
+      {"month": "2025-07", "value": 65}, {"month": "2025-08", "value": 66},
+      {"month": "2025-09", "value": 64}, {"month": "2025-10", "value": 65},
+      {"month": "2025-11", "value": 66}, {"month": "2025-12", "value": 67}
+    ],
+    "trend": "+15% (12개월)"
+  },
+  "interpretation_hint": "Q4 객단가 상승 / 충성도 강화 결. 다이닝·양식·일식 P94+ 강세, 카페는 임대 부담 큼."
+}

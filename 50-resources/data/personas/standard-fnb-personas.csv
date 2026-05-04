@@ -1,0 +1,8 @@
+persona_id,name,description,age_range,gender_balance,active_hours,active_days,avg_check_range,price_sensitivity,visit_purpose,channel_preference,seasonality,key_signals
+P01,오피스 점심,주중 직장인 점심 회식,25-50,balanced,11:30-13:30,mon-fri,9000-15000,medium,해결식·동료·미팅,주변 도보·기업식권,low,주중 12-13시 생활인구 P75+; 오피스 밀집도 높음; 주말 빠짐
+P02,회식·접대,저녁 단체 회식·비즈니스 접대,30-55,balanced,18:00-22:00,mon-thu,30000-80000,low,단체·접대·축하,예약·전화·플랫폼,medium,주중 19-21시 강함; 룸·프라이빗 수요; 주류 매출 비중 높음
+P03,데이트·친구모임,저녁·주말 데이트 친구만남,20-35,female-skew,18:00-23:00,thu-sun,18000-35000,medium,분위기·SNS·맛,SNS·인스타·블로그,medium,금토일 강함; 인스타 검색 선행; 외관·인테리어 가중치
+P04,심야·해장,심야 야식·해장,25-45,male-skew,22:00-04:00,thu-sat,12000-25000,medium,취중·야식·해장,즉흥 도보,low,심야 생활인구 매장형 상권; 24시 영업; 주류 동반 빈번
+P05,가족·외식,주말 가족 외식,30-50,balanced,11:30-14:00 / 17:30-20:00,sat-sun,15000-35000,medium,가족·아이·기념,차량·플랫폼,medium,주말 점심·이른저녁; 주차장 가중치; 어린이 메뉴
+P06,거주민 단골,동네 거주민 일상,20-65,balanced,07:00-09:00 / 18:00-21:00,everyday,7000-13000,high,일상·테이크아웃,도보 5분 내,low,거주인구 P50+; 회전율 높음; 시즌 변동 적음
+P07,외국인 관광,외국인 관광객 방문,20-50,balanced,11:00-21:00,thu-sun,10000-25000,low,체험·SNS·시그니처,플랫폼·구글맵·인스타,high,환율·관광 회복에 민감; 외국인 방문 통계 선행 신호; 영어 메뉴·결제 가중치
