@@ -32,6 +32,10 @@ scripts/*_local.sh
 .claude/skills/*/scripts/*.pyc
 .claude/skills/*/scripts/__pycache__/
 
+# Payroll - 회사별 정보 (각자 setup.py로 생성, commit 금지)
+.claude/skills/payroll/config/company.yaml
+.claude/skills/payroll/config/company.yaml.backup-*
+
 # macOS files
 .DS_Store
 
